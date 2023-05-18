@@ -4,6 +4,8 @@
  */
 package GUI;
 //testing github
+
+import Calander.*;
 import GlassPanePopup.GlassPanePopup;
 import Logic.*;
 import java.awt.CardLayout;
@@ -32,6 +34,7 @@ import java.awt.image.WritableRaster;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -63,6 +66,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         initComponents();
         GlassPanePopup.install(this);
         cardLayout = (CardLayout) (pnlCards.getLayout());
+
+        dateChooser.addEventDateChooser(new EventDateChooser() {
+            @Override
+            public void dateSelected(SelectedAction action, SelectedDate date) {
+                System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
+                if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                    dateChooser.hidePopup();
+                }
+            }
+        });
     }
 
     /**
@@ -77,6 +90,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         genderButtonGroup = new javax.swing.ButtonGroup();
         employeeTypeBtnGroup = new javax.swing.ButtonGroup();
         memberTypeGroupButton = new javax.swing.ButtonGroup();
+        dateChooser = new Calander.DateChooser();
         mainPage = new javax.swing.JSplitPane();
         nvigPnl = new javax.swing.JPanel();
         gymImage = new javax.swing.JLabel();
@@ -140,6 +154,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtMajorOrPosition = new GUI.TextField();
         addBtn = new GUI.Button();
         clearBtn = new GUI.Button();
+        txtDob = new GUI.TextField();
+        button2 = new GUI.Button();
         manageEmployeesPnl = new javax.swing.JPanel();
         jPanel4 = new RoundPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -170,6 +186,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         nametxt = new GUI.TextField();
         textField1 = new GUI.TextField();
         dateChooser1 = new Calander.DateChooser();
+
+        dateChooser.setForeground(new java.awt.Color(11, 158, 191));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym System\n");
@@ -502,7 +520,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         dashboardPnlLayout.setHorizontalGroup(
             dashboardPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPnlLayout.createSequentialGroup()
-                .addContainerGap(229, Short.MAX_VALUE)
+                .addContainerGap(226, Short.MAX_VALUE)
                 .addGroup(dashboardPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(truckEmployeeInformationImageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(truckMemberInformationImageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -511,7 +529,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(addEmployeeImageBtn)
                         .addGap(18, 18, 18)
                         .addComponent(addMemberImageBtn)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         dashboardPnlLayout.setVerticalGroup(
             dashboardPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,16 +767,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addEmployeePnlLayout.setHorizontalGroup(
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmployeePnlLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(roundPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         addEmployeePnlLayout.setVerticalGroup(
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addEmployeePnlLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addComponent(roundPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pnlCards.add(addEmployeePnl, "addEmployeePnl");
@@ -795,7 +813,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         lblSportDepartment.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSportDepartment.setForeground(new java.awt.Color(0, 0, 0));
-        lblSportDepartment.setText("Sport team");
+        lblSportDepartment.setText("Sport Team");
 
         lblAdress.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAdress.setForeground(new java.awt.Color(0, 0, 0));
@@ -832,7 +850,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         memberTypeGroupButton.add(studentBtn);
         studentBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         studentBtn.setForeground(new java.awt.Color(0, 0, 0));
-        studentBtn.setSelected(true);
         studentBtn.setText("Student");
         studentBtn.setContentAreaFilled(false);
         studentBtn.setFocusPainted(false);
@@ -906,6 +923,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.setFocusable(false);
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         clearBtn.setBackground(new java.awt.Color(233, 233, 233));
         clearBtn.setForeground(new java.awt.Color(26, 19, 99));
@@ -922,7 +944,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel1Layout.setHorizontalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFirstName)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -932,7 +954,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhone)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGender)
                     .addComponent(lblMemberType)
@@ -948,7 +970,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(maleBtn)
                         .addGap(35, 35, 35)
                         .addComponent(femaleBtn)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(roundPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,7 +998,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maleBtn)
                     .addComponent(femaleBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMemberType))
@@ -985,7 +1007,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentBtn)
                     .addComponent(staffBtn))
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 5, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMajorPosition))
@@ -993,7 +1015,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMajorOrPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSportDepartment))
@@ -1001,28 +1023,53 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSportTeamOrDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
+
+        txtDob.setBackground(new java.awt.Color(233, 233, 233));
+        txtDob.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtDob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDobActionPerformed(evt);
+            }
+        });
+
+        button2.setText("pick");
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout addMemberPnlLayout = new javax.swing.GroupLayout(addMemberPnl);
         addMemberPnl.setLayout(addMemberPnlLayout);
         addMemberPnlLayout.setHorizontalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(addMemberPnlLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addMemberPnlLayout.setVerticalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pnlCards.add(addMemberPnl, "addMemberPnl");
@@ -1159,7 +1206,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jLabel28)
                         .addComponent(jLabel29)
                         .addComponent(jLabel30)))
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageEmployeesPnlLayout = new javax.swing.GroupLayout(manageEmployeesPnl);
@@ -1168,14 +1215,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         manageEmployeesPnlLayout.setVerticalGroup(
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -1258,19 +1305,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1313,7 +1360,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jLabel9)
                         .addComponent(jLabel10)
                         .addComponent(jLabel11)))
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageMembersPnlLayout = new javax.swing.GroupLayout(manageMembersPnl);
@@ -1322,14 +1369,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageMembersPnlLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         manageMembersPnlLayout.setVerticalGroup(
             manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageMembersPnlLayout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -1412,7 +1459,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
+                .addContainerGap(113, Short.MAX_VALUE)
                 .addComponent(roundPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -1668,7 +1715,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         if (!checkRadioButtonGroup(employeeTypeBtnGroup, "Employee type")) {
             return;
         }
-        
+
         errorCoutner = 0;
         for (TextField textField : textFields) {
             if (!containsOnlyLetters(textField, errors[errorCoutner])) {
@@ -1684,7 +1731,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 return;
             }
         }
-        
+
         addEmployee(textFields);
         try {
             FileManager.getInstance().WriteEmployees();
@@ -1707,6 +1754,86 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         repaitShadow(evt.getSource());
     }//GEN-LAST:event_repaintShadowForTextFields
+
+    private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDobActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        dateChooser.setTextRefernce(txtDob);
+        dateChooser.showPopup();
+        SelectedDate d = dateChooser.getSelectedDate();
+        System.out.println(d.getDay() + "-" + d.getMonth() + "-" + d.getYear());
+        System.out.println("Text : " + txtDob.getText());
+    }//GEN-LAST:event_button2ActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        int errorCoutner;
+        ArrayList<TextField> textFields = new ArrayList<TextField>();
+        ArrayList<String> errors = new ArrayList<String>(Arrays.asList("first name", "sur name", "Address", "Phone", "Date of birth"));
+        textFields.add(txtFirstName);
+        textFields.add(txtSurname);
+        textFields.add(txtAdress);
+        textFields.add(txtPhone);
+        textFields.add(txtDob);
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!checkTxtField(textField, errors.get(errorCoutner))) {
+                return;
+            }
+            errorCoutner++;
+        }
+
+        if (!checkRadioButtonGroup(genderButtonGroup, "Gender")) {
+            return;
+        }
+        if (!checkRadioButtonGroup(employeeTypeBtnGroup, "Employee type")) {
+            return;
+        }
+
+        textFields.add(txtMajorOrPosition);
+        textFields.add(txtSportTeamOrDepartment);
+        if (studentBtn.isSelected()) {
+            errors.add("Major");
+            errors.add("Sport Team");
+        } else {
+            errors.add("Position");
+            errors.add("Depatment");
+        }
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!checkTxtField(textField, errors.get(errorCoutner))) {
+                return;
+            }
+            errorCoutner++;
+        }
+        
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!containsOnlyLetters(textField, errors[errorCoutner])) {
+                return;
+            }
+            errorCoutner++;
+            if (errorCoutner == 2) {
+                break;
+            }
+        }
+        for (int i = 3; i < textFields.size(); i++) {
+            if (!containsOnlyNumbers(textFields.get(i), errors[i])) {
+                return;
+            }
+        }
+
+        addEmployee(textFields);
+        try {
+            FileManager.getInstance().WriteEmployees();
+            System.out.println("done");
+        } catch (IOException ex) {
+            System.out.println("bruh");
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1757,10 +1884,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton assignTrainerImageBtn;
     private javax.swing.JLabel bahrainLabel;
     private GUI.Button button1;
+    private GUI.Button button2;
     private GUI.Button clearBtn;
     private GUI.Button clearEmployeeFormBtn;
     private GUI.NavButton dashboardBtn;
     private javax.swing.JPanel dashboardPnl;
+    private Calander.DateChooser dateChooser;
     private Calander.DateChooser dateChooser1;
     private javax.swing.JLabel emoployeeSectionLabel;
     private GUI.RadioButtonCustom employeeRadioBtn;
@@ -1818,6 +1947,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton truckMemberInformationImageBtn;
     private GUI.TextField txtAddressEmployee;
     private GUI.TextField txtAdress;
+    private GUI.TextField txtDob;
     private GUI.TextField txtFirstName;
     private GUI.TextField txtFirstNameEmployee;
     private GUI.TextField txtMajorOrPosition;
@@ -1943,7 +2073,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             Employee newEmp = null;
             if (employeeRadioBtn.isSelected()) {
                 newEmp = new Employee(textFields.get(0).getText(), textFields.get(1).getText(),
-                        textFields.get(2).getText(),textFields.get(3).getText(), Double.parseDouble(textFields.get(4).getText()));
+                        textFields.get(2).getText(), textFields.get(3).getText(), Double.parseDouble(textFields.get(4).getText()));
                 System.out.println("emp");
 
             } else {
