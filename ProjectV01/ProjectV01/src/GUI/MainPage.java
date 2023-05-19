@@ -152,10 +152,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSportTeamOrDepartment = new GUI.TextField();
         txtAdress = new GUI.TextField();
         txtMajorOrPosition = new GUI.TextField();
-        addBtn = new GUI.Button();
+        addMemberBtn = new GUI.Button();
         clearBtn = new GUI.Button();
         txtDob = new GUI.TextField();
-        button2 = new GUI.Button();
+        pickDateBtn = new GUI.Button();
         manageEmployeesPnl = new javax.swing.JPanel();
         jPanel4 = new RoundPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -919,13 +919,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        addBtn.setBackground(new java.awt.Color(26, 19, 99));
-        addBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addBtn.setText("Add");
-        addBtn.setFocusable(false);
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        addMemberBtn.setBackground(new java.awt.Color(26, 19, 99));
+        addMemberBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addMemberBtn.setText("Add");
+        addMemberBtn.setFocusable(false);
+        addMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                addMemberBtnActionPerformed(evt);
             }
         });
 
@@ -976,13 +976,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAddMember)
                     .addGroup(roundPanel1Layout.createSequentialGroup()
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        roundPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addBtn, clearBtn});
+        roundPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addMemberBtn, clearBtn});
 
         roundPanel1Layout.setVerticalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1025,12 +1025,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
+        txtDob.setEditable(false);
         txtDob.setBackground(new java.awt.Color(233, 233, 233));
+        txtDob.setFocusable(false);
         txtDob.setShadowColor(new java.awt.Color(0, 0, 0));
         txtDob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1038,10 +1040,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        button2.setText("pick");
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        pickDateBtn.setText("pick");
+        pickDateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
+                pickDateBtnActionPerformed(evt);
             }
         });
 
@@ -1057,7 +1059,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGap(89, 89, 89)
                 .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addMemberPnlLayout.setVerticalGroup(
@@ -1068,7 +1070,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -1206,7 +1208,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jLabel28)
                         .addComponent(jLabel29)
                         .addComponent(jLabel30)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageEmployeesPnlLayout = new javax.swing.GroupLayout(manageEmployeesPnl);
@@ -1215,15 +1217,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         manageEmployeesPnlLayout.setVerticalGroup(
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pnlCards.add(manageEmployeesPnl, "manageEmployeesPnl");
@@ -1305,19 +1307,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1360,7 +1362,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jLabel9)
                         .addComponent(jLabel10)
                         .addComponent(jLabel11)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageMembersPnlLayout = new javax.swing.GroupLayout(manageMembersPnl);
@@ -1369,15 +1371,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageMembersPnlLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         manageMembersPnlLayout.setVerticalGroup(
             manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageMembersPnlLayout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pnlCards.add(manageMembersPnl, "manageMembersPnl");
@@ -1734,10 +1736,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         addEmployee(textFields);
         try {
-            FileManager.getInstance().WriteEmployees();
-            System.out.println("done");
+            FileManager.getInstance().WriteEmployee();
         } catch (IOException ex) {
-            System.out.println("bruh");
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -1759,15 +1759,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDobActionPerformed
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+    private void pickDateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickDateBtnActionPerformed
         dateChooser.setTextRefernce(txtDob);
         dateChooser.showPopup();
         SelectedDate d = dateChooser.getSelectedDate();
         System.out.println(d.getDay() + "-" + d.getMonth() + "-" + d.getYear());
         System.out.println("Text : " + txtDob.getText());
-    }//GEN-LAST:event_button2ActionPerformed
+    }//GEN-LAST:event_pickDateBtnActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+    private void addMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberBtnActionPerformed
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
         ArrayList<String> errors = new ArrayList<String>(Arrays.asList("first name", "sur name", "Address", "Phone", "Date of birth"));
@@ -1807,33 +1807,43 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
             errorCoutner++;
         }
-        
+
+        ArrayList<TextField> letterTextFields = new ArrayList<TextField>();
+        letterTextFields.add(txtFirstName);
+        letterTextFields.add(txtSurname);
+        letterTextFields.add(txtMajorOrPosition);
+        letterTextFields.add(txtSportTeamOrDepartment);
+        ArrayList<String> letterErrors = new ArrayList<String>(Arrays.asList("first name", "sur name"));
+        if (studentBtn.isSelected()) {
+            letterErrors.add("Major");
+            letterErrors.add("Sport Team");
+        } else {
+            letterErrors.add("Position");
+            letterErrors.add("Depatment");
+        }
         errorCoutner = 0;
-        for (TextField textField : textFields) {
-            if (!containsOnlyLetters(textField, errors[errorCoutner])) {
+        for (TextField textField : letterTextFields) {
+            if (!containsOnlyLetters(textField, letterErrors.get(errorCoutner))) {
                 return;
             }
             errorCoutner++;
-            if (errorCoutner == 2) {
-                break;
-            }
+
         }
-        for (int i = 3; i < textFields.size(); i++) {
-            if (!containsOnlyNumbers(textFields.get(i), errors[i])) {
-                return;
-            }
+
+        if (!containsOnlyNumbers(txtDob, "Phone")) {
+            return;
         }
 
         addEmployee(textFields);
         try {
-            FileManager.getInstance().WriteEmployees();
+            FileManager.getInstance().WriteEmployee();
             System.out.println("done");
         } catch (IOException ex) {
-            System.out.println("bruh");
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_addBtnActionPerformed
+
+    }//GEN-LAST:event_addMemberBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1872,11 +1882,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.Button addBtn;
     private GUI.Button addEmployeeBtn;
     private GUI.NavButton addEmployeeButton;
     private javax.swing.JButton addEmployeeImageBtn;
     private javax.swing.JPanel addEmployeePnl;
+    private GUI.Button addMemberBtn;
     private GUI.NavButton addMemberButton;
     private javax.swing.JButton addMemberImageBtn;
     private javax.swing.JPanel addMemberPnl;
@@ -1884,7 +1894,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton assignTrainerImageBtn;
     private javax.swing.JLabel bahrainLabel;
     private GUI.Button button1;
-    private GUI.Button button2;
     private GUI.Button clearBtn;
     private GUI.Button clearEmployeeFormBtn;
     private GUI.NavButton dashboardBtn;
@@ -1934,6 +1943,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.ButtonGroup memberTypeGroupButton;
     private GUI.TextField nametxt;
     private javax.swing.JPanel nvigPnl;
+    private GUI.Button pickDateBtn;
     private javax.swing.JPanel pnlCards;
     private javax.swing.JLabel polyLabel;
     private GUI.RoundPanel roundPanel1;
@@ -2083,7 +2093,54 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
             GymSystem.employees.add(newEmp);
 
-            System.out.println(GymSystem.employees.get(0).getFirstName());
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("Employee has been added ");
+            GlassPanePopup.showPopup(obj);
+        } catch (Exception e) {
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+
+                }
+            });
+            obj.jLabel1.setText("Please check your input data");
+            GlassPanePopup.showPopup(obj);
+        }
+    }
+
+    public void addMember(ArrayList<TextField> textFields) {
+        //    public PolytechnicStudent(String firstName, String lastName, String address, String phone, String gender, Date birthDate,String course, String team) {
+
+//                textFields.add(txtFirstName);
+//        textFields.add(txtSurname);
+//        textFields.add(txtAdress);
+//        textFields.add(txtPhone);
+//        textFields.add(txtDob);
+//                textFields.add(txtMajorOrPosition);
+//        textFields.add(txtSportTeamOrDepartment);
+        try {
+            Member newMem = null;
+            String gender = maleBtn.isSelected() ? "Male" : "Female"; //ternary operator
+            SelectedDate d = dateChooser.getSelectedDate();
+            if (studentBtn.isSelected()) {
+                newMem = new PolytechnicStudent(textFields.get(0).getText(), textFields.get(1).getText(),
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, (d.getDay() + "-" + d.getMonth() + "-" + d.getYear()), textFields.get(5).getText(), textFields.get(6).getText());
+                System.out.println("student");
+
+            } else {
+                newMem = new PolytechnicStaff(textFields.get(0).getText(), textFields.get(1).getText(),
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, (d.getDay() + "-" + d.getMonth() + "-" + d.getYear()), textFields.get(5).getText(), textFields.get(6).getText());
+                System.out.println("staff");
+            }
+            GymSystem.members.add(newMem);
 
             Message obj = new Message();
             obj.eventOK(new ActionListener() {
@@ -2092,7 +2149,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     GlassPanePopup.closePopupLast();
                 }
             });
-            obj.jLabel1.setText("Employee have been added ");
+            obj.jLabel1.setText("Member has been added ");
             GlassPanePopup.showPopup(obj);
         } catch (Exception e) {
             Message obj = new Message();

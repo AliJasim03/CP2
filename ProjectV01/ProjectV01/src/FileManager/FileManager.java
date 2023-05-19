@@ -52,7 +52,7 @@ public class FileManager {
         }
     }
 
-    public void WriteEmployees() throws IOException {
+    public void WriteEmployee() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Employees.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.employees); // serializes​
@@ -67,6 +67,26 @@ public class FileManager {
             ObjectInputStream in = new ObjectInputStream(fileIn);
 // de-serialize:​
             GymSystem.employees = (ArrayList<Employee>) in.readObject();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
+    
+    public void WriteMember() throws IOException {
+        try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Members.dat")) {
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(GymSystem.members); // serializes​
+        } catch (FileNotFoundException e) {
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
+
+    public void ReadMembers() throws IOException, ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("src/FileManager/Data/Members.dat");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+// de-serialize:​
+            GymSystem.members = (ArrayList<Member>) in.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("Error occured: " + e.getMessage());
         }

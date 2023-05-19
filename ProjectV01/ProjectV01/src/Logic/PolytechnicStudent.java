@@ -14,7 +14,7 @@ public class PolytechnicStudent extends Member{
     private String course;
     private String team;
 
-    public PolytechnicStudent(String firstName, String lastName, String address, String phone, String gender, Date birthDate,String course, String team) {
+    public PolytechnicStudent(String firstName, String lastName, String address, String phone, String gender, String birthDate,String course, String team) {
         super(firstName, lastName, address, phone, gender, birthDate);
         this.course = course;
         this.team = team;

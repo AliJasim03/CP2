@@ -4,7 +4,6 @@
  */
 package Logic;
 
-import java.util.Date;
 
 /**
  *
@@ -18,13 +17,13 @@ public class Member {
     private String address;
     private String phone;
     private String gender;
-    private Date birthDate;
+    private String birthDate;
     static int totalMember; 
     public Member() {
 
     }
 
-    public Member(String firstName, String lastName, String address, String phone, String gender, Date birthDate) {
+    public Member(String firstName, String lastName, String address, String phone, String gender, String birthDate) {
         this.id = totalMember;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -95,11 +94,11 @@ public class Member {
         this.gender = gender;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
