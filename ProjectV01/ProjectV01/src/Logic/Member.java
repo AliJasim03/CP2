@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Logic;
+import java.io.Serializable;
 
 
 /**
  *
  * @author alija
  */
-public class Member {
-
+public class Member implements Serializable {
+    private static final long serialVersionUID = 2L;
     private int id;
     private String firstName;
     private String lastName;
@@ -47,12 +48,6 @@ public class Member {
     public String getFullName() {
         return getFirstName()+" "+getLastName();
     }
-   
-    public void setFullName() {
-        
-    }
-    //////
-    
     
     public String getFirstName() {
         return firstName;

@@ -1,5 +1,6 @@
 package Calander;
 
+import GUI.TextField;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -47,7 +48,7 @@ public final class DateChooser extends javax.swing.JPanel {
         toDay(false);
     }
 
-    public void setTextRefernce(JTextField txt) {
+    public void setTextRefernce(TextField txt) {
         this.textRefernce = txt;
         this.textRefernce.setEditable(false);
         this.textRefernce.addMouseListener(new MouseAdapter() {

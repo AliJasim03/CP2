@@ -784,6 +784,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addMemberPnl.setBackground(new java.awt.Color(2, 73, 89));
         addMemberPnl.setForeground(new java.awt.Color(255, 255, 255));
         addMemberPnl.setPreferredSize(new java.awt.Dimension(773, 545));
+        addMemberPnl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
+            }
+        });
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -878,12 +883,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 txtFirstNameActionPerformed(evt);
             }
         });
+        txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
+            }
+        });
 
         txtSurname.setBackground(new java.awt.Color(233, 233, 233));
         txtSurname.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSurname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSurnameActionPerformed(evt);
+            }
+        });
+        txtSurname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -894,12 +909,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 txtPhoneActionPerformed(evt);
             }
         });
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
+            }
+        });
 
         txtSportTeamOrDepartment.setBackground(new java.awt.Color(233, 233, 233));
         txtSportTeamOrDepartment.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSportTeamOrDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSportTeamOrDepartmentActionPerformed(evt);
+            }
+        });
+        txtSportTeamOrDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -910,12 +935,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 txtAdressActionPerformed(evt);
             }
         });
+        txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
+            }
+        });
 
         txtMajorOrPosition.setBackground(new java.awt.Color(233, 233, 233));
         txtMajorOrPosition.setShadowColor(new java.awt.Color(0, 0, 0));
         txtMajorOrPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMajorOrPositionActionPerformed(evt);
+            }
+        });
+        txtMajorOrPosition.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1034,9 +1069,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtDob.setBackground(new java.awt.Color(233, 233, 233));
         txtDob.setFocusable(false);
         txtDob.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtDob.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDobActionPerformed(evt);
+        txtDob.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDobMouseClicked(evt);
+            }
+        });
+        txtDob.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1307,29 +1347,31 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel13, jLabel9});
@@ -1601,15 +1643,24 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 //            }
 //        }
         try {
-            FileManager.getInstance().ReadEmployees();
-            System.out.println(GymSystem.employees.get(0).getFirstName());
-            System.out.println(GymSystem.employees.get(0).getLastName());
-            System.out.println(GymSystem.employees.get(0).getId());
-            System.out.println(GymSystem.employees.get(0).getFullName());
-            System.out.println(GymSystem.employees.get(0).getAddress());
-            System.out.println(GymSystem.employees.get(0).getPhone());
-            System.out.println(GymSystem.employees.get(0).getSalary());
+            FileManager.getInstance().ReadMembers();
+            // Assuming GymSystem.members is a list of type Student
+            Member student = GymSystem.members.get(0); // Retrieve the object at index 0
 
+// Casting to PolytechnicStudent
+            PolytechnicStudent polyStudent = (PolytechnicStudent) student;
+            System.out.println(polyStudent);
+
+            System.out.println(GymSystem.members.get(0).getFirstName());
+            System.out.println(GymSystem.members.get(0).getLastName());
+            System.out.println(GymSystem.members.get(0).getId());
+            System.out.println(GymSystem.members.get(0).getFullName());
+            System.out.println(GymSystem.members.get(0).getAddress());
+            System.out.println(GymSystem.members.get(0).getPhone());
+            System.out.println(GymSystem.members.get(0).getGender());
+            System.out.println(GymSystem.members.get(0).getBirthDate());
+            System.out.println(polyStudent.getCourse());
+            System.out.println(polyStudent.getTeam());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1755,10 +1806,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         repaitShadow(evt.getSource());
     }//GEN-LAST:event_repaintShadowForTextFields
 
-    private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDobActionPerformed
-
     private void pickDateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickDateBtnActionPerformed
         dateChooser.setTextRefernce(txtDob);
         dateChooser.showPopup();
@@ -1787,16 +1834,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         if (!checkRadioButtonGroup(genderButtonGroup, "Gender")) {
             return;
         }
-        if (!checkRadioButtonGroup(employeeTypeBtnGroup, "Employee type")) {
+        if (!checkRadioButtonGroup(memberTypeGroupButton, "Member type")) {
             return;
         }
 
         textFields.add(txtMajorOrPosition);
-        textFields.add(txtSportTeamOrDepartment);
         if (studentBtn.isSelected()) {
             errors.add("Major");
-            errors.add("Sport Team");
         } else {
+            textFields.add(txtSportTeamOrDepartment);
             errors.add("Position");
             errors.add("Depatment");
         }
@@ -1830,13 +1876,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         }
 
-        if (!containsOnlyNumbers(txtDob, "Phone")) {
+        if (!containsOnlyNumbers(txtPhone, "Phone")) {
             return;
         }
 
-        addEmployee(textFields);
+        textFields = new ArrayList<TextField>();
+        textFields.add(txtFirstName);
+        textFields.add(txtSurname);
+        textFields.add(txtAdress);
+        textFields.add(txtPhone);
+        textFields.add(txtDob);
+        textFields.add(txtMajorOrPosition);
+        textFields.add(txtSportTeamOrDepartment);
+        addMember(textFields);
+
         try {
-            FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().WriteMember();
             System.out.println("done");
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -1844,6 +1899,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
 
     }//GEN-LAST:event_addMemberBtnActionPerformed
+
+    private void txtDobMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDobMouseClicked
+        dateChooser.setTextRefernce(txtDob);
+        dateChooser.showPopup();
+        SelectedDate d = dateChooser.getSelectedDate();
+        System.out.println(d.getDay() + "-" + d.getMonth() + "-" + d.getYear());
+        System.out.println("Text : " + txtDob.getText());
+    }//GEN-LAST:event_txtDobMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2117,29 +2180,21 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }
 
     public void addMember(ArrayList<TextField> textFields) {
-        //    public PolytechnicStudent(String firstName, String lastName, String address, String phone, String gender, Date birthDate,String course, String team) {
-
-//                textFields.add(txtFirstName);
-//        textFields.add(txtSurname);
-//        textFields.add(txtAdress);
-//        textFields.add(txtPhone);
-//        textFields.add(txtDob);
-//                textFields.add(txtMajorOrPosition);
-//        textFields.add(txtSportTeamOrDepartment);
+        String gender = maleBtn.isSelected() ? "Male" : "Female"; //ternary operator
+        String team = (!textFields.get(6).getText().isBlank() || !textFields.get(6).getText().isEmpty() || textFields.get(6).getText() != null) ? textFields.get(6).getText() : null;
         try {
             Member newMem = null;
-            String gender = maleBtn.isSelected() ? "Male" : "Female"; //ternary operator
-            SelectedDate d = dateChooser.getSelectedDate();
             if (studentBtn.isSelected()) {
                 newMem = new PolytechnicStudent(textFields.get(0).getText(), textFields.get(1).getText(),
-                        textFields.get(2).getText(), textFields.get(3).getText(), gender, (d.getDay() + "-" + d.getMonth() + "-" + d.getYear()), textFields.get(5).getText(), textFields.get(6).getText());
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(), textFields.get(5).getText(), team);
                 System.out.println("student");
 
             } else {
                 newMem = new PolytechnicStaff(textFields.get(0).getText(), textFields.get(1).getText(),
-                        textFields.get(2).getText(), textFields.get(3).getText(), gender, (d.getDay() + "-" + d.getMonth() + "-" + d.getYear()), textFields.get(5).getText(), textFields.get(6).getText());
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(), textFields.get(5).getText(), textFields.get(6).getText());
                 System.out.println("staff");
             }
+
             GymSystem.members.add(newMem);
 
             Message obj = new Message();
