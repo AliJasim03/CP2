@@ -1,6 +1,6 @@
 package Logic;
 import java.io.Serializable;
-
+import FileManager.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -21,7 +21,7 @@ public class Employee implements Serializable{
     private String phone;
     private double salary;
     static int totalEmployee = 1;
-
+    
     public Employee(String firstName, String lastName, String address, String phone, double salary) {
         this.id = totalEmployee;
         this.firstName = firstName;
