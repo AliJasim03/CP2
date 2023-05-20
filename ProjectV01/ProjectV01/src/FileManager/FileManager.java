@@ -36,7 +36,7 @@ public class FileManager {
         return instance;
     }
 
-    File path = new File("src/FileManager/");
+//    File path = new File("src/FileManager/");
 
     public void ReadFile(File fileToRead) {
         Object content = null;

@@ -1,6 +1,9 @@
 package Logic;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
-import FileManager.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -20,7 +23,7 @@ public class Employee implements Serializable{
     private String address;
     private String phone;
     private double salary;
-    static int totalEmployee = 1;
+    static int totalEmployee;
     
     public Employee(String firstName, String lastName, String address, String phone, double salary) {
         this.id = totalEmployee;
@@ -46,12 +49,6 @@ public class Employee implements Serializable{
     public String getFullName() {
         return getFirstName()+" "+getLastName();
     }
-   
-    public void setFullName() {
-        
-    }
-    //////
-    
 
     public String getFirstName() {
         return firstName;
@@ -92,5 +89,25 @@ public class Employee implements Serializable{
     public void setSalary(double salary) {
         this.salary = salary;
     }
+    
+    public static void saveEmpCount() {
+        try {
+            FileWriter fw = new FileWriter("src/FileManager/Data/empCount.txt");
+            fw.write(String.valueOf(totalEmployee));
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
 
+    public static void loadEmpCount() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/empCount.txt"));
+            totalEmployee = Integer.parseInt(br.readLine());
+            br.close();
+        } catch (IOException e) {
+            totalEmployee = 1;
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
 }

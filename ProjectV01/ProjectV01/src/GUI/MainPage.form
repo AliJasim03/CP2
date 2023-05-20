@@ -47,7 +47,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainPage" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPage" alignment="0" pref="590" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -100,30 +100,42 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="dashboardBtn" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="memberSectionLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="emoployeeSectionLabel" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="gymImage" min="-2" pref="133" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="bahrainLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="polyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="marketingReportBtn" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="memberSectionLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="emoployeeSectionLabel" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="bahrainLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="polyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="gymImage" min="-2" pref="133" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="button4" min="-2" pref="79" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -157,6 +169,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="marketingReportBtn" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="button4" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -496,6 +510,28 @@
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="assignTrainerButton.addActionListener(this);"/>
               </AuxValues>
             </Component>
+            <Component class="GUI.Button" name="button4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="43" green="43" red="ff" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Images/log-out (2).png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Exit"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Poppins" size="16" style="1"/>
+                </Property>
+                <Property name="iconTextGap" type="int" value="10"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button4ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlCards">
@@ -690,9 +726,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace pref="99" max="32767" attributes="0"/>
                           <Component id="roundPanel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace pref="99" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1096,14 +1132,14 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <EmptySpace pref="93" max="32767" attributes="0"/>
                           <Component id="roundPanel1" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtDob" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="pickDateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1182,7 +1218,7 @@
                                   <Component id="maleBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="femaleBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="7" max="32767" attributes="0"/>
+                              <EmptySpace pref="8" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblSurname" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="lblMemberType" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1193,7 +1229,7 @@
                                   <Component id="studentBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="staffBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblAdress" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="lblMajorPosition" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1203,7 +1239,7 @@
                                   <Component id="txtAdress" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtMajorOrPosition" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="7" max="32767" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblPhone" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="lblSportDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1213,12 +1249,12 @@
                                   <Component id="txtSportTeamOrDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtPhone" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace pref="22" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="addMemberBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="clearBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="7" max="32767" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1615,9 +1651,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="84" max="32767" attributes="0"/>
+                          <EmptySpace pref="99" max="32767" attributes="0"/>
                           <Component id="roundPanel4" max="32767" attributes="0"/>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace pref="100" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1654,7 +1690,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="textField2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1664,8 +1700,8 @@
                                   <Component id="jLabel1" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jScrollPane" pref="291" max="32767" attributes="0"/>
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                              <Component id="jScrollPane" pref="295" max="32767" attributes="0"/>
+                              <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1804,9 +1840,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="80" max="32767" attributes="0"/>
-                          <Component id="jPanel2" pref="385" max="32767" attributes="0"/>
-                          <EmptySpace pref="80" max="32767" attributes="0"/>
+                          <EmptySpace pref="95" max="32767" attributes="0"/>
+                          <Component id="jPanel2" pref="400" max="32767" attributes="0"/>
+                          <EmptySpace pref="95" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1894,7 +1930,7 @@
                                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="230" max="32767" attributes="0"/>
+                              <EmptySpace pref="245" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2066,7 +2102,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="122" max="32767" attributes="0"/>
+                          <EmptySpace pref="167" max="32767" attributes="0"/>
                           <Component id="roundPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       </Group>
