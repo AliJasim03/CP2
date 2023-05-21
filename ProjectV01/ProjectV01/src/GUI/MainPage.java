@@ -2202,11 +2202,46 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_txtFirstNameEmployeeEditrepaintShadowForTextFields
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
-        // TODO add your handling code here:
+        Employee editEmp = GymSystem.employees.get(employeesTable.getSelectedRow());
+             int errorCoutner;
+        ArrayList<TextField> textFields = new ArrayList<TextField>();
+        String[] errors = {"first name", "sur name", "Address", "Phone", "Salary"};
+        textFields.add(txtFirstNameEmployee);
+        textFields.add(txtSurnameEmployee);
+        textFields.add(txtAddressEmployee);
+        textFields.add(txtPhoneEmployee);
+        textFields.add(txtSalaryEmployee);
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!checkTxtField(textField, errors[errorCoutner])) {
+                return;
+            }
+            errorCoutner++;
+        }
+        if (!checkRadioButtonGroup(employeeTypeBtnGroup, "Employee type")) {
+            return;
+        }
+
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!containsOnlyLetters(textField, errors[errorCoutner])) {
+                return;
+            }
+            errorCoutner++;
+            if (errorCoutner == 2) {
+                break;
+            }
+        }
+        for (int i = 3; i < textFields.size(); i++) {
+            if (!containsOnlyNumbers(textFields.get(i), errors[i])) {
+                return;
+            }
+        }
+
     }//GEN-LAST:event_saveEmployeeEditBtnActionPerformed
 
     private void backEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backEmployeeEditBtnActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_backEmployeeEditBtnActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
