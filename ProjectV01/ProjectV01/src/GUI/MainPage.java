@@ -1183,9 +1183,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         employeesTable.setShowGrid(true);
         employeesTable.setShowVerticalLines(false);
         jScrollPane.setViewportView(employeesTable);
+        if (employeesTable.getColumnModel().getColumnCount() > 0) {
+            employeesTable.getColumnModel().getColumn(0).setResizable(false);
+            employeesTable.getColumnModel().getColumn(1).setResizable(false);
+            employeesTable.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         txtSearchEmp.setBackground(new java.awt.Color(11, 196, 217));
         txtSearchEmp.setRound(30);
+        txtSearchEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchEmpKeyReleased(evt);
+            }
+        });
 
         lblSearchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
 
@@ -2131,18 +2141,28 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
     private void editEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmployeeBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
-            Employee emp = GymSystem.employees.get(employeesTable.getSelectedRow());
-            txtFirstNameEmployeeEdit.setText(emp.getFirstName());
-            txtSurnameEmployeeEdit.setText(emp.getLastName());
-            txtAddressEmployeeEdit.setText(emp.getAddress());
-            txtPhoneEmployeeEdit.setText(emp.getPhone());
-            txtSalaryEmployeeEdit.setText(String.valueOf(emp.getSalary()));
-            if (emp instanceof PersonalTrainer) {
-                trainerRadioBtnEdit.setSelected(true);
-            } else {
-                employeeRadioBtnEdit.setSelected(true);
-            }
+            int row = employeesTable.getSelectedRow();
+            Object id = employeesTable.getModel().getValueAt(row, 0);
+            String idString = id.toString();
+            int idFound = Integer.parseInt(idString);
 
+            for (Employee emp : GymSystem.employees) {
+
+                if (emp.getId() == idFound) {
+//                    Employee emp = GymSystem.employees.get(employeesTable.getSelectedRow());
+                    txtFirstNameEmployeeEdit.setText(emp.getFirstName());
+                    txtSurnameEmployeeEdit.setText(emp.getLastName());
+                    txtAddressEmployeeEdit.setText(emp.getAddress());
+                    txtPhoneEmployeeEdit.setText(emp.getPhone());
+                    txtSalaryEmployeeEdit.setText(String.valueOf(emp.getSalary()));
+                    if (emp instanceof PersonalTrainer) {
+                        trainerRadioBtnEdit.setSelected(true);
+                    } else {
+                        employeeRadioBtnEdit.setSelected(true);
+                    }
+                    break;
+                }
+            }
             cardLayout.show(pnlCards, "editEmployeePnl");
         } else {
             Message obj = new Message();
@@ -2203,7 +2223,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
         Employee editEmp = GymSystem.employees.get(employeesTable.getSelectedRow());
-             int errorCoutner;
+        int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
         String[] errors = {"first name", "sur name", "Address", "Phone", "Salary"};
         textFields.add(txtFirstNameEmployee);
@@ -2245,18 +2265,52 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_backEmployeeEditBtnActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        GymSystem.employees.remove(employeesTable.getSelectedRow());
-        populateEmployeesTable();
-        Message obj = new Message();
-        obj.eventOK(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
+
+        if (employeesTable.getSelectedRow() != -1) {
+            GymSystem.employees.remove(employeesTable.getSelectedRow());
+            populateEmployeesTable();
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("An Employee has been removed");
+            GlassPanePopup.showPopup(obj);
+            try {
+                FileManager.getInstance().WriteEmployee();
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-        obj.jLabel1.setText("An Employee has been removed");
-        GlassPanePopup.showPopup(obj);
+        } else {
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("<html>Please Select an employee From the table to remove.</html>");
+            GlassPanePopup.showPopup(obj);
+        }
+
     }//GEN-LAST:event_button3ActionPerformed
+
+    private void txtSearchEmpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchEmpKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) employeesTable.getModel();
+
+        tableModel.setRowCount(0);
+        for (Employee emp : GymSystem.employees) {
+
+            String type = emp instanceof PersonalTrainer ? "Personal Trainer" : "Regular";
+            String id = "" + emp.getId();
+            String name = emp.getFullName();
+            if (txtSearchEmp.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchEmp.getText().toLowerCase())) {
+                employeesTable.addRow(new Object[]{id, name, type});
+            }
+
+        }    }//GEN-LAST:event_txtSearchEmpKeyReleased
 
     /**
      * @param args the command line arguments

@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Logic;
-import java.io.Serializable;
 
+import java.io.Serializable;
 
 /**
  *
  * @author alija
  */
 public class Member implements Serializable {
+
     private static final long serialVersionUID = 2L;
     private int id;
     private String firstName;
@@ -19,15 +20,16 @@ public class Member implements Serializable {
     private String phone;
     private String gender;
     private String birthDate;
-    static int totalMember; 
+    static int totalMember;
+
     public Member() {
 
     }
 
     public Member(String firstName, String lastName, String address, String phone, String gender, String birthDate) {
         this.id = totalMember;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
         this.address = address;
         this.phone = phone;
         this.gender = gender;
@@ -43,12 +45,12 @@ public class Member implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     //Full Name implementation
     public String getFullName() {
-        return getFirstName()+" "+getLastName();
+        return getFirstName() + " " + getLastName();
     }
-    
+
     public String getFirstName() {
         return firstName;
     }

@@ -27,8 +27,8 @@ public class Employee implements Serializable{
     
     public Employee(String firstName, String lastName, String address, String phone, double salary) {
         this.id = totalEmployee;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
         this.address = address;
         this.phone = phone;
         this.salary = salary;
