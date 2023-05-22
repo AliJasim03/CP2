@@ -2160,27 +2160,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
     private void editEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmployeeBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
-            int row = employeesTable.getSelectedRow();
-            Object id = employeesTable.getModel().getValueAt(row, 0);
-            String idString = id.toString();
-            int idFound = Integer.parseInt(idString);
-
-            for (Employee emp : GymSystem.employees) {
-
-                if (emp.getId() == idFound) {
+            Employee empFound = getEmpByID();
 //                    Employee emp = GymSystem.employees.get(employeesTable.getSelectedRow());
-                    txtFirstNameEmployeeEdit.setText(emp.getFirstName());
-                    txtSurnameEmployeeEdit.setText(emp.getLastName());
-                    txtAddressEmployeeEdit.setText(emp.getAddress());
-                    txtPhoneEmployeeEdit.setText(emp.getPhone());
-                    txtSalaryEmployeeEdit.setText(String.valueOf(emp.getSalary()));
-                    if (emp instanceof PersonalTrainer) {
-                        trainerRadioBtnEdit.setSelected(true);
-                    } else {
-                        employeeRadioBtnEdit.setSelected(true);
-                    }
-                    break;
-                }
+            txtFirstNameEmployeeEdit.setText(empFound.getFirstName());
+            txtSurnameEmployeeEdit.setText(empFound.getLastName());
+            txtAddressEmployeeEdit.setText(empFound.getAddress());
+            txtPhoneEmployeeEdit.setText(empFound.getPhone());
+            txtSalaryEmployeeEdit.setText(String.valueOf(empFound.getSalary()));
+            if (empFound instanceof PersonalTrainer) {
+                trainerRadioBtnEdit.setSelected(true);
+            } else {
+                employeeRadioBtnEdit.setSelected(true);
             }
             cardLayout.show(pnlCards, "editEmployeePnl");
         } else {
@@ -2272,7 +2262,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 return;
             }
         }
-
+        if (employeesTable.getSelectedRow() != -1) {
+            Employee empFound = getEmpByID();
+            empFound.setFirstName(txtFirstNameEmployeeEdit.getText());
+            empFound.setLastName(txtSurnameEmployeeEdit.getText());
+            empFound.setAddress(txtAddressEmployeeEdit.getText());
+            empFound.setPhone(txtPhoneEmployeeEdit.getText());
+            empFound.setSalary(Double.parseDouble(txtSalaryEmployeeEdit.getText()));
+            try {
+                FileManager.getInstance().WriteEmployee();
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_saveEmployeeEditBtnActionPerformed
 
@@ -2282,28 +2284,20 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
-            int row = employeesTable.getSelectedRow();
-            Object id = employeesTable.getModel().getValueAt(row, 0);
-            String idString = id.toString();
-            int idFound = Integer.parseInt(idString);
-            for (Employee emp : GymSystem.employees) {
+            Employee empFound = getEmpByID();
 
-                if (emp.getId() == idFound) {
-                    GymSystem.employees.remove(emp);
-                    populateEmployeesTable();
-                    Message obj = new Message();
-                    obj.eventOK(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent ae) {
-                            GlassPanePopup.closePopupLast();
-                        }
-                    });
-                    obj.jLabel1.setText("An Employee has been removed");
-                    GlassPanePopup.showPopup(obj);
-
-                    break;
+            GymSystem.employees.remove(empFound);
+            populateEmployeesTable();
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
                 }
-            }
+            });
+            obj.jLabel1.setText("An Employee has been removed");
+            GlassPanePopup.showPopup(obj);
+
             try {
                 FileManager.getInstance().WriteEmployee();
             } catch (IOException ex) {
@@ -2685,18 +2679,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }
 
     public Employee getEmpByID() {
-            int row = employeesTable.getSelectedRow();
-            Object id = employeesTable.getModel().getValueAt(row, 0);
-            String idString = id.toString();
-            int idFound = Integer.parseInt(idString);
+        int row = employeesTable.getSelectedRow();
+        Object id = employeesTable.getModel().getValueAt(row, 0);
+        String idString = id.toString();
+        int idFound = Integer.parseInt(idString);
 
-            for (Employee emp : GymSystem.employees) {
+        for (Employee emp : GymSystem.employees) {
 
-                if (emp.getId() == idFound) {
-                    return emp;
-                }
+            if (emp.getId() == idFound) {
+                return emp;
             }
-        
+        }
+
         return null;
     }
 }
