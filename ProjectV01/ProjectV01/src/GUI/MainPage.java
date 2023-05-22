@@ -1560,12 +1560,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         employeeTypeBtnGroup.add(trainerRadioBtnEdit);
         trainerRadioBtnEdit.setForeground(new java.awt.Color(0, 0, 0));
         trainerRadioBtnEdit.setText("Trainer");
+        trainerRadioBtnEdit.setEnabled(false);
         trainerRadioBtnEdit.setFocusPainted(false);
         trainerRadioBtnEdit.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
 
         employeeTypeBtnGroup.add(employeeRadioBtnEdit);
         employeeRadioBtnEdit.setForeground(new java.awt.Color(0, 0, 0));
         employeeRadioBtnEdit.setText("Regular Employee");
+        employeeRadioBtnEdit.setEnabled(false);
         employeeRadioBtnEdit.setFocusPainted(false);
         employeeRadioBtnEdit.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         employeeRadioBtnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -1854,7 +1856,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_txtMajorOrPositionActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // TODO add your handling code here:
+        ArrayList<TextField> textFields = new ArrayList<TextField>();
+        textFields.add(txtFirstName);
+        textFields.add(txtSurname);
+        textFields.add(txtAdress);
+        textFields.add(txtPhone);
+        textFields.add(txtDob);
+        textFields.add(txtMajorOrPosition);
+        textFields.add(txtSportTeamOrDepartment);
+        clearTextFields(textFields);
+        genderButtonGroup.clearSelection();
+        memberTypeGroupButton.clearSelection();
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -1976,7 +1988,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_employeeRadioBtnActionPerformed
 
     private void clearEmployeeFormBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEmployeeFormBtnActionPerformed
-        // TODO add your handling code here:
+        ArrayList<TextField> textFields = new ArrayList<TextField>();
+        textFields.add(txtFirstNameEmployee);
+        textFields.add(txtSurnameEmployee);
+        textFields.add(txtAddressEmployee);
+        textFields.add(txtPhoneEmployee);
+        textFields.add(txtSalaryEmployee);
+        clearTextFields(textFields);
+        employeeTypeBtnGroup.clearSelection();
     }//GEN-LAST:event_clearEmployeeFormBtnActionPerformed
 
     private void addEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeBtnActionPerformed
@@ -2222,24 +2241,20 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_txtFirstNameEmployeeEditrepaintShadowForTextFields
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
-        Employee editEmp = GymSystem.employees.get(employeesTable.getSelectedRow());
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
         String[] errors = {"first name", "sur name", "Address", "Phone", "Salary"};
-        textFields.add(txtFirstNameEmployee);
-        textFields.add(txtSurnameEmployee);
-        textFields.add(txtAddressEmployee);
-        textFields.add(txtPhoneEmployee);
-        textFields.add(txtSalaryEmployee);
+        textFields.add(txtFirstNameEmployeeEdit);
+        textFields.add(txtSurnameEmployeeEdit);
+        textFields.add(txtAddressEmployeeEdit);
+        textFields.add(txtPhoneEmployeeEdit);
+        textFields.add(txtSalaryEmployeeEdit);
         errorCoutner = 0;
         for (TextField textField : textFields) {
             if (!checkTxtField(textField, errors[errorCoutner])) {
                 return;
             }
             errorCoutner++;
-        }
-        if (!checkRadioButtonGroup(employeeTypeBtnGroup, "Employee type")) {
-            return;
         }
 
         errorCoutner = 0;
@@ -2258,6 +2273,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
 
+
     }//GEN-LAST:event_saveEmployeeEditBtnActionPerformed
 
     private void backEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backEmployeeEditBtnActionPerformed
@@ -2265,24 +2281,35 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_backEmployeeEditBtnActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-
         if (employeesTable.getSelectedRow() != -1) {
-            GymSystem.employees.remove(employeesTable.getSelectedRow());
-            populateEmployeesTable();
-            Message obj = new Message();
-            obj.eventOK(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    GlassPanePopup.closePopupLast();
+            int row = employeesTable.getSelectedRow();
+            Object id = employeesTable.getModel().getValueAt(row, 0);
+            String idString = id.toString();
+            int idFound = Integer.parseInt(idString);
+            for (Employee emp : GymSystem.employees) {
+
+                if (emp.getId() == idFound) {
+                    GymSystem.employees.remove(emp);
+                    populateEmployeesTable();
+                    Message obj = new Message();
+                    obj.eventOK(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                            GlassPanePopup.closePopupLast();
+                        }
+                    });
+                    obj.jLabel1.setText("An Employee has been removed");
+                    GlassPanePopup.showPopup(obj);
+
+                    break;
                 }
-            });
-            obj.jLabel1.setText("An Employee has been removed");
-            GlassPanePopup.showPopup(obj);
+            }
             try {
                 FileManager.getInstance().WriteEmployee();
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else {
             Message obj = new Message();
             obj.eventOK(new ActionListener() {
@@ -2649,8 +2676,30 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
     }
-}
 
+    public void clearTextFields(ArrayList<TextField> textFields) {
+        for (TextField textField : textFields) {
+            textField.setText("");
+        }
+
+    }
+
+    public Employee getEmpByID() {
+            int row = employeesTable.getSelectedRow();
+            Object id = employeesTable.getModel().getValueAt(row, 0);
+            String idString = id.toString();
+            int idFound = Integer.parseInt(idString);
+
+            for (Employee emp : GymSystem.employees) {
+
+                if (emp.getId() == idFound) {
+                    return emp;
+                }
+            }
+        
+        return null;
+    }
+}
 //
 //    public boolean containsOnlyLetters(String str) {
 //        if (str == null || str.isEmpty()) {

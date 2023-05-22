@@ -2454,6 +2454,7 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Trainer"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="16" style="0"/>
@@ -2469,6 +2470,7 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Regular Employee"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="16" style="0"/>
