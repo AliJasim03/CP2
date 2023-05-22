@@ -68,9 +68,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         GlassPanePopup.install(this);
         cardLayout = (CardLayout) (pnlCards.getLayout());
         FileManager.getInstance().ReadEmployees();
+        FileManager.getInstance().ReadMembers();
         Employee.loadEmpCount();
+        Member.loadEmpCount();
         employeesTable.fixTable(jScrollPane);
-
+        membersTable.fixTable(jScrollPane1);
         dateChooser.addEventDateChooser(new EventDateChooser() {
             @Override
             public void dateSelected(SelectedAction action, SelectedDate date) {
@@ -94,6 +96,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         genderButtonGroup = new javax.swing.ButtonGroup();
         employeeTypeBtnGroup = new javax.swing.ButtonGroup();
         memberTypeGroupButton = new javax.swing.ButtonGroup();
+        genderButtonGroupEdit = new javax.swing.ButtonGroup();
         dateChooser = new Calander.DateChooser();
         mainPage = new javax.swing.JSplitPane();
         nvigPnl = new javax.swing.JPanel();
@@ -168,19 +171,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchEmp = new GUI.TextField();
         lblSearchIcon = new javax.swing.JLabel();
         editEmployeeBtn = new GUI.Button();
-        button3 = new GUI.Button();
-        manageMembersPnl = new javax.swing.JPanel();
-        jPanel2 = new RoundPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        deleteEmployeeBtn = new GUI.Button();
+        manageMemberssPnl = new javax.swing.JPanel();
+        roundPanel6 = new GUI.RoundPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        membersTable = new Table.Table();
+        txtSearchMember = new GUI.TextField();
+        javax.swing.JLabel lblSearchIcon1 = new javax.swing.JLabel();
+        editMemberBtn = new GUI.Button();
+        deleteMemberBtn = new GUI.Button();
         jPanel3 = new javax.swing.JPanel();
         roundPanel2 = new GUI.RoundPanel();
         button1 = new GUI.Button();
@@ -205,6 +204,31 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtFirstNameEmployeeEdit = new GUI.TextField();
         saveEmployeeEditBtn = new GUI.Button();
         backEmployeeEditBtn = new GUI.Button();
+        editMemberPnl = new javax.swing.JPanel();
+        roundPanel7 = new GUI.RoundPanel();
+        javax.swing.JLabel lblAddMember1 = new javax.swing.JLabel();
+        javax.swing.JLabel lblSurname1 = new javax.swing.JLabel();
+        javax.swing.JLabel lblMemberType1 = new javax.swing.JLabel();
+        javax.swing.JLabel lblGender1 = new javax.swing.JLabel();
+        javax.swing.JLabel lblFirstName1 = new javax.swing.JLabel();
+        javax.swing.JLabel lblPhone1 = new javax.swing.JLabel();
+        lblSportDepartmentEdit = new javax.swing.JLabel();
+        javax.swing.JLabel lblAdress1 = new javax.swing.JLabel();
+        lblMajorPositionEdit = new javax.swing.JLabel();
+        maleEditBtn = new RadioButtonCustom();
+        femaleEditBtn = new RadioButtonCustom();
+        studentEditBtn = new RadioButtonCustom();
+        staffEditBtn = new RadioButtonCustom();
+        txtFirstNameMemberEdit = new GUI.TextField();
+        txtSurNameMemberEdit = new GUI.TextField();
+        txtPhoneMemberEdit = new GUI.TextField();
+        txtSportTeamOrDepartmentEdit = new GUI.TextField();
+        txtAdressMemberEdit = new GUI.TextField();
+        txtMajorOrPositionEdit = new GUI.TextField();
+        saveMemberBtn = new GUI.Button();
+        backMemberBtn = new GUI.Button();
+        txtDobEdit = new GUI.TextField();
+        pickDateBtn1 = new GUI.Button();
 
         dateChooser.setForeground(new java.awt.Color(11, 158, 191));
 
@@ -737,7 +761,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurnameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddressEmployee)
                     .addComponent(txtAddressEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEmployeeType)
                     .addComponent(lblSalary)
@@ -755,11 +779,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addComponent(addEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(clearEmployeeFormBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel3Layout.createSequentialGroup()
                 .addContainerGap(236, Short.MAX_VALUE)
                 .addComponent(lblAddEmployee)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         roundPanel3Layout.setVerticalGroup(
             roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -808,9 +832,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addEmployeePnlLayout.setHorizontalGroup(
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmployeePnlLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         addEmployeePnlLayout.setVerticalGroup(
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,7 +1070,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(maleBtn)
                         .addGap(35, 35, 35)
                         .addComponent(femaleBtn)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(roundPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1074,7 +1098,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maleBtn)
                     .addComponent(femaleBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMemberType))
@@ -1083,7 +1107,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentBtn)
                     .addComponent(staffBtn))
-                .addGap(0, 11, Short.MAX_VALUE)
+                .addGap(0, 9, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMajorPosition))
@@ -1099,7 +1123,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSportTeamOrDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1133,9 +1157,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addMemberPnlLayout.setHorizontalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(addMemberPnlLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1146,13 +1170,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addMemberPnlLayout.setVerticalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pnlCards.add(addMemberPnl, "addMemberPnl");
@@ -1212,16 +1236,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        button3.setBackground(new java.awt.Color(11, 196, 217));
-        button3.setForeground(new java.awt.Color(255, 255, 255));
-        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/trashIconImage.png"))); // NOI18N
-        button3.setText("Delete");
-        button3.setFocusPainted(false);
-        button3.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        button3.setIconTextGap(10);
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        deleteEmployeeBtn.setBackground(new java.awt.Color(11, 196, 217));
+        deleteEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteEmployeeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/trashIconImage.png"))); // NOI18N
+        deleteEmployeeBtn.setText("Delete");
+        deleteEmployeeBtn.setFocusPainted(false);
+        deleteEmployeeBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        deleteEmployeeBtn.setIconTextGap(10);
+        deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                deleteEmployeeBtnActionPerformed(evt);
             }
         });
 
@@ -1231,7 +1255,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(roundPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
@@ -1241,22 +1265,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         roundPanel4Layout.setVerticalGroup(
             roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel4Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(editEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageEmployeesPnlLayout = new javax.swing.GroupLayout(manageEmployeesPnl);
@@ -1264,9 +1288,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         manageEmployeesPnlLayout.setHorizontalGroup(
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(roundPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         manageEmployeesPnlLayout.setVerticalGroup(
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,161 +1302,126 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         pnlCards.add(manageEmployeesPnl, "manageEmployeesPnl");
 
-        manageMembersPnl.setBackground(new java.awt.Color(2, 73, 89));
-        manageMembersPnl.setForeground(new java.awt.Color(255, 255, 255));
-        manageMembersPnl.setPreferredSize(new java.awt.Dimension(773, 545));
+        manageMemberssPnl.setBackground(new java.awt.Color(2, 73, 89));
+        manageMemberssPnl.setForeground(new java.awt.Color(255, 255, 255));
+        manageMemberssPnl.setPreferredSize(new java.awt.Dimension(773, 545));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(710, 405));
+        roundPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setBackground(new java.awt.Color(11, 196, 217));
-        jTextField1.setToolTipText("Search By ID");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        membersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Member ID", "Member Name", "Member Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        membersTable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        membersTable.setShowGrid(true);
+        membersTable.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(membersTable);
+        if (membersTable.getColumnModel().getColumnCount() > 0) {
+            membersTable.getColumnModel().getColumn(0).setResizable(false);
+            membersTable.getColumnModel().getColumn(1).setResizable(false);
+            membersTable.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        txtSearchMember.setBackground(new java.awt.Color(11, 196, 217));
+        txtSearchMember.setRound(30);
+        txtSearchMember.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchMemberKeyReleased(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Member Name");
+        lblSearchIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Member ID");
-
-        jButton4.setBackground(new java.awt.Color(11, 196, 217));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Edit");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setFocusPainted(false);
-        jButton4.setIconTextGap(10);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editMemberBtn.setBackground(new java.awt.Color(11, 196, 217));
+        editMemberBtn.setForeground(new java.awt.Color(255, 255, 255));
+        editMemberBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pen.png"))); // NOI18N
+        editMemberBtn.setText("Edit");
+        editMemberBtn.setFocusPainted(false);
+        editMemberBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        editMemberBtn.setIconTextGap(10);
+        editMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editMemberBtnActionPerformed(evt);
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Personal Trainer");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("202101379");
-        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Ali Jasim");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Regular");
-
-        jButton8.setBackground(new java.awt.Color(11, 196, 217));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Delete");
-        jButton8.setToolTipText("");
-        jButton8.setBorder(null);
-        jButton8.setIconTextGap(10);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        deleteMemberBtn.setBackground(new java.awt.Color(11, 196, 217));
+        deleteMemberBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteMemberBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/trashIconImage.png"))); // NOI18N
+        deleteMemberBtn.setText("Delete");
+        deleteMemberBtn.setFocusPainted(false);
+        deleteMemberBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        deleteMemberBtn.setIconTextGap(10);
+        deleteMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                deleteMemberBtnActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout roundPanel6Layout = new javax.swing.GroupLayout(roundPanel6);
+        roundPanel6.setLayout(roundPanel6Layout);
+        roundPanel6Layout.setHorizontalGroup(
+            roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                 .addContainerGap())
-        );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel13, jLabel9});
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel12});
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel11, jLabel16});
-
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel16))
+            .addGroup(roundPanel6Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblSearchIcon1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
-                        .addComponent(jButton8))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel10)
-                        .addComponent(jLabel11)))
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        roundPanel6Layout.setVerticalGroup(
+            roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel6Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSearchIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout manageMembersPnlLayout = new javax.swing.GroupLayout(manageMembersPnl);
-        manageMembersPnl.setLayout(manageMembersPnlLayout);
-        manageMembersPnlLayout.setHorizontalGroup(
-            manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageMembersPnlLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-                .addContainerGap(28, Short.MAX_VALUE))
+        javax.swing.GroupLayout manageMemberssPnlLayout = new javax.swing.GroupLayout(manageMemberssPnl);
+        manageMemberssPnl.setLayout(manageMemberssPnlLayout);
+        manageMemberssPnlLayout.setHorizontalGroup(
+            manageMemberssPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageMemberssPnlLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(roundPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
-        manageMembersPnlLayout.setVerticalGroup(
-            manageMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageMembersPnlLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addContainerGap(95, Short.MAX_VALUE))
+        manageMemberssPnlLayout.setVerticalGroup(
+            manageMemberssPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageMemberssPnlLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(roundPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        pnlCards.add(manageMembersPnl, "manageMembersPnl");
+        pnlCards.add(manageMemberssPnl, "manageMembersPnl");
 
         jPanel3.setBackground(new java.awt.Color(2, 73, 89));
         jPanel3.setPreferredSize(new java.awt.Dimension(773, 545));
@@ -1525,6 +1514,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         editEmployeePnl.setBackground(new java.awt.Color(2, 73, 89));
         editEmployeePnl.setForeground(new java.awt.Color(255, 255, 255));
         editEmployeePnl.setPreferredSize(new java.awt.Dimension(773, 545));
+        editEmployeePnl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                repaintShadowForTextFields(evt);
+            }
+        });
 
         roundPanel5.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel5.setPreferredSize(new java.awt.Dimension(683, 392));
@@ -1585,7 +1579,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         });
         txtSurnameEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSurnameEmployeeEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1598,7 +1592,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         });
         txtAddressEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAddressEmployeeEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1611,7 +1605,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         });
         txtPhoneEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneEmployeeEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1624,7 +1618,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         });
         txtSalaryEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSalaryEmployeeEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1632,7 +1626,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtFirstNameEmployeeEdit.setShadowColor(new java.awt.Color(0, 0, 0));
         txtFirstNameEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFirstNameEmployeeEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -1671,7 +1665,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurnameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddressEmployee1)
                     .addComponent(txtAddressEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEmployeeType1)
                     .addComponent(lblSalary1)
@@ -1689,11 +1683,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addComponent(saveEmployeeEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(backEmployeeEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel5Layout.createSequentialGroup()
                 .addContainerGap(238, Short.MAX_VALUE)
                 .addComponent(lblAddEmployee1)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         roundPanel5Layout.setVerticalGroup(
             roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1742,9 +1736,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         editEmployeePnlLayout.setHorizontalGroup(
             editEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editEmployeePnlLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         editEmployeePnlLayout.setVerticalGroup(
             editEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1755,6 +1749,340 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         );
 
         pnlCards.add(editEmployeePnl, "editEmployeePnl");
+
+        editMemberPnl.setBackground(new java.awt.Color(2, 73, 89));
+        editMemberPnl.setForeground(new java.awt.Color(255, 255, 255));
+        editMemberPnl.setPreferredSize(new java.awt.Dimension(773, 545));
+        editMemberPnl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editMemberPnlrepaintShadowForTextFields(evt);
+            }
+        });
+
+        roundPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblAddMember1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAddMember1.setForeground(new java.awt.Color(0, 0, 0));
+        lblAddMember1.setText("Edit Member form");
+
+        lblSurname1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSurname1.setForeground(new java.awt.Color(0, 0, 0));
+        lblSurname1.setText("Surname");
+
+        lblMemberType1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMemberType1.setForeground(new java.awt.Color(0, 0, 0));
+        lblMemberType1.setText("Member type");
+
+        lblGender1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGender1.setForeground(new java.awt.Color(0, 0, 0));
+        lblGender1.setText("Gender");
+
+        lblFirstName1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFirstName1.setForeground(new java.awt.Color(0, 0, 0));
+        lblFirstName1.setText("First Name");
+
+        lblPhone1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone1.setForeground(new java.awt.Color(0, 0, 0));
+        lblPhone1.setText("Phone Number");
+
+        lblSportDepartmentEdit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSportDepartmentEdit.setForeground(new java.awt.Color(0, 0, 0));
+        lblSportDepartmentEdit.setText("Sport Team");
+
+        lblAdress1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAdress1.setForeground(new java.awt.Color(0, 0, 0));
+        lblAdress1.setText("Adress");
+
+        lblMajorPositionEdit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMajorPositionEdit.setForeground(new java.awt.Color(0, 0, 0));
+        lblMajorPositionEdit.setText("Major");
+
+        genderButtonGroupEdit.add(maleEditBtn);
+        maleEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        maleEditBtn.setForeground(new java.awt.Color(0, 0, 0));
+        maleEditBtn.setText("Male");
+        maleEditBtn.setContentAreaFilled(false);
+        maleEditBtn.setFocusPainted(false);
+        maleEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleEditBtnActionPerformed(evt);
+            }
+        });
+
+        genderButtonGroupEdit.add(femaleEditBtn);
+        femaleEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        femaleEditBtn.setForeground(new java.awt.Color(0, 0, 0));
+        femaleEditBtn.setText("Female");
+        femaleEditBtn.setContentAreaFilled(false);
+        femaleEditBtn.setFocusPainted(false);
+        femaleEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleEditBtnActionPerformed(evt);
+            }
+        });
+
+        memberTypeGroupButton.add(studentEditBtn);
+        studentEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        studentEditBtn.setForeground(new java.awt.Color(0, 0, 0));
+        studentEditBtn.setText("Student");
+        studentEditBtn.setContentAreaFilled(false);
+        studentEditBtn.setEnabled(false);
+        studentEditBtn.setFocusPainted(false);
+        studentEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentEditBtnActionPerformed(evt);
+            }
+        });
+
+        memberTypeGroupButton.add(staffEditBtn);
+        staffEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        staffEditBtn.setForeground(new java.awt.Color(0, 0, 0));
+        staffEditBtn.setText("Staff");
+        staffEditBtn.setContentAreaFilled(false);
+        staffEditBtn.setEnabled(false);
+        staffEditBtn.setFocusPainted(false);
+        staffEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffEditBtnActionPerformed(evt);
+            }
+        });
+
+        txtFirstNameMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtFirstNameMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtFirstNameMemberEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFirstNameMemberEditActionPerformed(evt);
+            }
+        });
+        txtFirstNameMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFirstNameMemberEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        txtSurNameMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtSurNameMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtSurNameMemberEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSurNameMemberEditActionPerformed(evt);
+            }
+        });
+        txtSurNameMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSurNameMemberEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        txtPhoneMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtPhoneMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtPhoneMemberEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneMemberEditActionPerformed(evt);
+            }
+        });
+        txtPhoneMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneMemberEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        txtSportTeamOrDepartmentEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtSportTeamOrDepartmentEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtSportTeamOrDepartmentEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSportTeamOrDepartmentEditActionPerformed(evt);
+            }
+        });
+        txtSportTeamOrDepartmentEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSportTeamOrDepartmentEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        txtAdressMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtAdressMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtAdressMemberEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAdressMemberEditActionPerformed(evt);
+            }
+        });
+        txtAdressMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAdressMemberEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        txtMajorOrPositionEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtMajorOrPositionEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtMajorOrPositionEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMajorOrPositionEditActionPerformed(evt);
+            }
+        });
+        txtMajorOrPositionEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMajorOrPositionEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        saveMemberBtn.setBackground(new java.awt.Color(26, 19, 99));
+        saveMemberBtn.setForeground(new java.awt.Color(255, 255, 255));
+        saveMemberBtn.setText("Save");
+        saveMemberBtn.setFocusable(false);
+        saveMemberBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveMemberBtnActionPerformed(evt);
+            }
+        });
+
+        backMemberBtn.setBackground(new java.awt.Color(233, 233, 233));
+        backMemberBtn.setForeground(new java.awt.Color(26, 19, 99));
+        backMemberBtn.setText("Back");
+        backMemberBtn.setFocusable(false);
+        backMemberBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backMemberBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout roundPanel7Layout = new javax.swing.GroupLayout(roundPanel7);
+        roundPanel7.setLayout(roundPanel7Layout);
+        roundPanel7Layout.setHorizontalGroup(
+            roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel7Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFirstName1)
+                    .addComponent(txtFirstNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSurname1)
+                    .addComponent(txtSurNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAdress1)
+                    .addComponent(txtAdressMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhone1)
+                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGender1)
+                    .addComponent(lblMemberType1)
+                    .addGroup(roundPanel7Layout.createSequentialGroup()
+                        .addComponent(studentEditBtn)
+                        .addGap(42, 42, 42)
+                        .addComponent(staffEditBtn))
+                    .addComponent(txtMajorOrPositionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMajorPositionEdit)
+                    .addComponent(lblSportDepartmentEdit)
+                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(roundPanel7Layout.createSequentialGroup()
+                        .addComponent(maleEditBtn)
+                        .addGap(35, 35, 35)
+                        .addComponent(femaleEditBtn)))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(roundPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAddMember1)
+                    .addGroup(roundPanel7Layout.createSequentialGroup()
+                        .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        roundPanel7Layout.setVerticalGroup(
+            roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblAddMember1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGender1)
+                    .addComponent(lblFirstName1))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFirstNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maleEditBtn)
+                    .addComponent(femaleEditBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSurname1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMemberType1))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSurNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentEditBtn)
+                    .addComponent(staffEditBtn))
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMajorPositionEdit))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdressMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMajorOrPositionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhone1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSportDepartmentEdit))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        txtDobEdit.setEditable(false);
+        txtDobEdit.setBackground(new java.awt.Color(233, 233, 233));
+        txtDobEdit.setFocusable(false);
+        txtDobEdit.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtDobEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDobEditMouseClicked(evt);
+            }
+        });
+        txtDobEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDobEditrepaintShadowForTextFields(evt);
+            }
+        });
+
+        pickDateBtn1.setText("pick");
+        pickDateBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickDateBtn1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout editMemberPnlLayout = new javax.swing.GroupLayout(editMemberPnl);
+        editMemberPnl.setLayout(editMemberPnlLayout);
+        editMemberPnlLayout.setHorizontalGroup(
+            editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMemberPnlLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(roundPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(editMemberPnlLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pickDateBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        editMemberPnlLayout.setVerticalGroup(
+            editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editMemberPnlLayout.createSequentialGroup()
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addComponent(roundPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pickDateBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        pnlCards.add(editMemberPnl, "editMemberPnl");
 
         mainPage.setRightComponent(pnlCards);
 
@@ -1798,18 +2126,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_truckEmployeeInformationImageBtnActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
         // TODO add your handling code here:
@@ -1900,7 +2216,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             System.out.println(GymSystem.members.get(0).getPhone());
             System.out.println(GymSystem.members.get(0).getGender());
             System.out.println(GymSystem.members.get(0).getBirthDate());
-            System.out.println(polyStudent.getCourse());
+            System.out.println(polyStudent.getMajor());
             System.out.println(polyStudent.getTeam());
         } catch (Exception e) {
             System.out.println(e);
@@ -1935,6 +2251,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
     private void manageMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMemberButtonActionPerformed
+        populateMembersTable();
         cardLayout.show(pnlCards, "manageMembersPnl");
     }//GEN-LAST:event_manageMemberButtonActionPerformed
 
@@ -2142,6 +2459,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         try {
             FileManager.getInstance().WriteMember();
+            Member.saveEmpCount();
             System.out.println("done");
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -2198,37 +2516,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSurnameEmployeeEditActionPerformed
 
-    private void txtSurnameEmployeeEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurnameEmployeeEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameEmployeeEditrepaintShadowForTextFields
-
     private void txtAddressEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEmployeeEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressEmployeeEditActionPerformed
-
-    private void txtAddressEmployeeEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressEmployeeEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressEmployeeEditrepaintShadowForTextFields
 
     private void txtPhoneEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneEmployeeEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhoneEmployeeEditActionPerformed
 
-    private void txtPhoneEmployeeEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneEmployeeEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneEmployeeEditrepaintShadowForTextFields
-
     private void txtSalaryEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalaryEmployeeEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalaryEmployeeEditActionPerformed
-
-    private void txtSalaryEmployeeEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalaryEmployeeEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalaryEmployeeEditrepaintShadowForTextFields
-
-    private void txtFirstNameEmployeeEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameEmployeeEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameEmployeeEditrepaintShadowForTextFields
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
         int errorCoutner;
@@ -2275,14 +2573,25 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        Message obj = new Message();
+        obj.eventOK(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                GlassPanePopup.closePopupLast();
+                populateEmployeesTable();
+                cardLayout.show(pnlCards, "manageEmployeesPnl");
 
+            }
+        });
+        obj.jLabel1.setText("Data has been updated");
+        GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_saveEmployeeEditBtnActionPerformed
 
     private void backEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backEmployeeEditBtnActionPerformed
         cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_backEmployeeEditBtnActionPerformed
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+    private void deleteEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
             Employee empFound = getEmpByID();
 
@@ -2316,7 +2625,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             GlassPanePopup.showPopup(obj);
         }
 
-    }//GEN-LAST:event_button3ActionPerformed
+    }//GEN-LAST:event_deleteEmployeeBtnActionPerformed
 
     private void txtSearchEmpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchEmpKeyReleased
         DefaultTableModel tableModel = (DefaultTableModel) employeesTable.getModel();
@@ -2332,6 +2641,288 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
 
         }    }//GEN-LAST:event_txtSearchEmpKeyReleased
+
+    private void txtSearchMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchMemberKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) membersTable.getModel();
+
+        tableModel.setRowCount(0);
+        for (Member mem : GymSystem.members) {
+
+            String type = mem instanceof PolytechnicStaff ? "Polytechnic Staff" : "Polytechnic Student";
+            String id = "" + mem.getId();
+            String name = mem.getFullName();
+            if (txtSearchMember.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchMember.getText().toLowerCase())) {
+                membersTable.addRow(new Object[]{id, name, type});
+            }
+        }
+    }//GEN-LAST:event_txtSearchMemberKeyReleased
+
+    private void editMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBtnActionPerformed
+        if (membersTable.getSelectedRow() != -1) {
+            Member membFound = getMemByID();
+            txtFirstNameMemberEdit.setText(membFound.getFirstName());
+            txtSurNameMemberEdit.setText(membFound.getLastName());
+            txtAdressMemberEdit.setText(membFound.getAddress());
+            txtPhoneMemberEdit.setText(membFound.getPhone());
+            txtDobEdit.setText(String.valueOf(membFound.getBirthDate()));
+            if (membFound.getGender().equals("Male")) {
+                maleEditBtn.setSelected(true);
+            } else {
+                femaleEditBtn.setSelected(true);
+            }
+
+            if (membFound instanceof PolytechnicStudent) {
+                studentEditBtn.setSelected(true);
+                lblMajorPositionEdit.setText("Major");
+                lblSportDepartmentEdit.setText("Sport Team");
+                txtMajorOrPositionEdit.setText(((PolytechnicStudent) membFound).getMajor());
+                txtSportTeamOrDepartmentEdit.setText(((PolytechnicStudent) membFound).getTeam());
+            } else {
+                staffEditBtn.setSelected(true);
+                lblMajorPositionEdit.setText("Position");
+                lblSportDepartmentEdit.setText("Department");
+                txtMajorOrPositionEdit.setText(((PolytechnicStaff) membFound).getPosition());
+                txtSportTeamOrDepartmentEdit.setText(((PolytechnicStaff) membFound).getDepartment());
+            }
+            cardLayout.show(pnlCards, "editMemberPnl");
+        } else {
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("<html>Please Select a member From the table to edit.</html>");
+            GlassPanePopup.showPopup(obj);
+        }    }//GEN-LAST:event_editMemberBtnActionPerformed
+
+    private void deleteMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBtnActionPerformed
+        if (membersTable.getSelectedRow() != -1) {
+            Member memFound = getMemByID();
+
+            GymSystem.members.remove(memFound);
+            populateMembersTable();
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("A Member has been removed");
+            GlassPanePopup.showPopup(obj);
+
+            try {
+                FileManager.getInstance().WriteMember();
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("<html>Please Select a member From the table to remove.</html>");
+            GlassPanePopup.showPopup(obj);
+        }
+    }//GEN-LAST:event_deleteMemberBtnActionPerformed
+
+    private void maleEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleEditBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maleEditBtnActionPerformed
+
+    private void femaleEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleEditBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_femaleEditBtnActionPerformed
+
+    private void studentEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentEditBtnActionPerformed
+
+    private void staffEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffEditBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_staffEditBtnActionPerformed
+
+    private void txtFirstNameMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameMemberEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFirstNameMemberEditActionPerformed
+
+    private void txtFirstNameMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameMemberEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFirstNameMemberEditrepaintShadowForTextFields
+
+    private void txtSurNameMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurNameMemberEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSurNameMemberEditActionPerformed
+
+    private void txtSurNameMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurNameMemberEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSurNameMemberEditrepaintShadowForTextFields
+
+    private void txtPhoneMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMemberEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneMemberEditActionPerformed
+
+    private void txtPhoneMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneMemberEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneMemberEditrepaintShadowForTextFields
+
+    private void txtSportTeamOrDepartmentEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSportTeamOrDepartmentEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSportTeamOrDepartmentEditActionPerformed
+
+    private void txtSportTeamOrDepartmentEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSportTeamOrDepartmentEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSportTeamOrDepartmentEditrepaintShadowForTextFields
+
+    private void txtAdressMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdressMemberEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAdressMemberEditActionPerformed
+
+    private void txtAdressMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressMemberEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAdressMemberEditrepaintShadowForTextFields
+
+    private void txtMajorOrPositionEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorOrPositionEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMajorOrPositionEditActionPerformed
+
+    private void txtMajorOrPositionEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMajorOrPositionEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMajorOrPositionEditrepaintShadowForTextFields
+
+    private void saveMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMemberBtnActionPerformed
+        int errorCoutner;
+        ArrayList<TextField> textFields = new ArrayList<TextField>();
+        ArrayList<String> errors = new ArrayList<String>(Arrays.asList("first name", "sur name", "Address", "Phone", "Date of birth"));
+        textFields.add(txtFirstNameMemberEdit);
+        textFields.add(txtSurNameMemberEdit);
+        textFields.add(txtAdressMemberEdit);
+        textFields.add(txtPhoneMemberEdit);
+        textFields.add(txtDobEdit);
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!checkTxtField(textField, errors.get(errorCoutner))) {
+                return;
+            }
+            errorCoutner++;
+        }
+
+        if (!checkRadioButtonGroup(genderButtonGroupEdit, "Gender")) {
+            return;
+        }
+
+        textFields.add(txtMajorOrPositionEdit);
+        if (studentBtn.isSelected()) {
+            errors.add("Major");
+        } else {
+            textFields.add(txtSportTeamOrDepartmentEdit);
+            errors.add("Position");
+            errors.add("Depatment");
+        }
+        errorCoutner = 0;
+        for (TextField textField : textFields) {
+            if (!checkTxtField(textField, errors.get(errorCoutner))) {
+                return;
+            }
+            errorCoutner++;
+        }
+
+        ArrayList<TextField> letterTextFields = new ArrayList<TextField>();
+        letterTextFields.add(txtFirstNameMemberEdit);
+        letterTextFields.add(txtSurNameMemberEdit);
+        letterTextFields.add(txtMajorOrPositionEdit);
+        letterTextFields.add(txtSportTeamOrDepartmentEdit);
+        ArrayList<String> letterErrors = new ArrayList<String>(Arrays.asList("first name", "sur name"));
+        if (studentEditBtn.isSelected()) {
+            letterErrors.add("Major");
+            letterErrors.add("Sport Team");
+        } else {
+            letterErrors.add("Position");
+            letterErrors.add("Depatment");
+        }
+        errorCoutner = 0;
+        for (TextField textField : letterTextFields) {
+            if (!containsOnlyLetters(textField, letterErrors.get(errorCoutner))) {
+                return;
+            }
+            errorCoutner++;
+
+        }
+
+        if (!containsOnlyNumbers(txtPhoneMemberEdit, "Phone")) {
+            return;
+        }
+        if (membersTable.getSelectedRow() != -1) {
+            Member membFound = getMemByID();
+            System.out.println(txtFirstNameMemberEdit.getText());
+            membFound.setFirstName(txtFirstNameMemberEdit.getText());
+            membFound.setLastName(txtSurNameMemberEdit.getText());
+            membFound.setAddress(txtAdressMemberEdit.getText());
+            membFound.setPhone(txtPhoneMemberEdit.getText());
+            membFound.setBirthDate(txtDobEdit.getText());
+            
+            if (membFound instanceof PolytechnicStudent) {
+                ((PolytechnicStudent) membFound).setMajor(txtMajorOrPositionEdit.getText());
+                ((PolytechnicStudent) membFound).setTeam(txtSportTeamOrDepartmentEdit.getText());
+            } else {
+                ((PolytechnicStaff) membFound).setPosition(txtMajorOrPositionEdit.getText());
+                ((PolytechnicStaff) membFound).setDepartment(txtSportTeamOrDepartmentEdit.getText());
+            }
+            try {
+                FileManager.getInstance().WriteMember();
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Message obj = new Message();
+        obj.eventOK(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                GlassPanePopup.closePopupLast();
+                populateMembersTable();
+                cardLayout.show(pnlCards, "manageMembersPnl");
+
+            }
+        });
+        obj.jLabel1.setText("Data has been updated");
+        GlassPanePopup.showPopup(obj);
+
+        try {
+            FileManager.getInstance().WriteMember();
+
+        } catch (IOException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveMemberBtnActionPerformed
+
+    private void backMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMemberBtnActionPerformed
+        populateMembersTable();
+        cardLayout.show(pnlCards, "manageMembersPnl");
+    }//GEN-LAST:event_backMemberBtnActionPerformed
+
+    private void txtDobEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDobEditMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDobEditMouseClicked
+
+    private void txtDobEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDobEditrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDobEditrepaintShadowForTextFields
+
+    private void pickDateBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickDateBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pickDateBtn1ActionPerformed
+
+    private void editMemberPnlrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editMemberPnlrepaintShadowForTextFields
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editMemberPnlrepaintShadowForTextFields
 
     /**
      * @param args the command line arguments
@@ -2387,9 +2978,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.NavButton assignTrainerButton;
     private javax.swing.JButton assignTrainerImageBtn;
     private GUI.Button backEmployeeEditBtn;
+    private GUI.Button backMemberBtn;
     private javax.swing.JLabel bahrainLabel;
     private GUI.Button button1;
-    private GUI.Button button3;
     private GUI.Button button4;
     private GUI.Button clearBtn;
     private GUI.Button clearEmployeeFormBtn;
@@ -2397,45 +2988,46 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPanel dashboardPnl;
     private Calander.DateChooser dateChooser;
     private Calander.DateChooser dateChooser1;
+    private GUI.Button deleteEmployeeBtn;
+    private GUI.Button deleteMemberBtn;
     private GUI.Button editEmployeeBtn;
     private javax.swing.JPanel editEmployeePnl;
+    private GUI.Button editMemberBtn;
+    private javax.swing.JPanel editMemberPnl;
     private javax.swing.JLabel emoployeeSectionLabel;
     private GUI.RadioButtonCustom employeeRadioBtn;
     private GUI.RadioButtonCustom employeeRadioBtnEdit;
     private javax.swing.ButtonGroup employeeTypeBtnGroup;
     private Table.Table employeesTable;
     private javax.swing.JRadioButton femaleBtn;
+    private javax.swing.JRadioButton femaleEditBtn;
     private javax.swing.ButtonGroup genderButtonGroup;
+    private javax.swing.ButtonGroup genderButtonGroupEdit;
     private javax.swing.JLabel gymImage;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMajorPosition;
+    private javax.swing.JLabel lblMajorPositionEdit;
     private javax.swing.JLabel lblSearchIcon;
     private javax.swing.JLabel lblSportDepartment;
+    private javax.swing.JLabel lblSportDepartmentEdit;
     private GUI.NavButton listTrainersButton;
     private javax.swing.JSplitPane mainPage;
     private javax.swing.JRadioButton maleBtn;
+    private javax.swing.JRadioButton maleEditBtn;
     private GUI.NavButton manageEmployeesButton;
     private javax.swing.JPanel manageEmployeesPnl;
     private GUI.NavButton manageMemberButton;
-    private javax.swing.JPanel manageMembersPnl;
+    private javax.swing.JPanel manageMemberssPnl;
     private GUI.NavButton marketingReportBtn;
     private javax.swing.JLabel memberSectionLabel;
     private javax.swing.ButtonGroup memberTypeGroupButton;
+    private Table.Table membersTable;
     private GUI.TextField nametxt;
     private javax.swing.JPanel nvigPnl;
     private GUI.Button pickDateBtn;
+    private GUI.Button pickDateBtn1;
     private javax.swing.JPanel pnlCards;
     private javax.swing.JLabel polyLabel;
     private GUI.RoundPanel roundPanel1;
@@ -2443,9 +3035,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.RoundPanel roundPanel3;
     private GUI.RoundPanel roundPanel4;
     private GUI.RoundPanel roundPanel5;
+    private GUI.RoundPanel roundPanel6;
+    private GUI.RoundPanel roundPanel7;
     private GUI.Button saveEmployeeEditBtn;
+    private GUI.Button saveMemberBtn;
     private javax.swing.JRadioButton staffBtn;
+    private javax.swing.JRadioButton staffEditBtn;
     private javax.swing.JRadioButton studentBtn;
+    private javax.swing.JRadioButton studentEditBtn;
     private GUI.TextField textField1;
     private GUI.RadioButtonCustom trainerRadioBtn;
     private GUI.RadioButtonCustom trainerRadioBtnEdit;
@@ -2454,18 +3051,26 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.TextField txtAddressEmployee;
     private GUI.TextField txtAddressEmployeeEdit;
     private GUI.TextField txtAdress;
+    private GUI.TextField txtAdressMemberEdit;
     private GUI.TextField txtDob;
+    private GUI.TextField txtDobEdit;
     private GUI.TextField txtFirstName;
     private GUI.TextField txtFirstNameEmployee;
     private GUI.TextField txtFirstNameEmployeeEdit;
+    private GUI.TextField txtFirstNameMemberEdit;
     private GUI.TextField txtMajorOrPosition;
+    private GUI.TextField txtMajorOrPositionEdit;
     private GUI.TextField txtPhone;
     private GUI.TextField txtPhoneEmployee;
     private GUI.TextField txtPhoneEmployeeEdit;
+    private GUI.TextField txtPhoneMemberEdit;
     private GUI.TextField txtSalaryEmployee;
     private GUI.TextField txtSalaryEmployeeEdit;
     private GUI.TextField txtSearchEmp;
+    private GUI.TextField txtSearchMember;
     private GUI.TextField txtSportTeamOrDepartment;
+    private GUI.TextField txtSportTeamOrDepartmentEdit;
+    private GUI.TextField txtSurNameMemberEdit;
     private GUI.TextField txtSurname;
     private GUI.TextField txtSurnameEmployee;
     private GUI.TextField txtSurnameEmployeeEdit;
@@ -2671,6 +3276,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
+    public void populateMembersTable() {
+        DefaultTableModel model = (DefaultTableModel) membersTable.getModel();
+        model.setRowCount(0);
+        for (Member emp : GymSystem.members) {
+            if (emp instanceof PolytechnicStaff) {
+                membersTable.addRow(new Object[]{emp.getId(), emp.getFullName(), "Polytechnic Staff"});
+            } else {
+                membersTable.addRow(new Object[]{emp.getId(), emp.getFullName(), "Polytechnic Student"});
+            }
+        }
+    }
+
     public void clearTextFields(ArrayList<TextField> textFields) {
         for (TextField textField : textFields) {
             textField.setText("");
@@ -2688,6 +3305,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
             if (emp.getId() == idFound) {
                 return emp;
+            }
+        }
+
+        return null;
+    }
+
+    public Member getMemByID() {
+        int row = membersTable.getSelectedRow();
+        Object id = membersTable.getModel().getValueAt(row, 0);
+        String idString = id.toString();
+        int idFound = Integer.parseInt(idString);
+
+        for (Member mem : GymSystem.members) {
+
+            if (mem.getId() == idFound) {
+                return mem;
             }
         }
 

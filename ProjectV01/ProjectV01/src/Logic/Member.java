@@ -4,6 +4,10 @@
  */
 package Logic;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -56,7 +60,7 @@ public class Member implements Serializable {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
     }
 
     public String getLastName() {
@@ -64,7 +68,7 @@ public class Member implements Serializable {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
     }
 
     public String getAddress() {
@@ -99,4 +103,24 @@ public class Member implements Serializable {
         this.birthDate = birthDate;
     }
 
+    public static void saveEmpCount() {
+        try {
+            FileWriter fw = new FileWriter("src/FileManager/Data/memberCount.txt");
+            fw.write(String.valueOf(totalMember));
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
+
+    public static void loadEmpCount() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/memberCount.txt"));
+            totalMember = Integer.parseInt(br.readLine());
+            br.close();
+        } catch (IOException e) {
+            totalMember = 1;
+            System.out.println("Error occured: " + e.getMessage());
+        }
+    }
 }

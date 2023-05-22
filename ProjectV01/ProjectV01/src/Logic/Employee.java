@@ -55,7 +55,7 @@ public class Employee implements Serializable{
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);;
     }
 
     public String getLastName() {
@@ -63,7 +63,7 @@ public class Employee implements Serializable{
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);;
     }
 
     public String getAddress() {
