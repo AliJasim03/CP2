@@ -58,7 +58,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         membersTable.fixTable(jScrollPane1);
         membersAssignTrainerTable.fixTable(jScrollPane2);
         personalTrainerTable.fixTable(jScrollPane3);
-
+        trainerMembersTable.fixTable(jScrollPane4);
         dateChooser.addEventDateChooser(new EventDateChooser() {
             @Override
             public void dateSelected(SelectedAction action, SelectedDate date) {
@@ -184,8 +184,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel9 = new GUI.RoundPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         personalTrainerTable = new Table.Table();
-        txtSearchEmp1 = new GUI.TextField();
+        txtSearchTrainer = new GUI.TextField();
         lblSearchIcon3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        trainerMembersPnl = new javax.swing.JPanel();
+        roundPanel10 = new GUI.RoundPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        trainerMembersTable = new Table.Table();
+        txtSearchTrainerMember = new GUI.TextField();
+        javax.swing.JLabel lblSearchIcon4 = new javax.swing.JLabel();
+        deleteMemberBtn1 = new GUI.Button();
+        lblTrainerName = new javax.swing.JLabel();
         assignTrainerPnl = new javax.swing.JPanel();
         roundPanel8 = new GUI.RoundPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1467,6 +1476,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         personalTrainerTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         personalTrainerTable.setShowGrid(true);
         personalTrainerTable.setShowVerticalLines(false);
+        personalTrainerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                personalTrainerTableMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(personalTrainerTable);
         if (personalTrainerTable.getColumnModel().getColumnCount() > 0) {
             personalTrainerTable.getColumnModel().getColumn(0).setResizable(false);
@@ -1474,10 +1488,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             personalTrainerTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        txtSearchEmp1.setBackground(new java.awt.Color(11, 196, 217));
-        txtSearchEmp1.setRound(30);
+        txtSearchTrainer.setBackground(new java.awt.Color(11, 196, 217));
+        txtSearchTrainer.setRound(30);
+        txtSearchTrainer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchTrainerKeyReleased(evt);
+            }
+        });
 
         lblSearchIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Select an Employee to view the mebers list.");
 
         javax.swing.GroupLayout roundPanel9Layout = new javax.swing.GroupLayout(roundPanel9);
         roundPanel9.setLayout(roundPanel9Layout);
@@ -1491,19 +1514,23 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGap(18, 18, 18)
                 .addComponent(lblSearchIcon3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearchEmp1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 487, Short.MAX_VALUE))
+                .addComponent(txtSearchTrainer, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel9Layout.setVerticalGroup(
             roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel9Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSearchEmp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchTrainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
                     .addComponent(lblSearchIcon3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout listPersonalTrainerPnlLayout = new javax.swing.GroupLayout(listPersonalTrainerPnl);
@@ -1518,12 +1545,125 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         listPersonalTrainerPnlLayout.setVerticalGroup(
             listPersonalTrainerPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listPersonalTrainerPnlLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(roundPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         pnlCards.add(listPersonalTrainerPnl, "listPersonalTrainerPnl");
+
+        trainerMembersPnl.setBackground(new java.awt.Color(2, 73, 89));
+        trainerMembersPnl.setForeground(new java.awt.Color(255, 255, 255));
+        trainerMembersPnl.setPreferredSize(new java.awt.Dimension(773, 545));
+
+        roundPanel10.setBackground(new java.awt.Color(255, 255, 255));
+
+        trainerMembersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Member ID", "Member Name", "Member Type", "Phone"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        trainerMembersTable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        trainerMembersTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        trainerMembersTable.setShowGrid(true);
+        trainerMembersTable.setShowVerticalLines(false);
+        jScrollPane4.setViewportView(trainerMembersTable);
+        if (trainerMembersTable.getColumnModel().getColumnCount() > 0) {
+            trainerMembersTable.getColumnModel().getColumn(0).setResizable(false);
+            trainerMembersTable.getColumnModel().getColumn(1).setResizable(false);
+            trainerMembersTable.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        txtSearchTrainerMember.setBackground(new java.awt.Color(11, 196, 217));
+        txtSearchTrainerMember.setRound(30);
+        txtSearchTrainerMember.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchTrainerMemberKeyReleased(evt);
+            }
+        });
+
+        lblSearchIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
+
+        deleteMemberBtn1.setBackground(new java.awt.Color(11, 196, 217));
+        deleteMemberBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        deleteMemberBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
+        deleteMemberBtn1.setText("Back");
+        deleteMemberBtn1.setFocusPainted(false);
+        deleteMemberBtn1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        deleteMemberBtn1.setIconTextGap(10);
+        deleteMemberBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMemberBtn1ActionPerformed(evt);
+            }
+        });
+
+        lblTrainerName.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        lblTrainerName.setForeground(new java.awt.Color(0, 0, 0));
+        lblTrainerName.setText("f");
+
+        javax.swing.GroupLayout roundPanel10Layout = new javax.swing.GroupLayout(roundPanel10);
+        roundPanel10.setLayout(roundPanel10Layout);
+        roundPanel10Layout.setHorizontalGroup(
+            roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(roundPanel10Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblSearchIcon4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSearchTrainerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addComponent(lblTrainerName, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteMemberBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        roundPanel10Layout.setVerticalGroup(
+            roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel10Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchTrainerMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteMemberBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTrainerName))
+                    .addComponent(lblSearchIcon4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout trainerMembersPnlLayout = new javax.swing.GroupLayout(trainerMembersPnl);
+        trainerMembersPnl.setLayout(trainerMembersPnlLayout);
+        trainerMembersPnlLayout.setHorizontalGroup(
+            trainerMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(trainerMembersPnlLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(roundPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        trainerMembersPnlLayout.setVerticalGroup(
+            trainerMembersPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(trainerMembersPnlLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(roundPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        pnlCards.add(trainerMembersPnl, "trainerMembersPnl");
 
         assignTrainerPnl.setBackground(new java.awt.Color(2, 73, 89));
         assignTrainerPnl.setForeground(new java.awt.Color(255, 255, 255));
@@ -3253,6 +3393,55 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         System.out.println(((PersonalTrainer) GymSystem.employees.get(0)).getMembers().size());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtSearchTrainerMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerMemberKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) trainerMembersTable.getModel();
+
+        tableModel.setRowCount(0);
+        PersonalTrainer empFound = null;
+        for (Employee emp : GymSystem.employees) {
+            if (emp instanceof PersonalTrainer) {
+                String idString = String.valueOf(personalTrainerTable.getValueAt(personalTrainerTable.getSelectedRow(), 0));
+                String empIDString = "" + emp.getId();
+                if (empIDString.equals(idString)) {
+                    empFound = (PersonalTrainer) emp;
+                    break;
+                }
+            }
+        }
+        for (Member mem : empFound.getMembers()) {
+
+            String type = mem instanceof PolytechnicStaff ? "Polytechnic Staff" : "Polytechnic Student";
+            String id = "" + mem.getId();
+            String name = mem.getFullName();
+            if (txtSearchTrainerMember.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainerMember.getText().toLowerCase())) {
+                trainerMembersTable.addRow(new Object[]{id, name, type, mem.getPhone()});
+            }
+        }
+    }//GEN-LAST:event_txtSearchTrainerMemberKeyReleased
+
+    private void deleteMemberBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBtn1ActionPerformed
+        cardLayout.show(pnlCards, "listPersonalTrainerPnl");
+    }//GEN-LAST:event_deleteMemberBtn1ActionPerformed
+
+    private void txtSearchTrainerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) personalTrainerTable.getModel();
+
+        tableModel.setRowCount(0);
+        for (Employee emp : GymSystem.employees) {
+            String id = "" + emp.getId();
+            String name = emp.getFullName();
+            if (txtSearchTrainer.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainer.getText().toLowerCase())) {
+                personalTrainerTable.addRow(new Object[]{id, name, ((PersonalTrainer) emp).getMembers().size()});
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchTrainerKeyReleased
+
+    private void personalTrainerTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalTrainerTableMouseReleased
+        populateTrainerMembersTable();
+        cardLayout.show(pnlCards, "trainerMembersPnl");
+    }//GEN-LAST:event_personalTrainerTableMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -3322,6 +3511,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private Calander.DateChooser dateChooserEdit;
     private GUI.Button deleteEmployeeBtn;
     private GUI.Button deleteMemberBtn;
+    private GUI.Button deleteMemberBtn1;
     private GUI.Button editEmployeeBtn;
     private javax.swing.JPanel editEmployeePnl;
     private GUI.Button editMemberBtn;
@@ -3337,17 +3527,20 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.ButtonGroup genderButtonGroupEdit;
     private javax.swing.JLabel gymImage;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblMajorPosition;
     private javax.swing.JLabel lblMajorPositionEdit;
     private javax.swing.JLabel lblSearchIcon;
     private javax.swing.JLabel lblSearchIcon3;
     private javax.swing.JLabel lblSportDepartment;
     private javax.swing.JLabel lblSportDepartmentEdit;
+    private javax.swing.JLabel lblTrainerName;
     private javax.swing.JPanel listPersonalTrainerPnl;
     private GUI.NavButton listTrainersButton;
     private javax.swing.JSplitPane mainPage;
@@ -3370,6 +3563,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPanel pnlCards;
     private javax.swing.JLabel polyLabel;
     private GUI.RoundPanel roundPanel1;
+    private GUI.RoundPanel roundPanel10;
     private GUI.RoundPanel roundPanel2;
     private GUI.RoundPanel roundPanel3;
     private GUI.RoundPanel roundPanel4;
@@ -3385,6 +3579,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JRadioButton studentBtn;
     private javax.swing.JRadioButton studentEditBtn;
     private GUI.TextField textField1;
+    private javax.swing.JPanel trainerMembersPnl;
+    private Table.Table trainerMembersTable;
     private GUI.RadioButtonCustom trainerRadioBtn;
     private GUI.RadioButtonCustom trainerRadioBtnEdit;
     private javax.swing.JButton truckEmployeeInformationImageBtn;
@@ -3408,9 +3604,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.TextField txtSalaryEmployee;
     private GUI.TextField txtSalaryEmployeeEdit;
     private GUI.TextField txtSearchEmp;
-    private GUI.TextField txtSearchEmp1;
     private GUI.TextField txtSearchMember;
     private GUI.TextField txtSearchMemberTrainer;
+    private GUI.TextField txtSearchTrainer;
+    private GUI.TextField txtSearchTrainerMember;
     private GUI.TextField txtSportTeamOrDepartment;
     private GUI.TextField txtSportTeamOrDepartmentEdit;
     private GUI.TextField txtSurNameMemberEdit;
@@ -3622,13 +3819,38 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     public void populateMembersTable() {
         DefaultTableModel model = (DefaultTableModel) membersTable.getModel();
         model.setRowCount(0);
-        for (Member emp : GymSystem.members) {
-            if (emp instanceof PolytechnicStaff) {
-                membersTable.addRow(new Object[]{emp.getId(), emp.getFullName(), "Polytechnic Staff"});
+        for (Member mem : GymSystem.members) {
+            if (mem instanceof PolytechnicStaff) {
+                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff"});
             } else {
-                membersTable.addRow(new Object[]{emp.getId(), emp.getFullName(), "Polytechnic Student"});
+                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student"});
             }
         }
+    }
+
+    public void populateTrainerMembersTable() {
+        DefaultTableModel model = (DefaultTableModel) trainerMembersTable.getModel();
+        model.setRowCount(0);
+        PersonalTrainer empFound = null;
+        for (Employee emp : GymSystem.employees) {
+            if (emp instanceof PersonalTrainer) {
+                String idString = String.valueOf(personalTrainerTable.getValueAt(personalTrainerTable.getSelectedRow(), 0));
+                String empIDString = "" + emp.getId();
+                if (empIDString.equals(idString)) {
+                    empFound = (PersonalTrainer) emp;
+                    break;
+                }
+            }
+        }
+        for (Member mem : empFound.getMembers()) {
+            if (mem instanceof PolytechnicStaff) {
+                trainerMembersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff", mem.getPhone()});
+            } else {
+                trainerMembersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", mem.getPhone()});
+            }
+        }
+
+        lblTrainerName.setText(empFound.getFullName() + " Members List");
     }
 
     public void populateTrainersTable() {
