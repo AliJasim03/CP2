@@ -47,13 +47,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     public MainPage() throws IOException, ClassNotFoundException {
         FileManager.getInstance().ReadEmployees();
         FileManager.getInstance().ReadMembers();
+        Employee.loadEmpCount();
+        Member.loadEmpCount();
+        FileManager.getInstance().loadStartupFile();
         initComponents();
         GlassPanePopup.install(this);
 
         cardLayout = (CardLayout) (pnlCards.getLayout());
 
-        Employee.loadEmpCount();
-        Member.loadEmpCount();
         employeesTable.fixTable(jScrollPane);
         membersTable.fixTable(jScrollPane1);
         membersAssignTrainerTable.fixTable(jScrollPane2);
