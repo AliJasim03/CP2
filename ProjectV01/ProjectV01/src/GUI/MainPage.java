@@ -3663,10 +3663,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
     }
-
+    
     public boolean containsOnlyLetters(TextField textField, String error) {
-        for (char c : textField.getText().toCharArray()) {
-            if (!Character.isLetter(c)) {
+        final Color DefaultC = new Color(170, 170, 170);
+        final Color ErrorC = new Color(250, 0, 0);
+        textField.setShadowColor(DefaultC);
+        String str = textField.getText();
+        boolean found = false;
+        boolean twoWords = false;
+
+        if (error.toLowerCase().equals("position") || error.toLowerCase().equals("department") || error.toLowerCase().equals("major")) {
+            twoWords = true;
+        }
+
+        if (twoWords) {
+            String[] words = str.split(" ");
+            if (words.length < 1 || words.length > 2) {
                 Message obj = new Message();
                 obj.eventOK(new ActionListener() {
                     @Override
@@ -3676,13 +3688,72 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         textField.requestFocus();
                     }
                 });
-                obj.jLabel1.setText("<html>The " + error + " text field should contain only letters.</html>");
+                obj.jLabel1.setText("<html>The " + error + " text field should contain one or two words only.</html>");
                 GlassPanePopup.showPopup(obj);
+                textField.requestFocus();
+                textField.setShadowColor(ErrorC);
+                return false;
+            }
+            str = String.join("", words);
+        } else {
+            if (str.contains(" ")) {
+                Message obj = new Message();
+                obj.eventOK(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        GlassPanePopup.closePopupLast();
+                        textField.setShadowColor(Color.red);
+                        textField.requestFocus();
+                    }
+                });
+                obj.jLabel1.setText("<html>The " + error + " text field should contain one word only.</html>");
+                GlassPanePopup.showPopup(obj);
+                textField.requestFocus();
+                textField.setShadowColor(ErrorC);
                 return false;
             }
         }
+        for (char c : str.toCharArray()) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                Message obj = new Message();
+                obj.eventOK(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        GlassPanePopup.closePopupLast();
+                        textField.setShadowColor(Color.red);
+                        textField.requestFocus();
+                    }
+                });
+                obj.jLabel1.setText("<html>The " + error + " text field should contain one word only.</html>");
+                GlassPanePopup.showPopup(obj);
+                found = true;
+                textField.requestFocus();
+                textField.setShadowColor(ErrorC);
+                return false;
+            }
+        }
+
         return true;
     }
+//    public boolean containsOnlyLetters(TextField textField, String error) {
+//        for (char c : textField.getText().toCharArray()) {
+//            if (!Character.isLetter(c)) {
+//                Message obj = new Message();
+//                obj.eventOK(new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent ae) {
+//                        GlassPanePopup.closePopupLast();
+//                        textField.setShadowColor(Color.red);
+//                        textField.requestFocus();
+//                    }
+//                });
+//                obj.jLabel1.setText("<html>The " + error + " text field should contain only letters.</html>");
+//                GlassPanePopup.showPopup(obj);
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
 
     public boolean containsOnlyNumbers(TextField textField, String error) {
         for (char c : textField.getText().toCharArray()) {
