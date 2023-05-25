@@ -4,21 +4,21 @@
  */
 package FileManager;
 
-import GUI.Message;
-import GlassPanePopup.GlassPanePopup;
 import Logic.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -156,53 +156,51 @@ public class FileManager {
     }
 
     public void generateMarketingReport() {
-        try {
-            PrintWriter writer = new PrintWriter(new FileOutputStream(
-                    "src/FileManager/Data/marketingReport.txt",
-                    true /* append = true */));
+        Path filePath = Paths.get("src/FileManager/Data/marketingReport.txt");
+        Charset charset = StandardCharsets.UTF_8;
 
-            if (new File("src/FileManager/Data/marketingReport.txt").exists()) {
-                writer.flush();
-            }
-            writer.write("Polytechnic Staffs:");
-            writer.println();
+        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath, charset)) {
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
             int totalStaff = 0;
+
+            // Write formatted data using print writer
+            printWriter.println("Polytechnic Staffs:");
             for (Member mem : GymSystem.members) {
                 if (mem instanceof PolytechnicStaff) {
-                    writer.write("Full Name:" + mem.getFullName());
-                    writer.println();
-                    writer.write("Address:" + mem.getAddress());
-                    writer.println();
-                    writer.write("Phone:" + mem.getPhone());
-                    writer.println();
-                    writer.write("Position:" + ((PolytechnicStaff) mem).getPosition());
-                    writer.println();
-                    writer.write("Department:" + ((PolytechnicStaff) mem).getDepartment());
-                    writer.println();
+                    printWriter.write("Full Name:" + mem.getFullName());
+                    printWriter.println();
+                    printWriter.write("Address:" + mem.getAddress());
+                    printWriter.println();
+                    printWriter.write("Phone:" + mem.getPhone());
+                    printWriter.println();
+                    printWriter.write("Position:" + ((PolytechnicStaff) mem).getPosition());
+                    printWriter.println();
+                    printWriter.write("Department:" + ((PolytechnicStaff) mem).getDepartment());
+                    printWriter.println();
                     totalStaff++;
                 }
             }
-            writer.write("Total amount of: " + totalStaff);
-            writer.write("Polytechnic Studnets:");
-            writer.println();
+            printWriter.write("Total amount of: " + totalStaff);
+            printWriter.println();
+            printWriter.println();
+            printWriter.write("Polytechnic Students:");
             for (Member mem : GymSystem.members) {
                 if (mem instanceof PolytechnicStudent) {
-                    writer.write("Full Name:" + mem.getFullName());
-                    writer.println();
-                    writer.write("Address:" + mem.getAddress());
-                    writer.println();
-                    writer.write("Phone:" + mem.getPhone());
-                    writer.println();
-                    writer.write("Major:" + ((PolytechnicStudent) mem).getMajor());
-                    writer.println();
-                    writer.write("Sport Team:" + ((PolytechnicStudent) mem).getTeam());
-                    writer.println();
+                    printWriter.write("Full Name:" + mem.getFullName());
+                    printWriter.println();
+                    printWriter.write("Address:" + mem.getAddress());
+                    printWriter.println();
+                    printWriter.write("Phone:" + mem.getPhone());
+                    printWriter.println();
+                    printWriter.write("Major:" + ((PolytechnicStudent) mem).getMajor());
+                    printWriter.println();
+                    printWriter.write("Sport Team:" + ((PolytechnicStudent) mem).getTeam());
+                    printWriter.println();
                 }
             }
-            writer.write("Total amount of: " + (GymSystem.members.size() - totalStaff));
-            writer.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Error ouccred");
+            printWriter.write("Total amount of: " + (GymSystem.members.size() - totalStaff));
+        } catch (IOException e) {
+            System.out.println("Error occurred");
         }
     }
 

@@ -10,6 +10,7 @@ import Logic.*;
 import java.awt.CardLayout;
 import FileManager.*;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -313,11 +314,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addEmployeeButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addEmployeeButton.setIconTextGap(5);
         addEmployeeButton.addActionListener(this);
-        addEmployeeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                changNvgButtonBackgroundColor(evt);
-            }
-        });
         addEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEmployeeButtonActionPerformed(evt);
@@ -680,19 +676,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         employeeRadioBtn.setText("Regular Employee");
         employeeRadioBtn.setFocusPainted(false);
         employeeRadioBtn.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        employeeRadioBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeRadioBtnActionPerformed(evt);
-            }
-        });
 
         txtSurnameEmployee.setBackground(new java.awt.Color(233, 233, 233));
         txtSurnameEmployee.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSurnameEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSurnameEmployeeActionPerformed(evt);
-            }
-        });
         txtSurnameEmployee.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -701,11 +687,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtAddressEmployee.setBackground(new java.awt.Color(233, 233, 233));
         txtAddressEmployee.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtAddressEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressEmployeeActionPerformed(evt);
-            }
-        });
         txtAddressEmployee.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -714,11 +695,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtPhoneEmployee.setBackground(new java.awt.Color(233, 233, 233));
         txtPhoneEmployee.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtPhoneEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneEmployeeActionPerformed(evt);
-            }
-        });
         txtPhoneEmployee.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -727,11 +703,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtSalaryEmployee.setBackground(new java.awt.Color(233, 233, 233));
         txtSalaryEmployee.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSalaryEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalaryEmployeeActionPerformed(evt);
-            }
-        });
         txtSalaryEmployee.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -961,11 +932,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtSurname.setBackground(new java.awt.Color(233, 233, 233));
         txtSurname.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSurname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSurnameActionPerformed(evt);
-            }
-        });
         txtSurname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1764,19 +1730,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         employeeRadioBtnEdit.setEnabled(false);
         employeeRadioBtnEdit.setFocusPainted(false);
         employeeRadioBtnEdit.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        employeeRadioBtnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeRadioBtnEditActionPerformed(evt);
-            }
-        });
 
         txtSurnameEmployeeEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtSurnameEmployeeEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSurnameEmployeeEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSurnameEmployeeEditActionPerformed(evt);
-            }
-        });
         txtSurnameEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1785,11 +1741,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtAddressEmployeeEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtAddressEmployeeEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtAddressEmployeeEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressEmployeeEditActionPerformed(evt);
-            }
-        });
         txtAddressEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1798,11 +1749,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtPhoneEmployeeEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtPhoneEmployeeEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtPhoneEmployeeEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneEmployeeEditActionPerformed(evt);
-            }
-        });
         txtPhoneEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1811,11 +1757,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtSalaryEmployeeEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtSalaryEmployeeEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSalaryEmployeeEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalaryEmployeeEditActionPerformed(evt);
-            }
-        });
         txtSalaryEmployeeEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1961,39 +1902,39 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         roundPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblAddMember1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAddMember1.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
         lblAddMember1.setForeground(new java.awt.Color(0, 0, 0));
         lblAddMember1.setText("Edit Member form");
 
-        lblSurname1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSurname1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSurname1.setForeground(new java.awt.Color(0, 0, 0));
         lblSurname1.setText("Surname");
 
-        lblMemberType1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMemberType1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMemberType1.setForeground(new java.awt.Color(0, 0, 0));
         lblMemberType1.setText("Member type");
 
-        lblGender1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGender1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblGender1.setForeground(new java.awt.Color(0, 0, 0));
         lblGender1.setText("Gender");
 
-        lblFirstName1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFirstName1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblFirstName1.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstName1.setText("First Name");
 
-        lblPhone1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblPhone1.setForeground(new java.awt.Color(0, 0, 0));
         lblPhone1.setText("Phone Number");
 
-        lblSportDepartmentEdit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSportDepartmentEdit.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSportDepartmentEdit.setForeground(new java.awt.Color(0, 0, 0));
         lblSportDepartmentEdit.setText("Sport Team");
 
-        lblAdress1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAdress1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblAdress1.setForeground(new java.awt.Color(0, 0, 0));
         lblAdress1.setText("Adress");
 
-        lblMajorPositionEdit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMajorPositionEdit.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMajorPositionEdit.setForeground(new java.awt.Color(0, 0, 0));
         lblMajorPositionEdit.setText("Major");
 
@@ -2003,11 +1944,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         maleEditBtn.setText("Male");
         maleEditBtn.setContentAreaFilled(false);
         maleEditBtn.setFocusPainted(false);
-        maleEditBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleEditBtnActionPerformed(evt);
-            }
-        });
 
         genderButtonGroupEdit.add(femaleEditBtn);
         femaleEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -2015,11 +1951,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         femaleEditBtn.setText("Female");
         femaleEditBtn.setContentAreaFilled(false);
         femaleEditBtn.setFocusPainted(false);
-        femaleEditBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleEditBtnActionPerformed(evt);
-            }
-        });
 
         memberTypeGroupButton.add(studentEditBtn);
         studentEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -2028,11 +1959,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         studentEditBtn.setContentAreaFilled(false);
         studentEditBtn.setEnabled(false);
         studentEditBtn.setFocusPainted(false);
-        studentEditBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentEditBtnActionPerformed(evt);
-            }
-        });
 
         memberTypeGroupButton.add(staffEditBtn);
         staffEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -2041,87 +1967,52 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         staffEditBtn.setContentAreaFilled(false);
         staffEditBtn.setEnabled(false);
         staffEditBtn.setFocusPainted(false);
-        staffEditBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                staffEditBtnActionPerformed(evt);
-            }
-        });
 
         txtFirstNameMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtFirstNameMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtFirstNameMemberEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstNameMemberEditActionPerformed(evt);
-            }
-        });
         txtFirstNameMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFirstNameMemberEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
         txtSurNameMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtSurNameMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSurNameMemberEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSurNameMemberEditActionPerformed(evt);
-            }
-        });
         txtSurNameMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSurNameMemberEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
         txtPhoneMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtPhoneMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtPhoneMemberEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneMemberEditActionPerformed(evt);
-            }
-        });
         txtPhoneMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneMemberEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
         txtSportTeamOrDepartmentEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtSportTeamOrDepartmentEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSportTeamOrDepartmentEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSportTeamOrDepartmentEditActionPerformed(evt);
-            }
-        });
         txtSportTeamOrDepartmentEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSportTeamOrDepartmentEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
         txtAdressMemberEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtAdressMemberEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtAdressMemberEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAdressMemberEditActionPerformed(evt);
-            }
-        });
         txtAdressMemberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAdressMemberEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
         txtMajorOrPositionEdit.setBackground(new java.awt.Color(233, 233, 233));
         txtMajorOrPositionEdit.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtMajorOrPositionEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMajorOrPositionEditActionPerformed(evt);
-            }
-        });
         txtMajorOrPositionEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMajorOrPositionEditrepaintShadowForTextFields(evt);
+                repaintShadowForTextFields(evt);
             }
         });
 
@@ -2129,6 +2020,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         saveMemberBtn.setForeground(new java.awt.Color(255, 255, 255));
         saveMemberBtn.setText("Save");
         saveMemberBtn.setFocusable(false);
+        saveMemberBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         saveMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveMemberBtnActionPerformed(evt);
@@ -2139,6 +2031,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         backMemberBtn.setForeground(new java.awt.Color(26, 19, 99));
         backMemberBtn.setText("Back");
         backMemberBtn.setFocusable(false);
+        backMemberBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         backMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backMemberBtnActionPerformed(evt);
@@ -2187,6 +2080,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        roundPanel7Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {backMemberBtn, saveMemberBtn});
+
         roundPanel7Layout.setVerticalGroup(
             roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel7Layout.createSequentialGroup()
@@ -2210,7 +2106,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentEditBtn)
                     .addComponent(staffEditBtn))
-                .addGap(0, 6, Short.MAX_VALUE)
+                .addGap(0, 8, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMajorPositionEdit))
@@ -2226,10 +2122,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2240,11 +2136,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtDobEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtDobEditMouseClicked(evt);
-            }
-        });
-        txtDobEdit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDobEditrepaintShadowForTextFields(evt);
             }
         });
 
@@ -2279,7 +2170,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pickDateBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pnlCards.add(editMemberPnl, "editMemberPnl");
@@ -2302,24 +2193,28 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMemberImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberImageBtnActionPerformed
-        cardLayout.show(pnlCards, "addMemberPnl");
+        java.awt.event.ActionEvent newEvt = new java.awt.event.ActionEvent(addMemberButton, evt.getID(), evt.getActionCommand());
+        addMemberButtonActionPerformed(newEvt);
     }//GEN-LAST:event_addMemberImageBtnActionPerformed
 
     private void addEmployeeImageBtnActionPerforme(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeImageBtnActionPerforme
-        cardLayout.show(pnlCards, "addEmployeePnl");
+        java.awt.event.ActionEvent newEvt = new java.awt.event.ActionEvent(addEmployeeButton, evt.getID(), evt.getActionCommand());
+        addEmployeeButtonActionPerformed(newEvt);
     }//GEN-LAST:event_addEmployeeImageBtnActionPerforme
 
     private void assignTrainerImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTrainerImageBtnActionPerformed
-        cardLayout.show(pnlCards, "assignTrainerPnl");
+        java.awt.event.ActionEvent newEvt = new java.awt.event.ActionEvent(assignTrainerButton, evt.getID(), evt.getActionCommand());
+        assignTrainerButtonActionPerformed(newEvt);
     }//GEN-LAST:event_assignTrainerImageBtnActionPerformed
 
     private void truckMemberInformationImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truckMemberInformationImageBtnActionPerformed
-        cardLayout.show(pnlCards, "manageMembersPnl");
-
+        java.awt.event.ActionEvent newEvt = new java.awt.event.ActionEvent(manageMemberButton, evt.getID(), evt.getActionCommand());
+        manageMemberButtonActionPerformed(newEvt);
     }//GEN-LAST:event_truckMemberInformationImageBtnActionPerformed
 
     private void truckEmployeeInformationImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truckEmployeeInformationImageBtnActionPerformed
-        cardLayout.show(pnlCards, "manageEmployeesPnl");
+        java.awt.event.ActionEvent newEvt = new java.awt.event.ActionEvent(manageEmployeesButton, evt.getID(), evt.getActionCommand());
+        manageEmployeesButtonActionPerformed(newEvt);
     }//GEN-LAST:event_truckEmployeeInformationImageBtnActionPerformed
 
     private void staffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffBtnActionPerformed
@@ -2333,10 +2228,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblSportDepartment.setText("Sport Team");
         lblMajorPosition.setText("Major");
     }//GEN-LAST:event_studentBtnActionPerformed
-
-    private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2357,10 +2248,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
     private void addEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeButtonActionPerformed
+        actionPerformed(evt);
         cardLayout.show(pnlCards, "addEmployeePnl");
     }//GEN-LAST:event_addEmployeeButtonActionPerformed
 
     private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed
+        actionPerformed(evt);
         populateEmployeesTable();
         cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_manageEmployeesButtonActionPerformed
@@ -2371,16 +2264,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_listTrainersButtonActionPerformed
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
+        actionPerformed(evt);
         cardLayout.show(pnlCards, "addMemberPnl");
-        // TODO add your handling code here:
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
     private void manageMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMemberButtonActionPerformed
+        actionPerformed(evt);
         populateMembersTable();
         cardLayout.show(pnlCards, "manageMembersPnl");
     }//GEN-LAST:event_manageMemberButtonActionPerformed
 
     private void assignTrainerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTrainerButtonActionPerformed
+        actionPerformed(evt);
         assignTrainerComboBox();
         for (Member mem : GymSystem.members) {
             boolean found = false;
@@ -2408,13 +2303,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         }
 
-//        membersAssignTrainerTable.setValueAt("(None)", 0, 3);
         cardLayout.show(pnlCards, "assignTrainerPnl");
     }//GEN-LAST:event_assignTrainerButtonActionPerformed
-
-    private void changNvgButtonBackgroundColor(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changNvgButtonBackgroundColor
-        // TODO add your handling code here:
-    }//GEN-LAST:event_changNvgButtonBackgroundColor
 
     private void marketingReportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketingReportBtnActionPerformed
         FileManager.getInstance().generateMarketingReport();
@@ -2430,26 +2320,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         GlassPanePopup.showPopup(obj);
         cardLayout.show(pnlCards, "testing");
     }//GEN-LAST:event_marketingReportBtnActionPerformed
-
-    private void txtSurnameEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameEmployeeActionPerformed
-
-    private void txtAddressEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressEmployeeActionPerformed
-
-    private void txtPhoneEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneEmployeeActionPerformed
-
-    private void txtSalaryEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalaryEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalaryEmployeeActionPerformed
-
-    private void employeeRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeRadioBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_employeeRadioBtnActionPerformed
 
     private void clearEmployeeFormBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEmployeeFormBtnActionPerformed
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2502,6 +2372,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         try {
             FileManager.getInstance().WriteEmployee();
             Employee.saveEmpCount();
+            clearTextFields(textFields);
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2509,10 +2380,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_addEmployeeBtnActionPerformed
 
     private void repaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_repaintShadowForTextFields
-//         ((TextField)evt.getSource()).setShadowColor(new Color(170,170,170));
-//          ((TextField)evt.getSource()).createImageShadow();
-//         ((TextField)evt.getSource()).repaint();
-
         repaitShadow(evt.getSource());
     }//GEN-LAST:event_repaintShadowForTextFields
 
@@ -2520,8 +2387,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         dateChooser.setTextRefernce(txtDob);
         dateChooser.showPopup();
         SelectedDate d = dateChooser.getSelectedDate();
-        System.out.println(d.getDay() + "-" + d.getMonth() + "-" + d.getYear());
-        System.out.println("Text : " + txtDob.getText());
     }//GEN-LAST:event_pickDateBtnActionPerformed
 
     private void addMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberBtnActionPerformed
@@ -2603,7 +2468,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         try {
             FileManager.getInstance().WriteMember();
             Member.saveEmpCount();
-            System.out.println("done");
+            clearTextFields(textFields);
+            genderButtonGroup.clearSelection();
+            memberTypeGroupButton.clearSelection();
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2655,26 +2522,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
         System.exit(0);
     }//GEN-LAST:event_button4ActionPerformed
-
-    private void employeeRadioBtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeRadioBtnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_employeeRadioBtnEditActionPerformed
-
-    private void txtSurnameEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameEmployeeEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameEmployeeEditActionPerformed
-
-    private void txtAddressEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEmployeeEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressEmployeeEditActionPerformed
-
-    private void txtPhoneEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneEmployeeEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneEmployeeEditActionPerformed
-
-    private void txtSalaryEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalaryEmployeeEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalaryEmployeeEditActionPerformed
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
         int errorCoutner;
@@ -2880,70 +2727,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_deleteMemberBtnActionPerformed
 
-    private void maleEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleEditBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleEditBtnActionPerformed
-
-    private void femaleEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleEditBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_femaleEditBtnActionPerformed
-
-    private void studentEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentEditBtnActionPerformed
-
-    private void staffEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffEditBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_staffEditBtnActionPerformed
-
-    private void txtFirstNameMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameMemberEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameMemberEditActionPerformed
-
-    private void txtFirstNameMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameMemberEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameMemberEditrepaintShadowForTextFields
-
-    private void txtSurNameMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurNameMemberEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurNameMemberEditActionPerformed
-
-    private void txtSurNameMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurNameMemberEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurNameMemberEditrepaintShadowForTextFields
-
-    private void txtPhoneMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMemberEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneMemberEditActionPerformed
-
-    private void txtPhoneMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneMemberEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneMemberEditrepaintShadowForTextFields
-
-    private void txtSportTeamOrDepartmentEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSportTeamOrDepartmentEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSportTeamOrDepartmentEditActionPerformed
-
-    private void txtSportTeamOrDepartmentEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSportTeamOrDepartmentEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSportTeamOrDepartmentEditrepaintShadowForTextFields
-
-    private void txtAdressMemberEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdressMemberEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdressMemberEditActionPerformed
-
-    private void txtAdressMemberEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressMemberEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdressMemberEditrepaintShadowForTextFields
-
-    private void txtMajorOrPositionEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorOrPositionEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMajorOrPositionEditActionPerformed
-
-    private void txtMajorOrPositionEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMajorOrPositionEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMajorOrPositionEditrepaintShadowForTextFields
-
     private void saveMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMemberBtnActionPerformed
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -3057,12 +2840,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_backMemberBtnActionPerformed
 
     private void txtDobEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDobEditMouseClicked
-        // TODO add your handling code here:
+        repaitShadow(evt.getSource());
     }//GEN-LAST:event_txtDobEditMouseClicked
-
-    private void txtDobEditrepaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDobEditrepaintShadowForTextFields
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDobEditrepaintShadowForTextFields
 
     private void pickDateBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickDateBtn1ActionPerformed
         dateChooserEdit.showPopup();
@@ -3544,8 +3323,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             button.setShadowColor(new Color(170, 170, 170));
             tempButton = button;
         }
-
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void addEmployee(ArrayList<TextField> textFields) {
