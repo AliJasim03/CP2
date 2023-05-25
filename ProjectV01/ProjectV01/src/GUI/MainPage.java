@@ -12,9 +12,9 @@ import java.awt.CardLayout;
 import FileManager.*;
 // all the bellow libraries only to do rounded panel :)
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,15 +23,6 @@ import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -45,12 +36,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     CardLayout cardLayout;
 
     public MainPage() throws IOException, ClassNotFoundException {
-        FileManager.getInstance().ReadEmployees();
-        FileManager.getInstance().ReadMembers();
-        Employee.loadEmpCount();
-        Member.loadEmpCount();
-        FileManager.getInstance().loadStartupFile();
+
         initComponents();
+        Member.loadEmpCount();
+        Employee.loadEmpCount();
+        oneTimeMsg();
+        FileManager.getInstance().loadStartupFile();
+        Employee.saveEmpCount();
+        Member.saveEmpCount();
         GlassPanePopup.install(this);
 
         cardLayout = (CardLayout) (pnlCards.getLayout());
@@ -202,13 +195,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         membersAssignTrainerTable = new Table.Table();
         txtSearchMemberTrainer = new GUI.TextField();
         javax.swing.JLabel lblSearchIcon2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        roundPanel2 = new GUI.RoundPanel();
-        button1 = new GUI.Button();
-        nametxt = new GUI.TextField();
-        textField1 = new GUI.TextField();
-        dateChooser1 = new Calander.DateChooser();
-        jButton1 = new javax.swing.JButton();
         editEmployeePnl = new javax.swing.JPanel();
         roundPanel5 = new GUI.RoundPanel();
         javax.swing.JLabel lblAddEmployee1 = new javax.swing.JLabel();
@@ -257,6 +243,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         dateChooserEdit.setForeground(new java.awt.Color(11, 158, 191));
         dateChooserEdit.setTextRefernce(txtDobEdit);
+
+        assignedTrainerComboBox.setEditable(false);
+        assignedTrainerComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                assignedTrainerComboBoxFocusLost(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym System\n");
@@ -883,39 +876,39 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblAddMember.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAddMember.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblAddMember.setForeground(new java.awt.Color(0, 0, 0));
         lblAddMember.setText("Add Member form");
 
-        lblSurname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSurname.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSurname.setForeground(new java.awt.Color(0, 0, 0));
         lblSurname.setText("Surname");
 
-        lblMemberType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMemberType.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMemberType.setForeground(new java.awt.Color(0, 0, 0));
         lblMemberType.setText("Member type");
 
-        lblGender.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblGender.setForeground(new java.awt.Color(0, 0, 0));
         lblGender.setText("Gender");
 
-        lblFirstName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFirstName.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblFirstName.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstName.setText("First Name");
 
-        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblPhone.setForeground(new java.awt.Color(0, 0, 0));
         lblPhone.setText("Phone Number");
 
-        lblSportDepartment.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSportDepartment.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSportDepartment.setForeground(new java.awt.Color(0, 0, 0));
         lblSportDepartment.setText("Sport Team");
 
-        lblAdress.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAdress.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblAdress.setForeground(new java.awt.Color(0, 0, 0));
         lblAdress.setText("Adress");
 
-        lblMajorPosition.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMajorPosition.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMajorPosition.setForeground(new java.awt.Color(0, 0, 0));
         lblMajorPosition.setText("Major");
 
@@ -1196,13 +1189,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addMemberPnlLayout.setVerticalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pnlCards.add(addMemberPnl, "addMemberPnl");
@@ -1692,11 +1685,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         membersAssignTrainerTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         membersAssignTrainerTable.setShowGrid(true);
         membersAssignTrainerTable.setShowVerticalLines(false);
-        membersAssignTrainerTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                membersAssignTrainerTablePropertyChange(evt);
-            }
-        });
         jScrollPane2.setViewportView(membersAssignTrainerTable);
         if (membersAssignTrainerTable.getColumnModel().getColumnCount() > 0) {
             membersAssignTrainerTable.getColumnModel().getColumn(0).setResizable(false);
@@ -1761,109 +1749,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         );
 
         pnlCards.add(assignTrainerPnl, "assignTrainerPnl");
-
-        jPanel3.setBackground(new java.awt.Color(2, 73, 89));
-        jPanel3.setPreferredSize(new java.awt.Dimension(773, 545));
-
-        roundPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        button1.setText("button1");
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-
-        nametxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nametxtActionPerformed(evt);
-            }
-        });
-        nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nametxtKeyTyped(evt);
-            }
-        });
-
-        textField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
-            }
-        });
-        textField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nametxtKeyTyped(evt);
-            }
-        });
-
-        javax.swing.GroupLayout roundPanel2Layout = new javax.swing.GroupLayout(roundPanel2);
-        roundPanel2.setLayout(roundPanel2Layout);
-        roundPanel2Layout.setHorizontalGroup(
-            roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundPanel2Layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(roundPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-        );
-        roundPanel2Layout.setVerticalGroup(
-            roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel2Layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
-                .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
-        );
-
-        dateChooser1.setForeground(new java.awt.Color(11, 158, 191));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addGap(61, 61, 61)))
-                .addComponent(roundPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addComponent(roundPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(dateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlCards.add(jPanel3, "testing");
 
         editEmployeePnl.setBackground(new java.awt.Color(2, 73, 89));
         editEmployeePnl.setForeground(new java.awt.Color(255, 255, 255));
@@ -2539,49 +2424,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         memberTypeGroupButton.clearSelection();
     }//GEN-LAST:event_clearBtnActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-//        ArrayList<TextField> textFields = new ArrayList<TextField>();
-//        String[] errors = {"name", "phone"};
-//        textFields.add(nametxt);
-//        textFields.add(textField1);
-//        int errorCoutner = 0;
-//        for (TextField textField : textFields) {
-////            String checkText = checkTxtField(textField, errors[errorCoutner]);
-//            errorCoutner++;
-//            if (checkText == null) {
-//                break;
-//            }
-//        }
-        try {
-            FileManager.getInstance().ReadMembers();
-            // Assuming GymSystem.members is a list of type Student
-            Member student = GymSystem.members.get(0); // Retrieve the object at index 0
-
-// Casting to PolytechnicStudent
-            PolytechnicStudent polyStudent = (PolytechnicStudent) student;
-            System.out.println(polyStudent);
-
-            System.out.println(GymSystem.members.get(0).getFirstName());
-            System.out.println(GymSystem.members.get(0).getLastName());
-            System.out.println(GymSystem.members.get(0).getId());
-            System.out.println(GymSystem.members.get(0).getFullName());
-            System.out.println(GymSystem.members.get(0).getAddress());
-            System.out.println(GymSystem.members.get(0).getPhone());
-            System.out.println(GymSystem.members.get(0).getGender());
-            System.out.println(GymSystem.members.get(0).getBirthDate());
-            System.out.println(polyStudent.getMajor());
-            System.out.println(polyStudent.getTeam());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-    }//GEN-LAST:event_button1ActionPerformed
-
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
-        repaitShadow(evt.getSource());
-    }//GEN-LAST:event_textField1ActionPerformed
-
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
         cardLayout.show(pnlCards, "dashboardPnl");
     }//GEN-LAST:event_dashboardBtnActionPerformed
@@ -2647,7 +2489,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_changNvgButtonBackgroundColor
 
     private void marketingReportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketingReportBtnActionPerformed
-
+        FileManager.getInstance().generateMarketingReport();
         Message obj = new Message();
         obj.eventOK(new ActionListener() {
             @Override
@@ -2660,11 +2502,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         GlassPanePopup.showPopup(obj);
         cardLayout.show(pnlCards, "testing");
     }//GEN-LAST:event_marketingReportBtnActionPerformed
-
-    private void nametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nametxtKeyTyped
-//        repaitShadow(evt.getSource());
-//    ((TextField)evt.getSource()).setShadowColor(darkBlue);
-    }//GEN-LAST:event_nametxtKeyTyped
 
     private void txtSurnameEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameEmployeeActionPerformed
         // TODO add your handling code here:
@@ -2742,10 +2579,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
 
     }//GEN-LAST:event_addEmployeeBtnActionPerformed
-
-    private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nametxtActionPerformed
 
     private void repaintShadowForTextFields(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_repaintShadowForTextFields
 //         ((TextField)evt.getSource()).setShadowColor(new Color(170,170,170));
@@ -2887,6 +2720,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_editEmployeeBtnActionPerformed
 
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+        try {
+            FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().WriteMember();
+        } catch (IOException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }//GEN-LAST:event_button4ActionPerformed
 
@@ -3046,8 +2885,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             txtSurNameMemberEdit.setText(membFound.getLastName());
             txtAdressMemberEdit.setText(membFound.getAddress());
             txtPhoneMemberEdit.setText(membFound.getPhone());
-            txtDobEdit.setText(String.valueOf(membFound.getBirthDate()));
-            if (membFound.getGender().equals("Male")) {
+            txtDobEdit.setText(membFound.getBirthDate());
+            if (membFound.getGender().equalsIgnoreCase("Male")) {
                 maleEditBtn.setSelected(true);
             } else {
                 femaleEditBtn.setSelected(true);
@@ -3335,7 +3174,57 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_txtSearchMemberTrainerKeyReleased
 
-    private void membersAssignTrainerTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_membersAssignTrainerTablePropertyChange
+    private void txtSearchTrainerMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerMemberKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) trainerMembersTable.getModel();
+
+        tableModel.setRowCount(0);
+        PersonalTrainer empFound = null;
+        for (Employee emp : GymSystem.employees) {
+            if (emp instanceof PersonalTrainer) {
+                String idString = String.valueOf(personalTrainerTable.getValueAt(personalTrainerTable.getSelectedRow(), 0));
+                String empIDString = "" + emp.getId();
+                if (empIDString.equals(idString)) {
+                    empFound = (PersonalTrainer) emp;
+                    break;
+                }
+            }
+        }
+        for (Member mem : empFound.getMembers()) {
+
+            String type = mem instanceof PolytechnicStaff ? "Polytechnic Staff" : "Polytechnic Student";
+            String id = "" + mem.getId();
+            String name = mem.getFullName();
+            if (txtSearchTrainerMember.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainerMember.getText().toLowerCase())) {
+                trainerMembersTable.addRow(new Object[]{id, name, type, mem.getPhone()});
+            }
+        }
+    }//GEN-LAST:event_txtSearchTrainerMemberKeyReleased
+
+    private void deleteMemberBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBtn1ActionPerformed
+        cardLayout.show(pnlCards, "listPersonalTrainerPnl");
+    }//GEN-LAST:event_deleteMemberBtn1ActionPerformed
+
+    private void txtSearchTrainerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerKeyReleased
+        DefaultTableModel tableModel = (DefaultTableModel) personalTrainerTable.getModel();
+
+        tableModel.setRowCount(0);
+        for (Employee emp : GymSystem.employees) {
+            String id = "" + emp.getId();
+            String name = emp.getFullName();
+            if (txtSearchTrainer.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainer.getText().toLowerCase())) {
+                personalTrainerTable.addRow(new Object[]{id, name, ((PersonalTrainer) emp).getMembers().size()});
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchTrainerKeyReleased
+
+    private void personalTrainerTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalTrainerTableMouseReleased
+        populateTrainerMembersTable();
+        cardLayout.show(pnlCards, "trainerMembersPnl");
+    }//GEN-LAST:event_personalTrainerTableMouseReleased
+
+    private void assignedTrainerComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedTrainerComboBoxFocusLost
+        System.out.println("sdfasdf");
         ArrayList<PersonalTrainer> PS = new ArrayList<PersonalTrainer>();
         PS.removeAll(PS);
         for (Employee emp : GymSystem.employees) {
@@ -3385,63 +3274,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         try {
             FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().ReadEmployees();
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_membersAssignTrainerTablePropertyChange
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(((PersonalTrainer) GymSystem.employees.get(0)).getMembers().size());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtSearchTrainerMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerMemberKeyReleased
-        DefaultTableModel tableModel = (DefaultTableModel) trainerMembersTable.getModel();
-
-        tableModel.setRowCount(0);
-        PersonalTrainer empFound = null;
-        for (Employee emp : GymSystem.employees) {
-            if (emp instanceof PersonalTrainer) {
-                String idString = String.valueOf(personalTrainerTable.getValueAt(personalTrainerTable.getSelectedRow(), 0));
-                String empIDString = "" + emp.getId();
-                if (empIDString.equals(idString)) {
-                    empFound = (PersonalTrainer) emp;
-                    break;
-                }
-            }
-        }
-        for (Member mem : empFound.getMembers()) {
-
-            String type = mem instanceof PolytechnicStaff ? "Polytechnic Staff" : "Polytechnic Student";
-            String id = "" + mem.getId();
-            String name = mem.getFullName();
-            if (txtSearchTrainerMember.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainerMember.getText().toLowerCase())) {
-                trainerMembersTable.addRow(new Object[]{id, name, type, mem.getPhone()});
-            }
-        }
-    }//GEN-LAST:event_txtSearchTrainerMemberKeyReleased
-
-    private void deleteMemberBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBtn1ActionPerformed
-        cardLayout.show(pnlCards, "listPersonalTrainerPnl");
-    }//GEN-LAST:event_deleteMemberBtn1ActionPerformed
-
-    private void txtSearchTrainerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchTrainerKeyReleased
-        DefaultTableModel tableModel = (DefaultTableModel) personalTrainerTable.getModel();
-
-        tableModel.setRowCount(0);
-        for (Employee emp : GymSystem.employees) {
-            String id = "" + emp.getId();
-            String name = emp.getFullName();
-            if (txtSearchTrainer.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainer.getText().toLowerCase())) {
-                personalTrainerTable.addRow(new Object[]{id, name, ((PersonalTrainer) emp).getMembers().size()});
-            }
-
-        }
-    }//GEN-LAST:event_txtSearchTrainerKeyReleased
-
-    private void personalTrainerTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalTrainerTableMouseReleased
-        populateTrainerMembersTable();
-        cardLayout.show(pnlCards, "trainerMembersPnl");
-    }//GEN-LAST:event_personalTrainerTableMouseReleased
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }    }//GEN-LAST:event_assignedTrainerComboBoxFocusLost
 
     /**
      * @param args the command line arguments
@@ -3501,14 +3339,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.Button backEmployeeEditBtn;
     private GUI.Button backMemberBtn;
     private javax.swing.JLabel bahrainLabel;
-    private GUI.Button button1;
     private GUI.Button button4;
     private GUI.Button clearBtn;
     private GUI.Button clearEmployeeFormBtn;
     private GUI.NavButton dashboardBtn;
     private javax.swing.JPanel dashboardPnl;
     private Calander.DateChooser dateChooser;
-    private Calander.DateChooser dateChooser1;
     private Calander.DateChooser dateChooserEdit;
     private GUI.Button deleteEmployeeBtn;
     private GUI.Button deleteMemberBtn;
@@ -3527,9 +3363,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.ButtonGroup genderButtonGroup;
     private javax.swing.ButtonGroup genderButtonGroupEdit;
     private javax.swing.JLabel gymImage;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -3556,7 +3390,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.ButtonGroup memberTypeGroupButton;
     private Table.Table membersAssignTrainerTable;
     private Table.Table membersTable;
-    private GUI.TextField nametxt;
     private javax.swing.JPanel nvigPnl;
     private Table.Table personalTrainerTable;
     private GUI.Button pickDateBtn;
@@ -3565,7 +3398,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel polyLabel;
     private GUI.RoundPanel roundPanel1;
     private GUI.RoundPanel roundPanel10;
-    private GUI.RoundPanel roundPanel2;
     private GUI.RoundPanel roundPanel3;
     private GUI.RoundPanel roundPanel4;
     private GUI.RoundPanel roundPanel5;
@@ -3579,7 +3411,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JRadioButton staffEditBtn;
     private javax.swing.JRadioButton studentBtn;
     private javax.swing.JRadioButton studentEditBtn;
-    private GUI.TextField textField1;
     private javax.swing.JPanel trainerMembersPnl;
     private Table.Table trainerMembersTable;
     private GUI.RadioButtonCustom trainerRadioBtn;
@@ -3663,7 +3494,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
     }
-    
+
     public boolean containsOnlyLetters(TextField textField, String error) {
         final Color DefaultC = new Color(170, 170, 170);
         final Color ErrorC = new Color(250, 0, 0);
@@ -3695,23 +3526,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 return false;
             }
             str = String.join("", words);
-        } else {
-            if (str.contains(" ")) {
-                Message obj = new Message();
-                obj.eventOK(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        GlassPanePopup.closePopupLast();
-                        textField.setShadowColor(Color.red);
-                        textField.requestFocus();
-                    }
-                });
-                obj.jLabel1.setText("<html>The " + error + " text field should contain one word only.</html>");
-                GlassPanePopup.showPopup(obj);
-                textField.requestFocus();
-                textField.setShadowColor(ErrorC);
-                return false;
-            }
         }
         for (char c : str.toCharArray()) {
             if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
@@ -4021,40 +3835,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
-//    private class Cope extends ComboBoxSuggestion {
-//
-//        Cope() {
-//            setEditable(false);
-//            addItem("(None)");
-//
-//            setBackground(new java.awt.Color(137, 255, 255));
-//            for (Employee emp : GymSystem.employees) {
-//                addItem(emp.getFullName());
-//            }
-//        }
-//    }
+    public void oneTimeMsg() {
+        if (!new File("src/FileManager/Data/Employees.dat").exists()) {
+            Message obj = new Message();
+            obj.eventOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    GlassPanePopup.closePopupLast();
+                }
+            });
+            obj.jLabel1.setText("Report have been generated");
+            obj.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/noteMassageIcon.png"))); // NOI18N
+            GlassPanePopup.showPopup(obj);
+        }
+    }
+
 }
-//
-//    public boolean containsOnlyLetters(String str) {
-//        if (str == null || str.isEmpty()) {
-//            return false;
-//        }
-//        for (char c : str.toCharArray()) {
-//            if (!Character.isLetter(c)) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
-//
-//    public boolean containsOnlyNumbers(String str) {
-//        if (str == null || str.isEmpty()) {
-//            return false;
-//        }
-//        for (char c : str.toCharArray()) {
-//            if (!Character.isDigit(c)) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
