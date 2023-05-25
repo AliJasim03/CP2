@@ -82,12 +82,13 @@ public class FileManager {
         }
     }
 
-    public void loadStartupFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public boolean loadStartupFile() throws FileNotFoundException, IOException, ClassNotFoundException {
         File memberFile = new File("src/FileManager/Data/Members.dat");
         File employeeFile = new File("src/FileManager/Data/Employees.dat");
         if (employeeFile.exists() || memberFile.exists()) {
             ReadMembers();
             ReadEmployees();
+            return false;
         } else {
             // load the startup file and use it to populate the system
             File startupFile = new File("src/FileManager/Data/startup.txt");
@@ -150,6 +151,8 @@ public class FileManager {
         }
         WriteMember();
         WriteEmployee();
+        return true;
+
     }
 
     public void generateMarketingReport() {

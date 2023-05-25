@@ -3,18 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-//testing github
 
 import Calander.*;
 import GlassPanePopup.GlassPanePopup;
 import Logic.*;
 import java.awt.CardLayout;
 import FileManager.*;
-// all the bellow libraries only to do rounded panel :)
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,12 +33,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     CardLayout cardLayout;
 
     public MainPage() throws IOException, ClassNotFoundException {
+        FileManager.getInstance().ReadEmployees();
 
         initComponents();
         Member.loadEmpCount();
         Employee.loadEmpCount();
-        oneTimeMsg();
-        FileManager.getInstance().loadStartupFile();
         Employee.saveEmpCount();
         Member.saveEmpCount();
         GlassPanePopup.install(this);
@@ -254,6 +250,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym System\n");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         mainPage.setDividerSize(1);
         mainPage.setPreferredSize(new java.awt.Dimension(960, 540));
@@ -918,11 +919,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         maleBtn.setText("Male");
         maleBtn.setContentAreaFilled(false);
         maleBtn.setFocusPainted(false);
-        maleBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleBtnActionPerformed(evt);
-            }
-        });
 
         genderButtonGroup.add(femaleBtn);
         femaleBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -930,11 +926,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         femaleBtn.setText("Female");
         femaleBtn.setContentAreaFilled(false);
         femaleBtn.setFocusPainted(false);
-        femaleBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleBtnActionPerformed(evt);
-            }
-        });
 
         memberTypeGroupButton.add(studentBtn);
         studentBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -962,11 +953,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtFirstName.setBackground(new java.awt.Color(233, 233, 233));
         txtFirstName.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstNameActionPerformed(evt);
-            }
-        });
         txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -988,11 +974,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtPhone.setBackground(new java.awt.Color(233, 233, 233));
         txtPhone.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneActionPerformed(evt);
-            }
-        });
         txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1001,11 +982,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtSportTeamOrDepartment.setBackground(new java.awt.Color(233, 233, 233));
         txtSportTeamOrDepartment.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtSportTeamOrDepartment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSportTeamOrDepartmentActionPerformed(evt);
-            }
-        });
         txtSportTeamOrDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1014,11 +990,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtAdress.setBackground(new java.awt.Color(233, 233, 233));
         txtAdress.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtAdress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAdressActionPerformed(evt);
-            }
-        });
         txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1027,11 +998,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         txtMajorOrPosition.setBackground(new java.awt.Color(233, 233, 233));
         txtMajorOrPosition.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtMajorOrPosition.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMajorOrPositionActionPerformed(evt);
-            }
-        });
         txtMajorOrPosition.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 repaintShadowForTextFields(evt);
@@ -1156,11 +1122,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtDob.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtDobMouseClicked(evt);
-            }
-        });
-        txtDob.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                repaintShadowForTextFields(evt);
             }
         });
 
@@ -2341,34 +2302,25 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMemberImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberImageBtnActionPerformed
-        // TODO add your handling code here:
-
         cardLayout.show(pnlCards, "addMemberPnl");
     }//GEN-LAST:event_addMemberImageBtnActionPerformed
 
     private void addEmployeeImageBtnActionPerforme(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeImageBtnActionPerforme
-        // TODO add your handling code here:
         cardLayout.show(pnlCards, "addEmployeePnl");
     }//GEN-LAST:event_addEmployeeImageBtnActionPerforme
 
     private void assignTrainerImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTrainerImageBtnActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(pnlCards, "assignTrainerPnl");
     }//GEN-LAST:event_assignTrainerImageBtnActionPerformed
 
     private void truckMemberInformationImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truckMemberInformationImageBtnActionPerformed
-        // TODO add your handling code here:
         cardLayout.show(pnlCards, "manageMembersPnl");
 
     }//GEN-LAST:event_truckMemberInformationImageBtnActionPerformed
 
     private void truckEmployeeInformationImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truckEmployeeInformationImageBtnActionPerformed
-        // TODO add your handling code here:
         cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_truckEmployeeInformationImageBtnActionPerformed
-
-    private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameActionPerformed
 
     private void staffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffBtnActionPerformed
         // TODO add your handling code here:
@@ -2382,33 +2334,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblMajorPosition.setText("Major");
     }//GEN-LAST:event_studentBtnActionPerformed
 
-    private void femaleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_femaleBtnActionPerformed
-
-    private void maleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleBtnActionPerformed
-
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneActionPerformed
-
     private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSurnameActionPerformed
-
-    private void txtSportTeamOrDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSportTeamOrDepartmentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSportTeamOrDepartmentActionPerformed
-
-    private void txtAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdressActionPerformed
-
-    private void txtMajorOrPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorOrPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMajorOrPositionActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2684,11 +2612,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_addMemberBtnActionPerformed
 
     private void txtDobMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDobMouseClicked
+        repaitShadow(evt.getSource());
         dateChooser.setTextRefernce(txtDob);
         dateChooser.showPopup();
         SelectedDate d = dateChooser.getSelectedDate();
-        System.out.println(d.getDay() + "-" + d.getMonth() + "-" + d.getYear());
-        System.out.println("Text : " + txtDob.getText());
     }//GEN-LAST:event_txtDobMouseClicked
 
     private void editEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmployeeBtnActionPerformed
@@ -3281,6 +3208,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_assignedTrainerComboBoxFocusLost
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            oneTimeMsg(FileManager.getInstance().loadStartupFile());
+        } catch (IOException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -3835,8 +3772,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
-    public void oneTimeMsg() {
-        if (!new File("src/FileManager/Data/Employees.dat").exists()) {
+    public void oneTimeMsg(boolean startupLoaded) {
+        if (startupLoaded) {
             Message obj = new Message();
             obj.eventOK(new ActionListener() {
                 @Override
@@ -3844,7 +3781,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     GlassPanePopup.closePopupLast();
                 }
             });
-            obj.jLabel1.setText("Report have been generated");
+            obj.jLabel1.setText("Start up File has been populated.");
             obj.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/noteMassageIcon.png"))); // NOI18N
             GlassPanePopup.showPopup(obj);
         }
