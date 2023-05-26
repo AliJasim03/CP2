@@ -638,41 +638,32 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel3.setPreferredSize(new java.awt.Dimension(683, 392));
 
         lblAddEmployee.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
-        lblAddEmployee.setForeground(new java.awt.Color(0, 0, 0));
         lblAddEmployee.setText("Add Employee Form");
 
         lblFirstNameEmployee.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblFirstNameEmployee.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstNameEmployee.setText("First name");
 
         lblEmployeeType.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblEmployeeType.setForeground(new java.awt.Color(0, 0, 0));
         lblEmployeeType.setText("Employee type");
 
         lblPhoneEmployee.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblPhoneEmployee.setForeground(new java.awt.Color(0, 0, 0));
         lblPhoneEmployee.setText("Phone number");
 
         lblSurnameEmployee.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurnameEmployee.setForeground(new java.awt.Color(0, 0, 0));
         lblSurnameEmployee.setText("Surname");
 
         lblSalary.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSalary.setForeground(new java.awt.Color(0, 0, 0));
         lblSalary.setText("Salary");
 
         lblAddressEmployee.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblAddressEmployee.setForeground(new java.awt.Color(0, 0, 0));
         lblAddressEmployee.setText("Address");
 
         employeeTypeBtnGroup.add(trainerRadioBtn);
-        trainerRadioBtn.setForeground(new java.awt.Color(0, 0, 0));
         trainerRadioBtn.setText("Trainer");
         trainerRadioBtn.setFocusPainted(false);
         trainerRadioBtn.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
 
         employeeTypeBtnGroup.add(employeeRadioBtn);
-        employeeRadioBtn.setForeground(new java.awt.Color(0, 0, 0));
         employeeRadioBtn.setText("Regular Employee");
         employeeRadioBtn.setFocusPainted(false);
         employeeRadioBtn.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
@@ -824,7 +815,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmployeePnlLayout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         addEmployeePnlLayout.setVerticalGroup(
@@ -849,58 +840,46 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lblAddMember.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblAddMember.setForeground(new java.awt.Color(0, 0, 0));
         lblAddMember.setText("Add Member form");
 
         lblSurname.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurname.setForeground(new java.awt.Color(0, 0, 0));
         lblSurname.setText("Surname");
 
         lblMemberType.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblMemberType.setForeground(new java.awt.Color(0, 0, 0));
         lblMemberType.setText("Member type");
 
         lblGender.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblGender.setForeground(new java.awt.Color(0, 0, 0));
         lblGender.setText("Gender");
 
         lblFirstName.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblFirstName.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstName.setText("First Name");
 
         lblPhone.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblPhone.setForeground(new java.awt.Color(0, 0, 0));
         lblPhone.setText("Phone Number");
 
         lblSportDepartment.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSportDepartment.setForeground(new java.awt.Color(0, 0, 0));
         lblSportDepartment.setText("Sport Team");
 
         lblAdress.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblAdress.setForeground(new java.awt.Color(0, 0, 0));
         lblAdress.setText("Adress");
 
         lblMajorPosition.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblMajorPosition.setForeground(new java.awt.Color(0, 0, 0));
         lblMajorPosition.setText("Major");
 
         genderButtonGroup.add(maleBtn);
         maleBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        maleBtn.setForeground(new java.awt.Color(0, 0, 0));
         maleBtn.setText("Male");
         maleBtn.setContentAreaFilled(false);
         maleBtn.setFocusPainted(false);
 
         genderButtonGroup.add(femaleBtn);
         femaleBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        femaleBtn.setForeground(new java.awt.Color(0, 0, 0));
         femaleBtn.setText("Female");
         femaleBtn.setContentAreaFilled(false);
         femaleBtn.setFocusPainted(false);
 
         memberTypeGroupButton.add(studentBtn);
         studentBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        studentBtn.setForeground(new java.awt.Color(0, 0, 0));
         studentBtn.setText("Student");
         studentBtn.setContentAreaFilled(false);
         studentBtn.setFocusPainted(false);
@@ -912,7 +891,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         memberTypeGroupButton.add(staffBtn);
         staffBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        staffBtn.setForeground(new java.awt.Color(0, 0, 0));
         staffBtn.setText("Staff");
         staffBtn.setContentAreaFilled(false);
         staffBtn.setFocusPainted(false);
@@ -990,22 +968,50 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         });
 
+        txtDob.setEditable(false);
+        txtDob.setBackground(new java.awt.Color(233, 233, 233));
+        txtDob.setFocusable(false);
+        txtDob.setShadowColor(new java.awt.Color(0, 0, 0));
+        txtDob.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDobMouseClicked(evt);
+            }
+        });
+
+        pickDateBtn.setBackground(new java.awt.Color(26, 19, 99));
+        pickDateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        pickDateBtn.setText("pick");
+        pickDateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickDateBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
         roundPanel1.setLayout(roundPanel1Layout);
         roundPanel1Layout.setHorizontalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSurname)
-                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAdress)
-                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblAdress)
+                        .addComponent(lblPhone)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
+                            .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFirstName)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSurname)
+                                .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(roundPanel1Layout.createSequentialGroup()
+                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGender)
                     .addComponent(lblMemberType)
@@ -1021,7 +1027,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(maleBtn)
                         .addGap(35, 35, 35)
                         .addComponent(femaleBtn)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(roundPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1043,21 +1049,22 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender)
-                    .addComponent(lblFirstName))
+                    .addComponent(lblFirstName)
+                    .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maleBtn)
-                    .addComponent(femaleBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(femaleBtn)
+                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(lblMemberType)
+                .addGap(2, 2, 2)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMemberType))
-                .addGap(0, 0, 0)
-                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentBtn)
-                    .addComponent(staffBtn))
+                    .addComponent(staffBtn)
+                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 9, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1078,51 +1085,24 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
-
-        txtDob.setEditable(false);
-        txtDob.setBackground(new java.awt.Color(233, 233, 233));
-        txtDob.setFocusable(false);
-        txtDob.setShadowColor(new java.awt.Color(0, 0, 0));
-        txtDob.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDobMouseClicked(evt);
-            }
-        });
-
-        pickDateBtn.setText("pick");
-        pickDateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pickDateBtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout addMemberPnlLayout = new javax.swing.GroupLayout(addMemberPnl);
         addMemberPnl.setLayout(addMemberPnlLayout);
         addMemberPnlLayout.setHorizontalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(42, Short.MAX_VALUE))
-            .addGroup(addMemberPnlLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         addMemberPnlLayout.setVerticalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberPnlLayout.createSequentialGroup()
                 .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pnlCards.add(addMemberPnl, "addMemberPnl");
@@ -1420,7 +1400,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblSearchIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Select an Employee to view the mebers list.");
 
         javax.swing.GroupLayout roundPanel9Layout = new javax.swing.GroupLayout(roundPanel9);
@@ -1530,7 +1509,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         });
 
         lblTrainerName.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblTrainerName.setForeground(new java.awt.Color(0, 0, 0));
         lblTrainerName.setText("f");
 
         javax.swing.GroupLayout roundPanel10Layout = new javax.swing.GroupLayout(roundPanel10);
@@ -1690,42 +1668,33 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel5.setPreferredSize(new java.awt.Dimension(683, 392));
 
         lblAddEmployee1.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
-        lblAddEmployee1.setForeground(new java.awt.Color(0, 0, 0));
         lblAddEmployee1.setText("Edit Employee Form");
 
         lblFirstNameEmployee1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblFirstNameEmployee1.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstNameEmployee1.setText("First name");
 
         lblEmployeeType1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblEmployeeType1.setForeground(new java.awt.Color(0, 0, 0));
         lblEmployeeType1.setText("Employee type");
 
         lblPhoneEmployee1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblPhoneEmployee1.setForeground(new java.awt.Color(0, 0, 0));
         lblPhoneEmployee1.setText("Phone number");
 
         lblSurnameEmployee1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurnameEmployee1.setForeground(new java.awt.Color(0, 0, 0));
         lblSurnameEmployee1.setText("Surname");
 
         lblSalary1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSalary1.setForeground(new java.awt.Color(0, 0, 0));
         lblSalary1.setText("Salary");
 
         lblAddressEmployee1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblAddressEmployee1.setForeground(new java.awt.Color(0, 0, 0));
         lblAddressEmployee1.setText("Address");
 
         employeeTypeBtnGroup.add(trainerRadioBtnEdit);
-        trainerRadioBtnEdit.setForeground(new java.awt.Color(0, 0, 0));
         trainerRadioBtnEdit.setText("Trainer");
         trainerRadioBtnEdit.setEnabled(false);
         trainerRadioBtnEdit.setFocusPainted(false);
         trainerRadioBtnEdit.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
 
         employeeTypeBtnGroup.add(employeeRadioBtnEdit);
-        employeeRadioBtnEdit.setForeground(new java.awt.Color(0, 0, 0));
         employeeRadioBtnEdit.setText("Regular Employee");
         employeeRadioBtnEdit.setEnabled(false);
         employeeRadioBtnEdit.setFocusPainted(false);
@@ -1878,7 +1847,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             editEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editEmployeePnlLayout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         editEmployeePnlLayout.setVerticalGroup(
@@ -1903,58 +1872,46 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         lblAddMember1.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
-        lblAddMember1.setForeground(new java.awt.Color(0, 0, 0));
         lblAddMember1.setText("Edit Member form");
 
         lblSurname1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurname1.setForeground(new java.awt.Color(0, 0, 0));
         lblSurname1.setText("Surname");
 
         lblMemberType1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblMemberType1.setForeground(new java.awt.Color(0, 0, 0));
         lblMemberType1.setText("Member type");
 
         lblGender1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblGender1.setForeground(new java.awt.Color(0, 0, 0));
         lblGender1.setText("Gender");
 
         lblFirstName1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblFirstName1.setForeground(new java.awt.Color(0, 0, 0));
         lblFirstName1.setText("First Name");
 
         lblPhone1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblPhone1.setForeground(new java.awt.Color(0, 0, 0));
         lblPhone1.setText("Phone Number");
 
         lblSportDepartmentEdit.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSportDepartmentEdit.setForeground(new java.awt.Color(0, 0, 0));
         lblSportDepartmentEdit.setText("Sport Team");
 
         lblAdress1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblAdress1.setForeground(new java.awt.Color(0, 0, 0));
         lblAdress1.setText("Adress");
 
         lblMajorPositionEdit.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblMajorPositionEdit.setForeground(new java.awt.Color(0, 0, 0));
         lblMajorPositionEdit.setText("Major");
 
         genderButtonGroupEdit.add(maleEditBtn);
         maleEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        maleEditBtn.setForeground(new java.awt.Color(0, 0, 0));
         maleEditBtn.setText("Male");
         maleEditBtn.setContentAreaFilled(false);
         maleEditBtn.setFocusPainted(false);
 
         genderButtonGroupEdit.add(femaleEditBtn);
         femaleEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        femaleEditBtn.setForeground(new java.awt.Color(0, 0, 0));
         femaleEditBtn.setText("Female");
         femaleEditBtn.setContentAreaFilled(false);
         femaleEditBtn.setFocusPainted(false);
 
         memberTypeGroupButton.add(studentEditBtn);
         studentEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        studentEditBtn.setForeground(new java.awt.Color(0, 0, 0));
         studentEditBtn.setText("Student");
         studentEditBtn.setContentAreaFilled(false);
         studentEditBtn.setEnabled(false);
@@ -1962,7 +1919,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         memberTypeGroupButton.add(staffEditBtn);
         staffEditBtn.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        staffEditBtn.setForeground(new java.awt.Color(0, 0, 0));
         staffEditBtn.setText("Staff");
         staffEditBtn.setContentAreaFilled(false);
         staffEditBtn.setEnabled(false);
