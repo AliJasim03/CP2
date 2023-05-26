@@ -8,8 +8,10 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 /**
+ * Creating shadow image to render
  *
- * @author alija
+ * @author RAVEN
+ *
  */
 public class ShadowRenderer {
 

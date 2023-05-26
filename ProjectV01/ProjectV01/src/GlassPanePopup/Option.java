@@ -5,6 +5,7 @@ import java.awt.Component;
 import net.miginfocom.layout.LayoutCallback;
 
 /**
+ * interface Option class
  *
  * @author Raven
  */

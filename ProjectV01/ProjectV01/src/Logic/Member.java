@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * @author Danial Alajmi Represents a member of an organization or group. This
- * class stores member information such as first name, last name, address,
- * phone, gender, and birth date. It also keeps track of the total number of
- * members.
+ * Represents a member of an organization or group. This class stores member
+ * information such as first name, last name, address, phone, gender, and birth
+ * date. It also keeps track of the total number of members.
+ *
+ * @author Danial Alajmi
  */
 public class Member implements Serializable {
 

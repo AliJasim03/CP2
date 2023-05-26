@@ -26,6 +26,11 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
+/**
+ * ComboSuggestionUI extends BasicComboBoxUI
+ *
+ * @author RAVEN
+ */
 public class ComboSuggestionUI extends BasicComboBoxUI {
 
     @Override

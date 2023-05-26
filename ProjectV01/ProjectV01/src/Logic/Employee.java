@@ -7,9 +7,11 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * @author Danial Alajmi Represents an employee with attributes such as ID,
- * first name, last name, address, phone, and salary. Implements the
- * Serializable interface for object serialization.
+ * Represents an employee with attributes such as ID, first name, last name,
+ * address, phone, and salary. Implements the Serializable interface for object
+ * serialization.
+ *
+ * @author Danial Alajmi
  */
 public class Employee implements Serializable {
 

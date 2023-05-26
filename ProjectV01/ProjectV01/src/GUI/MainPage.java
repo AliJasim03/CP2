@@ -3661,8 +3661,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
      * Populates the employees table with data from the list of employees in the
      * gym system.
      *
-     * @author Danial Alajmi
-     * @param employeesTable The JTable to be populated with employee data
+     * @author Danial Alajmi employeesTable The JTable to be populated with
+     * employee data
      */
     public void populateEmployeesTable() {
         DefaultTableModel model = (DefaultTableModel) employeesTable.getModel();
@@ -3680,8 +3680,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
      * Populates the members table with data from the list of members in the gym
      * system.
      *
-     * @author Danial Alajmi
-     * @param membersTable The JTable to be populated with member data
+     * @author Danial Alajmi membersTable The JTable to be populated with member
+     * data
      */
     public void populateMembersTable() {
         DefaultTableModel model = (DefaultTableModel) membersTable.getModel();
@@ -3699,9 +3699,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
      * Populates the trainerMembersTable with data from the members of a
      * selected PersonalTrainer in the gym system.
      *
-     * @Danial Alajmi
-     * @param trainerMembersTable The JTable to be populated with trainer member
-     * data
+     * @author Danial Alajmi trainerMembersTable The JTable to be populated with
+     * trainer member data
      */
     public void populateTrainerMembersTable() {
         DefaultTableModel model = (DefaultTableModel) trainerMembersTable.getModel();
@@ -3731,9 +3730,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
      * Populates the personalTrainerTable with data from the personal trainers
      * in the gym system.
      *
-     * @author Ali Jasim
-     * @param personalTrainerTable The JTable to be populated with personal
-     * trainer data
+     * @author Ali Jasim personalTrainerTable The Table to be populated with
+     * personal trainer data
      */
     public void populateTrainersTable() {
         DefaultTableModel model = (DefaultTableModel) personalTrainerTable.getModel();
@@ -3748,7 +3746,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     /**
      * Clears the text fields in the given ArrayList of text fields.
      *
-     * @Danial Alajmi
+     * @author Danial Alajmi
      * @param textFields An ArrayList of TextField objects to clear
      */
     public void clearTextFields(ArrayList<TextField> textFields) {
@@ -3820,8 +3818,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }
 
     /**
-     * @author Ali Jasim Populates the assignedTrainerComboBox with available
-     * PersonalTrainer objects from the GymSystem.employees list.
+     * Populates the assignedTrainerComboBox with available PersonalTrainer
+     * objects from the GymSystem.employees list.
+     *
+     * @author Ali Jasim
      */
     public void assignTrainerComboBox() {
         assignedTrainerComboBox.removeAllItems();
@@ -3842,8 +3842,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }
 
     /**
-     * @author Hawra Fardan Displays a one-time message dialog when the
-     * application starts up and the startup file has been populated.
+     * Displays a one-time message dialog when the application starts up and the
+     * startup file has been populated.
+     *
+     * @param startupLoaded the result of the function in the FileManager class
+     * @author Hawra Fardan
      */
     public void oneTimeMsg(boolean startupLoaded) {
         if (startupLoaded) {

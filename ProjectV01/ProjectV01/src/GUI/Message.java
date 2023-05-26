@@ -11,6 +11,7 @@ import GlassPanePopup.GlassPanePopup;
 /**
  *
  * @author Danial Alajmi
+ * Custom JOptionPane
  */
 public class Message extends javax.swing.JPanel {
 

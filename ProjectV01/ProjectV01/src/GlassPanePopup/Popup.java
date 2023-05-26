@@ -18,6 +18,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 /**
+ * Popup class to custom the JComponent
  *
  * @author Raven
  */

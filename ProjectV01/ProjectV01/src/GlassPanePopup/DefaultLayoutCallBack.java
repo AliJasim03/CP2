@@ -8,7 +8,7 @@ import net.miginfocom.layout.LayoutCallback;
 import net.miginfocom.layout.UnitValue;
 
 /**
- *
+ * Custom JOptionPane layout
  * @author Raven
  */
 public class DefaultLayoutCallBack extends LayoutCallback {

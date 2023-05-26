@@ -5,6 +5,7 @@ import java.awt.Component;
 import net.miginfocom.layout.LayoutCallback;
 
 /**
+ * DefaultOption implements Option
  *
  * @author Raven
  */

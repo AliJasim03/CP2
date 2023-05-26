@@ -1,8 +1,10 @@
 package Logic;
 
 /**
- * @author Danial Alajmi Represents a polytechnic student, which extends the
- * Member class. This class adds additional fields for major and team.
+ * Represents a polytechnic student, which extends the Member class. This class
+ * adds additional fields for major and team.
+ *
+ * @author Danial Alajmi
  */
 public class PolytechnicStudent extends Member {
 

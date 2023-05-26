@@ -18,6 +18,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Custom navButton to separate them from the rest of the buttons to adapt and
+ * change their background.
  *
  * @author Danial Alajmi
  */

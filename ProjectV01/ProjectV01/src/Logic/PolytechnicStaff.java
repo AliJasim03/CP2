@@ -1,9 +1,10 @@
 package Logic;
 
 /**
- * @author Danial Alajmi Represents a polytechnic staff member, which extends
- * the Member class. This class adds additional fields for position and
- * department.
+ * Represents a polytechnic staff member, which extends the Member class. This
+ * class adds additional fields for position and department.
+ *
+ * @author Danial Alajmi
  */
 public class PolytechnicStaff extends Member {
 

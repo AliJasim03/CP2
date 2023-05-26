@@ -10,7 +10,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
 /**
- *
+ *GlassPanePopup for the JOption
  * @author Raven
  */
 public class GlassPanePopup {

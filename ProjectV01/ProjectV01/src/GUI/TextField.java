@@ -7,27 +7,19 @@ package GUI;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.RenderingHints;
-import java.awt.Transparency;
 import java.awt.geom.Area;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicTextFieldUI;
 
 /**
+ * Custom textField that has shadow and rounded
  *
- * @author alija
+ * @author Danial Alajm
  */
 public class TextField extends JTextField {
 
@@ -98,7 +90,7 @@ public class TextField extends JTextField {
             Graphics2D g2 = imageShadow.createGraphics();
 //            BufferedImage img = createShadow();
 //            if (img != null) {
-                g2.drawImage(createShadow(), 0, 0, null);
+            g2.drawImage(createShadow(), 0, 0, null);
 //            }
             g2.dispose();
         }
@@ -128,4 +120,3 @@ public class TextField extends JTextField {
         }
     }
 }
-

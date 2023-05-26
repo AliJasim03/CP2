@@ -27,7 +27,7 @@ public class Button extends JButton {
     /**
      * Constructs a new Button with the specified content and default settings.
      *
-     * @param content the button's content
+     * 
      */
     public Button() {
         setContentAreaFilled(false);
@@ -53,7 +53,7 @@ public class Button extends JButton {
      * Overrides the paintComponent method to customize the appearance of the
      * button. This method is called when the button needs to be repainted.
      *
-     * @param g the Graphics object used for painting
+     * 
      */
     @Override
     protected void paintComponent(Graphics grphcs) {

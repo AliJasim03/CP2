@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * @author Hawra Fardan
  * A singleton class to manage file operations related to employees and members
  * in the gym system. It provides methods to write and read employees and
  * members data from files, and to load startup data.
+ * @author Hawra Fardan
  */
 public class FileManager {
 
@@ -52,7 +52,6 @@ public class FileManager {
      * Writes employees data to a file.
      *
      * @throws IOException if a file I/O error occurs
-     * @throws ClassNotFoundException if a serialized class fails to load
      */
     public void writeEmployee() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Employees.dat")) {
@@ -84,7 +83,6 @@ public class FileManager {
      * Writes members data to a file.
      *
      * @throws IOException if a file I/O error occurs
-     * @throws ClassNotFoundException if a serialized class fails to load
      */
     public void writeMember() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Members.dat")) {
@@ -196,7 +194,6 @@ public class FileManager {
      * report includes information such as full name, address, phone number,
      * position, department, major, and sport team.
      *
-     * @throws IOException if an input or output exception occurred
      */
     public void generateMarketingReport() {
         Path filePath = Paths.get("marketingReport.txt");

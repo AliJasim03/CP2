@@ -3,8 +3,9 @@ package Logic;
 import java.util.ArrayList;
 
 /**
- * @author Danial Alajmi Represents a personal trainer who manages a list of
- * members.
+ * Represents a personal trainer who manages a list of members.
+ *
+ * @author Danial Alajmi
  */
 public class PersonalTrainer extends Employee {
 
