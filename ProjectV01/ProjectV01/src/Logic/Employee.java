@@ -1,21 +1,18 @@
 package Logic;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
- *
- * @author alija
+ * @author Danial Alajmi Represents an employee with attributes such as ID,
+ * first name, last name, address, phone, and salary. Implements the
+ * Serializable interface for object serialization.
  */
+public class Employee implements Serializable {
 
-
-public class Employee implements Serializable{
     private static final long serialVersionUID = 1L;
     private int id;
     private String firstName;
@@ -24,7 +21,18 @@ public class Employee implements Serializable{
     private String phone;
     private double salary;
     static int totalEmployee;
-    
+
+    /**
+     * Constructs a new Employee object with the specified first name, last
+     * name, address, phone, and salary. The ID is assigned as the total number
+     * of employees plus one.
+     *
+     * @param firstName the first name of the employee
+     * @param lastName the last name of the employee
+     * @param address the address of the employee
+     * @param phone the phone number of the employee
+     * @param salary the salary of the employee
+     */
     public Employee(String firstName, String lastName, String address, String phone, double salary) {
         this.id = totalEmployee;
         this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
@@ -35,7 +43,6 @@ public class Employee implements Serializable{
         totalEmployee++;
     }
 
-    
     //Getters and setter (Auto generated)
     public int getId() {
         return id;
@@ -44,10 +51,10 @@ public class Employee implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
+
     //Full Name implementation
     public String getFullName() {
-        return getFirstName()+" "+getLastName();
+        return getFirstName() + " " + getLastName();
     }
 
     public String getFirstName() {
@@ -89,7 +96,8 @@ public class Employee implements Serializable{
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    
+
+    // Static methods to save and load the total number of employees
     public static void saveEmpCount() {
         try {
             FileWriter fw = new FileWriter("src/FileManager/Data/empCount.txt");

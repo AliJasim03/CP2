@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * A custom JButton class that displays a button with a shadow effect when the mouse is pressed.
  */
 package GUI;
 
@@ -20,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 /**
  *
- * @author RAVEN
+ * @author Danial Alajmi
  */
 public class NavButton extends JButton {
 
@@ -65,20 +64,18 @@ public class NavButton extends JButton {
         double y = shadowSize.top;
         //  Create Shadow Image
         g2.drawImage(imageShadow, 0, 0, null);
-                if (mousePress) {
+        if (mousePress) {
             g2.setColor(getBackground().darker());
         } else {
             g2.setColor(getBackground());
-        }      
-        Area area = new Area(new RoundRectangle2D.Double(x, y, width+10, height, round, round));
+        }
+        Area area = new Area(new RoundRectangle2D.Double(x, y, width + 10, height, round, round));
         g2.fill(area);
         g2.dispose();
 
         super.paintComponent(grphcs);
 
-}
-
-    
+    }
 
     public int getRound() {
         return round;
@@ -101,7 +98,7 @@ public class NavButton extends JButton {
     }
 
     private int round = 20;
-    private Color shadowColor = new Color(11,158,191);//new Color(170, 170, 170);
+    private Color shadowColor = new Color(11, 158, 191);//new Color(170, 170, 170);
     private BufferedImage imageShadow;
     private final Insets shadowSize = new Insets(2, 5, 8, 5);
 

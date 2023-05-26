@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * A custom Button class that extends JButton and overrides the paintComponent method
+ * to create a custom appearance with a darker background when the mouse is pressed.
+ *
+ * @author RAVEN
+ * @since 1.0
  */
 package GUI;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -14,13 +18,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
- *
- * @author RAVEN
+ * Constructs a new Button with default settings.
  */
 public class Button extends JButton {
 
     private boolean mousePress;
 
+    /**
+     * Constructs a new Button with the specified content and default settings.
+     *
+     * @param content the button's content
+     */
     public Button() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(7, 5, 7, 5));
@@ -41,6 +49,12 @@ public class Button extends JButton {
         });
     }
 
+    /**
+     * Overrides the paintComponent method to customize the appearance of the
+     * button. This method is called when the button needs to be repainted.
+     *
+     * @param g the Graphics object used for painting
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();
@@ -55,6 +69,4 @@ public class Button extends JButton {
         super.paintComponent(grphcs);
     }
 
-
-    
 }

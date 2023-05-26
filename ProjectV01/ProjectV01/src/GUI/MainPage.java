@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
 import Calander.*;
@@ -21,10 +17,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultCellEditor;
 
-/**
- *
- * @author alija
- */
 public class MainPage extends javax.swing.JFrame implements ActionListener {
 
     /**
@@ -33,7 +25,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     CardLayout cardLayout;
 
     public MainPage() throws IOException, ClassNotFoundException {
-        FileManager.getInstance().ReadEmployees();
+        FileManager.getInstance().readEmployees();
 
         initComponents();
         Member.loadEmpCount();
@@ -52,7 +44,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         dateChooser.addEventDateChooser(new EventDateChooser() {
             @Override
             public void dateSelected(SelectedAction action, SelectedDate date) {
-                System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
                 if (action.getAction() == SelectedAction.DAY_SELECTED) {
                     dateChooser.hidePopup();
                 }
@@ -61,7 +52,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         dateChooserEdit.addEventDateChooser(new EventDateChooser() {
             @Override
             public void dateSelected(SelectedAction action, SelectedDate date) {
-                System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
                 if (action.getAction() == SelectedAction.DAY_SELECTED) {
                     dateChooserEdit.hidePopup();
                 }
@@ -103,7 +93,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         manageMemberButton = new GUI.NavButton();
         assignTrainerButton = new GUI.NavButton();
         marketingReportBtn = new GUI.NavButton();
-        button4 = new GUI.Button();
+        exitBtn = new GUI.Button();
         pnlCards = new javax.swing.JPanel();
         dashboardPnl = new javax.swing.JPanel();
         addMemberImageBtn = new javax.swing.JButton();
@@ -433,16 +423,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        button4.setBackground(new java.awt.Color(255, 67, 67));
-        button4.setForeground(new java.awt.Color(255, 255, 255));
-        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
-        button4.setText("Exit");
-        button4.setFocusPainted(false);
-        button4.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        button4.setIconTextGap(10);
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        exitBtn.setBackground(new java.awt.Color(255, 67, 67));
+        exitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
+        exitBtn.setText("Exit");
+        exitBtn.setFocusPainted(false);
+        exitBtn.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        exitBtn.setIconTextGap(10);
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                exitBtnActionPerformed(evt);
             }
         });
 
@@ -478,7 +468,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nvigPnlLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(nvigPnlLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,7 +510,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(marketingReportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -1027,7 +1017,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
                                     .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblSurname)
@@ -1067,6 +1057,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         roundPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addMemberBtn, clearBtn});
 
+        roundPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtFirstName, txtSurname});
+
         roundPanel1Layout.setVerticalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel1Layout.createSequentialGroup()
@@ -1087,19 +1079,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMemberType)
                     .addComponent(lblFirstName2))
-                .addGap(3, 3, 3)
-                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(studentBtn)
-                        .addComponent(staffBtn)
-                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studentBtn)
+                    .addComponent(staffBtn)
+                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pickDateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1130,14 +1121,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberPnlLayout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         addMemberPnlLayout.setVerticalGroup(
             addMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pnlCards.add(addMemberPnl, "addMemberPnl");
@@ -1175,7 +1166,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             employeesTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        txtSearchEmp.setEditable(false);
         txtSearchEmp.setBackground(new java.awt.Color(11, 196, 217));
         txtSearchEmp.setForeground(new java.awt.Color(255, 255, 255));
         txtSearchEmp.setText("Search by ID or Name");
@@ -1245,16 +1235,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel4Layout.setVerticalGroup(
             roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel4Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(editEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manageEmployeesPnlLayout = new javax.swing.GroupLayout(manageEmployeesPnl);
@@ -1269,9 +1259,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         manageEmployeesPnlLayout.setVerticalGroup(
             manageEmployeesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageEmployeesPnlLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(roundPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pnlCards.add(manageEmployeesPnl, "manageEmployeesPnl");
@@ -1320,11 +1310,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 placeHolderCheck(evt);
-            }
-        });
-        txtSearchMember.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchMemberActionPerformed(evt);
             }
         });
         txtSearchMember.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1498,15 +1483,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel9Layout.setVerticalGroup(
             roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel9Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSearchIcon3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(roundPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchTrainer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         roundPanel9Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblSearchIcon3, txtSearchTrainer});
@@ -1523,9 +1508,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         listPersonalTrainerPnlLayout.setVerticalGroup(
             listPersonalTrainerPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listPersonalTrainerPnlLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(roundPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pnlCards.add(listPersonalTrainerPnl, "listPersonalTrainerPnl");
@@ -1624,10 +1609,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel10Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTrainerName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(roundPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchTrainerMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(deleteMemberBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTrainerName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteMemberBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblSearchIcon4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1877,67 +1862,66 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel5Layout.setHorizontalGroup(
             roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFirstNameEmployee1)
+                    .addComponent(txtFirstNameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSurnameEmployee1)
+                    .addComponent(txtSurnameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressEmployee1)
+                    .addComponent(txtAddressEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveEmployeeEditBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblEmployeeType1)
+                        .addComponent(lblSalary1)
+                        .addComponent(txtPhoneEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPhoneEmployee1)
+                        .addComponent(txtSalaryEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(roundPanel5Layout.createSequentialGroup()
-                        .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFirstNameEmployee1)
-                            .addComponent(txtFirstNameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSurnameEmployee1)
-                            .addComponent(txtSurnameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddressEmployee1)
-                            .addComponent(txtAddressEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveEmployeeEditBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblEmployeeType1)
-                                .addComponent(lblSalary1)
-                                .addComponent(txtPhoneEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblPhoneEmployee1)
-                                .addComponent(txtSalaryEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(roundPanel5Layout.createSequentialGroup()
-                                .addComponent(employeeRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(trainerRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(backEmployeeEditBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblAddEmployee1))
+                        .addComponent(employeeRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(trainerRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backEmployeeEditBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(roundPanel5Layout.createSequentialGroup()
+                .addGap(236, 236, 236)
+                .addComponent(lblAddEmployee1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel5Layout.setVerticalGroup(
             roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(32, 32, 32)
                 .addComponent(lblAddEmployee1)
-                .addGap(28, 28, 28)
+                .addGap(20, 20, 20)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhoneEmployee1)
                     .addComponent(lblFirstNameEmployee1))
                 .addGap(0, 0, 0)
+                .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPhoneEmployeeEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFirstNameEmployeeEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundPanel5Layout.createSequentialGroup()
-                        .addComponent(txtFirstNameEmployeeEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblSurnameEmployee1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSurnameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(roundPanel5Layout.createSequentialGroup()
-                        .addComponent(txtPhoneEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSalary1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSalaryEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
+                    .addComponent(lblSalary1)
+                    .addComponent(lblSurnameEmployee1))
+                .addGap(0, 0, 0)
+                .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSalaryEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSurnameEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel5Layout.createSequentialGroup()
                         .addComponent(lblEmployeeType1)
                         .addGap(0, 0, 0)
                         .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAddressEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAddressEmployeeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(trainerRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(employeeRadioBtnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblAddressEmployee1))
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(roundPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveEmployeeEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backEmployeeEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2206,7 +2190,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maleEditBtn)
                     .addComponent(femaleEditBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMemberType1)
                     .addComponent(lblFirstName3))
@@ -2216,28 +2200,27 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(studentEditBtn)
                         .addComponent(staffEditBtn)
-                        .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 5, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMajorPositionEdit))
-                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundPanel7Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtMajorOrPositionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtAdressMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMajorOrPositionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAdressMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSportDepartmentEdit))
-                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editMemberPnlLayout = new javax.swing.GroupLayout(editMemberPnl);
@@ -2252,9 +2235,9 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         editMemberPnlLayout.setVerticalGroup(
             editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(roundPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pnlCards.add(editMemberPnl, "editMemberPnl");
@@ -2312,6 +2295,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblSportDepartment.setText("Sport Team");
         lblMajorPosition.setText("Major");
     }//GEN-LAST:event_studentBtnActionPerformed
+    /**
+     * Clears the text fields and selected radio button groups when the clear
+     * button is clicked.
+     *
+     * @author Danial Alajmi
+     */
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2357,7 +2346,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         populateMembersTable();
         cardLayout.show(pnlCards, "manageMembersPnl");
     }//GEN-LAST:event_manageMemberButtonActionPerformed
-
+    /**
+     * Assigns a personal trainer to each member and displays the information in
+     * a table. The table shows member ID, full name, member type, and assigned
+     * trainer's full name and ID. If a member does not have an assigned
+     * trainer, the table displays "(None)" for that member.
+     *
+     * @param evt The event object representing the action event
+     * @author Ali Jasim
+     */
     private void assignTrainerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTrainerButtonActionPerformed
         actionPerformed(evt);
         assignTrainerComboBox();
@@ -2389,7 +2386,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         cardLayout.show(pnlCards, "assignTrainerPnl");
     }//GEN-LAST:event_assignTrainerButtonActionPerformed
-
+    /**
+     * Generates a marketing report and displays a message to the user when the
+     * report is generated. The method shows the "testing" card in the card
+     * layout after generating the report.
+     *
+     * @param evt The event object representing the action event
+     * @author Hawra Fardan
+     *
+     */
     private void marketingReportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketingReportBtnActionPerformed
         FileManager.getInstance().generateMarketingReport();
         Message obj = new Message();
@@ -2415,7 +2420,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         clearTextFields(textFields);
         employeeTypeBtnGroup.clearSelection();
     }//GEN-LAST:event_clearEmployeeFormBtnActionPerformed
-
+    /**
+     * Adds a new employee to the system. Validates the input fields and
+     * employee type before adding the employee. If the input is valid, the
+     * employee is added, and the saveEmployee() method is called. If an
+     * exception occurs, it is logged.
+     *
+     * @param evt The event object representing the action event
+     * @author Hasan Khadem & Hawra Fardan
+     *
+     */
     private void addEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeBtnActionPerformed
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2454,7 +2468,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
 
         addEmployee(textFields);
         try {
-            FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().writeEmployee();
             Employee.saveEmpCount();
             clearTextFields(textFields);
         } catch (IOException ex) {
@@ -2472,7 +2486,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         dateChooser.showPopup();
         SelectedDate d = dateChooser.getSelectedDate();
     }//GEN-LAST:event_pickDateBtnActionPerformed
-
+    /**
+     * Adds a new member to the system. Validates the input fields and member
+     * type before adding the member. If the input is valid, the member is
+     * added, and the saveMember() method is called. If an exception occurs, it
+     * is logged.
+     *
+     * @param evt The event object representing the action event
+     * @author Hasan Khadem
+     */
     private void addMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberBtnActionPerformed
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2550,7 +2572,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         addMember(textFields);
 
         try {
-            FileManager.getInstance().WriteMember();
+            FileManager.getInstance().writeMember();
             Member.saveEmpCount();
             clearTextFields(textFields);
             genderButtonGroup.clearSelection();
@@ -2596,16 +2618,34 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_editEmployeeBtnActionPerformed
-
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+    /**
+     * Exits the application and saves employees and members before exiting. If
+     * an exception occurs during the saving process, it is logged.
+     *
+     * @param evt The event object representing the action event
+     * @author Danial Alajmi
+     */
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         try {
-            FileManager.getInstance().WriteEmployee();
-            FileManager.getInstance().WriteMember();
+            FileManager.getInstance().writeEmployee();
+            FileManager.getInstance().writeMember();
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.exit(0);
-    }//GEN-LAST:event_button4ActionPerformed
+    }//GEN-LAST:event_exitBtnActionPerformed
+    /**
+     * Saves the edited employee information after validating the input fields.
+     * If the input is valid and the selected employee exists, the employee's
+     * information is updated, and the FileManager's writeEmployee() method is
+     * called. If an exception occurs during the saving process, it is logged.
+     * After the update, a message is displayed to inform the user that the data
+     * has been updated.
+     *
+     * @param evt The event object representing the action event
+     * @author Hasan Khadem & Hawra Fardan
+     *
+     */
 
     private void saveEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEmployeeEditBtnActionPerformed
         int errorCoutner;
@@ -2647,7 +2687,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             empFound.setPhone(txtPhoneEmployeeEdit.getText());
             empFound.setSalary(Double.parseDouble(txtSalaryEmployeeEdit.getText()));
             try {
-                FileManager.getInstance().WriteEmployee();
+                FileManager.getInstance().writeEmployee();
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2669,7 +2709,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private void backEmployeeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backEmployeeEditBtnActionPerformed
         cardLayout.show(pnlCards, "manageEmployeesPnl");
     }//GEN-LAST:event_backEmployeeEditBtnActionPerformed
-
+    /**
+     * Deletes the selected employee from the employees list and updates the
+     * table. If an employee is selected, the employee is removed from the list,
+     * and the FileManager's writeEmployee() method is called to update the
+     * saved data. If an exception occurs during the saving process, it is
+     * logged. If no employee is selected, a message is displayed to inform the
+     * user to select an employee.
+     *
+     * @param evt The event object representing the action event
+     * @author Ali Jasim
+     */
     private void deleteEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
             Employee empFound = getEmpByID();
@@ -2687,7 +2737,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             GlassPanePopup.showPopup(obj);
 
             try {
-                FileManager.getInstance().WriteEmployee();
+                FileManager.getInstance().writeEmployee();
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2735,7 +2785,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
     }//GEN-LAST:event_txtSearchMemberKeyReleased
-
+    /**
+     * Prepares the member editing form with the selected member's information.
+     * If a member is selected from the table, the member's information is
+     * retrieved, and the edit form is populated with the member's data. If no
+     * member is selected, a message is displayed to inform the user to select a
+     * member.
+     *
+     * @param evt The event object representing the action event
+     * @author Hasan Khadem & Hawra Fardan
+     */
     private void editMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBtnActionPerformed
         if (membersTable.getSelectedRow() != -1) {
             Member membFound = getMemByID();
@@ -2775,7 +2834,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             obj.jLabel1.setText("<html>Please Select a member From the table to edit.</html>");
             GlassPanePopup.showPopup(obj);
         }    }//GEN-LAST:event_editMemberBtnActionPerformed
-
+    /**
+     * Deletes the selected member from the members list and updates the table.
+     * If a member is selected, the member is removed from the list, and the
+     * FileManager's writeMember() method is called to update the saved data. If
+     * an exception occurs during the saving process, it is logged. If no member
+     * is selected, a message is displayed to inform the user to select a
+     * member.
+     *
+     * @param evt The event object representing the action event
+     * @author Ali Jasim
+     */
     private void deleteMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBtnActionPerformed
         if (membersTable.getSelectedRow() != -1) {
             Member memFound = getMemByID();
@@ -2793,7 +2862,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             GlassPanePopup.showPopup(obj);
 
             try {
-                FileManager.getInstance().WriteMember();
+                FileManager.getInstance().writeMember();
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2810,7 +2879,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_deleteMemberBtnActionPerformed
-
+    /**
+     * Validates the input fields and updates the member's information in the
+     * members list. It checks for the validity of the input fields, such as
+     * checking if the fields contain only letters, numbers, and specific error
+     * messages. If any of these checks fail, the method returns immediately
+     * without updating the member's information. If all the input fields are
+     * valid, the member's information is updated and the table is populated
+     * with the updated data.
+     *
+     * @param evt The event object representing the action event
+     * @author Hasan Khadem
+     */
     private void saveMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMemberBtnActionPerformed
         int errorCoutner;
         ArrayList<TextField> textFields = new ArrayList<TextField>();
@@ -2875,7 +2955,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
         if (membersTable.getSelectedRow() != -1) {
             Member membFound = getMemByID();
-            System.out.println(txtFirstNameMemberEdit.getText());
             membFound.setFirstName(txtFirstNameMemberEdit.getText());
             membFound.setLastName(txtSurNameMemberEdit.getText());
             membFound.setAddress(txtAdressMemberEdit.getText());
@@ -2890,7 +2969,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 ((PolytechnicStaff) membFound).setDepartment(txtSportTeamOrDepartmentEdit.getText());
             }
             try {
-                FileManager.getInstance().WriteMember();
+                FileManager.getInstance().writeMember();
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2909,13 +2988,11 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         GlassPanePopup.showPopup(obj);
 
         try {
-            FileManager.getInstance().WriteMember();
+            FileManager.getInstance().writeMember();
 
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_saveMemberBtnActionPerformed
 
     private void backMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMemberBtnActionPerformed
@@ -3005,17 +3082,30 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 if (txtSearchTrainer.getText().equalsIgnoreCase(id) || name.toLowerCase().contains(txtSearchTrainer.getText().toLowerCase())) {
                     personalTrainerTable.addRow(new Object[]{id, name, ((PersonalTrainer) emp).getMembers().size()});
                 }
-        }
             }
+        }
     }//GEN-LAST:event_txtSearchTrainerKeyReleased
 
     private void personalTrainerTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalTrainerTableMouseReleased
         populateTrainerMembersTable();
         cardLayout.show(pnlCards, "trainerMembersPnl");
     }//GEN-LAST:event_personalTrainerTableMouseReleased
-
+    /**
+     * Assigns or unassigns a Personal Trainer to a member when the
+     * assignedTrainerComboBox loses focus. The method creates a list of
+     * Personal Trainers from the employees list and checks if a member is
+     * selected in the membersAssignTrainerTable. If a member is selected and a
+     * Personal Trainer is chosen in the assignedTrainerComboBox, the member is
+     * reassigned to the selected Personal Trainer. If no Personal Trainer is
+     * chosen, the member is unassigned from their current Personal Trainer.
+     * After any changes, the FileManager's writeEmployee() and readEmployees()
+     * methods are called to update the saved data. If an exception occurs
+     * during the saving or reading process, it is logged.
+     *
+     * @param evt The event object representing the focus event
+     * @author Ali Jasim
+     */
     private void assignedTrainerComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedTrainerComboBoxFocusLost
-        System.out.println("sdfasdf");
         ArrayList<PersonalTrainer> PS = new ArrayList<PersonalTrainer>();
         PS.removeAll(PS);
         for (Employee emp : GymSystem.employees) {
@@ -3033,6 +3123,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     for (Member empFound : ps.getMembers()) {
                         if (selectedMember.getId() == empFound.getId()) {
                             ps.getMembers().remove(empFound);
+                            Message obj = new Message();
+                            obj.eventOK(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent ae) {
+                                    GlassPanePopup.closePopupLast();
+                                }
+                            });
+                            obj.jLabel1.setText("<html>" + empFound.getFullName() + " has been reasigned to " + PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getFullName() + ".</html>");
+                            GlassPanePopup.showPopup(obj);
                             break;
                         }
                     }
@@ -3043,8 +3142,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 for (PersonalTrainer ps : PS) {
                     for (Member empFound : ps.getMembers()) {
                         if (selectedMember.getId() == empFound.getId()) {
-                            System.out.println(empFound.getId());
-                            System.out.println(empFound.getFullName());
                             ps.getMembers().remove(empFound);
                             Message obj = new Message();
                             obj.eventOK(new ActionListener() {
@@ -3064,14 +3161,23 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
 
         try {
-            FileManager.getInstance().WriteEmployee();
-            FileManager.getInstance().ReadEmployees();
+            FileManager.getInstance().writeEmployee();
+            FileManager.getInstance().readEmployees();
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_assignedTrainerComboBoxFocusLost
-
+    /**
+     * Loads the startup file data when the form window is opened. This method
+     * is called when the window is opened, and it attempts to load the startup
+     * file data using FileManager's loadStartupFile() method. If the loading is
+     * successful, the oneTimeMsg() method is called with the loaded data. If an
+     * exception occurs during the loading process, it is logged.
+     *
+     * @param evt The event object representing the window event
+     * @author Hawra Fardan
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             oneTimeMsg(FileManager.getInstance().loadStartupFile());
@@ -3083,19 +3189,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_formWindowOpened
 
     private void placeHolderRemove(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_placeHolderRemove
-        if(((TextField)evt.getSource()).getText().equals("Search by ID or Name")){
-            ((TextField)evt.getSource()).setText("");
+        if (((TextField) evt.getSource()).getText().equals("Search by ID or Name")) {
+            ((TextField) evt.getSource()).setText("");
         }
     }//GEN-LAST:event_placeHolderRemove
 
     private void placeHolderCheck(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_placeHolderCheck
-        if(((TextField)evt.getSource()).getText().equals("")){
-            ((TextField)evt.getSource()).setText("Search by ID or Name");
+        if (((TextField) evt.getSource()).getText().equals("")) {
+            ((TextField) evt.getSource()).setText("Search by ID or Name");
         }    }//GEN-LAST:event_placeHolderCheck
-
-    private void txtSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3155,7 +3257,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.Button backEmployeeEditBtn;
     private GUI.Button backMemberBtn;
     private javax.swing.JLabel bahrainLabel;
-    private GUI.Button button4;
     private GUI.Button clearBtn;
     private GUI.Button clearEmployeeFormBtn;
     private GUI.NavButton dashboardBtn;
@@ -3174,6 +3275,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.RadioButtonCustom employeeRadioBtnEdit;
     private javax.swing.ButtonGroup employeeTypeBtnGroup;
     private Table.Table employeesTable;
+    private GUI.Button exitBtn;
     private javax.swing.JRadioButton femaleBtn;
     private javax.swing.JRadioButton femaleEditBtn;
     private javax.swing.ButtonGroup genderButtonGroup;
@@ -3264,6 +3366,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private GUI.TextField txtSurnameEmployeeEdit;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Checks if the given TextField is empty or null, and displays an error
+     * message if needed.
+     *
+     * @author Hasan Khadem
+     * @param textField The TextField to be checked
+     * @param error The error message to be displayed if the TextField is empty
+     * or null
+     * @return true if the TextField is not empty or null, false otherwise
+     */
     public boolean checkTxtField(TextField textField, String error) {
         if (textField.getText().isEmpty() || textField.getText() == null) {
             Message obj = new Message();
@@ -3275,15 +3387,23 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     textField.requestFocus();
                 }
             });
-            obj.jLabel1.setText("Please fill the " + error + " text field");
+            obj.jLabel1.setText("Please fill the " + error + " text field.");
             GlassPanePopup.showPopup(obj);
-
             return false;
         }
-
         return true;
     }
 
+    /**
+     * Checks if the given ButtonGroup has a selected radio button, and displays
+     * an error message if needed.
+     *
+     * @author Hasan Khadem
+     * @param buttonGroup The ButtonGroup to be checked
+     * @param error The error message to be displayed if no radio button is
+     * selected
+     * @return true if a radio button is selected, false otherwise
+     */
     public boolean checkRadioButtonGroup(ButtonGroup buttonGroup, String error) {
         if (buttonGroup.getSelection() == null) {
             Message obj = new Message();
@@ -3291,7 +3411,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     GlassPanePopup.closePopupLast();
-
                 }
             });
             obj.jLabel1.setText("Please Choose the " + error);
@@ -3301,16 +3420,31 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         return true;
     }
 
+    /**
+     * Sets the shadow color of a TextField to gray if it has text content.
+     *
+     * @author Hasan Khadem
+     * @param textField The TextField to repaint the shadow for
+     */
     public void repaitShadow(Object textField) {
         Color gray = new Color(0, 0, 0);
         if (textField instanceof TextField) {
             if (((TextField) textField).getText() != null) {
                 ((TextField) textField).setShadowColor(gray);
-
             }
         }
     }
 
+    /**
+     * Checks if a TextField contains only letters for the specified error and
+     * position.
+     *
+     * @author Hasan Khadem
+     * @param textField The TextField to check
+     * @param error The error message to display if the TextField contains
+     * non-letter characters
+     * @return true if the TextField contains only letters, false otherwise
+     */
     public boolean containsOnlyLetters(TextField textField, String error) {
         final Color DefaultC = new Color(170, 170, 170);
         final Color ErrorC = new Color(250, 0, 0);
@@ -3326,6 +3460,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         if (twoWords) {
             String[] words = str.split(" ");
             if (words.length < 1 || words.length > 2) {
+                // Display an error message and highlight the TextField with an error color
                 Message obj = new Message();
                 obj.eventOK(new ActionListener() {
                     @Override
@@ -3345,6 +3480,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
         for (char c : str.toCharArray()) {
             if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                // Display an error message and highlight the TextField with an error color
                 Message obj = new Message();
                 obj.eventOK(new ActionListener() {
                     @Override
@@ -3362,29 +3498,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 return false;
             }
         }
-
         return true;
     }
-//    public boolean containsOnlyLetters(TextField textField, String error) {
-//        for (char c : textField.getText().toCharArray()) {
-//            if (!Character.isLetter(c)) {
-//                Message obj = new Message();
-//                obj.eventOK(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent ae) {
-//                        GlassPanePopup.closePopupLast();
-//                        textField.setShadowColor(Color.red);
-//                        textField.requestFocus();
-//                    }
-//                });
-//                obj.jLabel1.setText("<html>The " + error + " text field should contain only letters.</html>");
-//                GlassPanePopup.showPopup(obj);
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 
+    /**
+     * Checks if a TextField contains only numbers for the specified error.
+     *
+     * @author Hasan Khadem
+     * @param textField The TextField to check
+     * @param error The error message to display if the TextField contains
+     * non-number characters
+     * @return true if the TextField contains only numbers, false otherwise
+     */
     public boolean containsOnlyNumbers(TextField textField, String error) {
         for (char c : textField.getText().toCharArray()) {
             if (!Character.isDigit(c) && c != '.' && textField.getText().charAt(0) != '+') {
@@ -3404,18 +3529,30 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
         return true;
     }
-//change navButton
+
+    //change navButton
     NavButton tempButton = null;
     Color darkBlue = new Color(2, 73, 89);
 
+    /**
+     * Changes the background color of a NavButton when it is clicked.
+     *
+     * @author Danial Alajmi
+     * @param e The ActionEvent containing information about the action that
+     * just occurred
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Check if the source of the action event is a NavButton
         if (e.getSource() instanceof NavButton) {
+            // Check if the background color of the dashboard button is set to dark blue
             if (dashboardBtn.getBackground().equals(darkBlue)) {
+                // If the background color is dark blue, set it to another color
                 dashboardBtn.setBackground(new Color(11, 158, 191));
                 NavButton button = (NavButton) e.getSource();
                 tempButton = button;
             }
+            // If the background color of the dashboard button is not dark blue
             NavButton button = (NavButton) e.getSource();
             tempButton.setBackground(new Color(11, 158, 191));
             tempButton.setShadowColor(new Color(11, 158, 191));
@@ -3423,9 +3560,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             button.setShadowColor(new Color(170, 170, 170));
             tempButton = button;
         }
-//throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * Adds an employee to the list of employees in the gym system.
+     *
+     * @author Hasan Khadem
+     * @param textFields An ArrayList containing TextField components with
+     * employee data
+     */
     public void addEmployee(ArrayList<TextField> textFields) {
         try {
             Employee newEmp = null;
@@ -3450,13 +3593,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             });
             obj.jLabel1.setText("Employee has been added ");
             GlassPanePopup.showPopup(obj);
+
         } catch (Exception e) {
             Message obj = new Message();
             obj.eventOK(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     GlassPanePopup.closePopupLast();
-
                 }
             });
             obj.jLabel1.setText("Please check your input data");
@@ -3464,6 +3607,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Adds a member to the list of members in the gym system.
+     *
+     * @author Hasan Khadem
+     * @param textFields An ArrayList containing TextField components with
+     * member data
+     */
     public void addMember(ArrayList<TextField> textFields) {
         String gender = maleBtn.isSelected() ? "Male" : "Female"; //ternary operator
         String team = (!textFields.get(6).getText().isBlank() || !textFields.get(6).getText().isEmpty() || textFields.get(6).getText() != null) ? textFields.get(6).getText() : null;
@@ -3471,12 +3621,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             Member newMem = null;
             if (studentBtn.isSelected()) {
                 newMem = new PolytechnicStudent(textFields.get(0).getText(), textFields.get(1).getText(),
-                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(), textFields.get(5).getText(), team);
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(),
+                        textFields.get(5).getText(), team);
                 System.out.println("student");
 
             } else {
                 newMem = new PolytechnicStaff(textFields.get(0).getText(), textFields.get(1).getText(),
-                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(), textFields.get(5).getText(), textFields.get(6).getText());
+                        textFields.get(2).getText(), textFields.get(3).getText(), gender, textFields.get(4).getText(),
+                        textFields.get(5).getText(), textFields.get(6).getText());
                 System.out.println("staff");
             }
 
@@ -3505,6 +3657,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Populates the employees table with data from the list of employees in the
+     * gym system.
+     *
+     * @author Danial Alajmi
+     * @param employeesTable The JTable to be populated with employee data
+     */
     public void populateEmployeesTable() {
         DefaultTableModel model = (DefaultTableModel) employeesTable.getModel();
         model.setRowCount(0);
@@ -3517,6 +3676,13 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Populates the members table with data from the list of members in the gym
+     * system.
+     *
+     * @author Danial Alajmi
+     * @param membersTable The JTable to be populated with member data
+     */
     public void populateMembersTable() {
         DefaultTableModel model = (DefaultTableModel) membersTable.getModel();
         model.setRowCount(0);
@@ -3529,6 +3695,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Populates the trainerMembersTable with data from the members of a
+     * selected PersonalTrainer in the gym system.
+     *
+     * @Danial Alajmi
+     * @param trainerMembersTable The JTable to be populated with trainer member
+     * data
+     */
     public void populateTrainerMembersTable() {
         DefaultTableModel model = (DefaultTableModel) trainerMembersTable.getModel();
         model.setRowCount(0);
@@ -3550,10 +3724,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 trainerMembersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", mem.getPhone()});
             }
         }
-
-        lblTrainerName.setText("<html>"+empFound.getFullName() + " Members List</html>");
+        lblTrainerName.setText("<html>" + empFound.getFullName() + " Members List</html>");
     }
 
+    /**
+     * Populates the personalTrainerTable with data from the personal trainers
+     * in the gym system.
+     *
+     * @author Ali Jasim
+     * @param personalTrainerTable The JTable to be populated with personal
+     * trainer data
+     */
     public void populateTrainersTable() {
         DefaultTableModel model = (DefaultTableModel) personalTrainerTable.getModel();
         model.setRowCount(0);
@@ -3563,25 +3744,26 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
     }
-//    public void populateMembersTrainerTable() {
-//        DefaultTableModel model = (DefaultTableModel) membersAssignTrainerTable.getModel();
-//        model.setRowCount(0);
-//        for (Member mem : GymSystem.members) {
-//            if (mem instanceof PolytechnicStaff) {
-//                membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff"});
-//            } else {
-//                membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student"});
-//            }
-//        }
-//    }
 
+    /**
+     * Clears the text fields in the given ArrayList of text fields.
+     *
+     * @Danial Alajmi
+     * @param textFields An ArrayList of TextField objects to clear
+     */
     public void clearTextFields(ArrayList<TextField> textFields) {
         for (TextField textField : textFields) {
             textField.setText("");
         }
-
     }
 
+    /**
+     * Retrieves an Employee object from the gym system by its ID from the
+     * selected row in the employeesTable.
+     *
+     * @author Hasan Khadem
+     * @return The Employee object with the specified ID, or null if not found
+     */
     public Employee getEmpByID() {
         int row = employeesTable.getSelectedRow();
         Object id = employeesTable.getModel().getValueAt(row, 0);
@@ -3589,15 +3771,20 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         int idFound = Integer.parseInt(idString);
 
         for (Employee emp : GymSystem.employees) {
-
             if (emp.getId() == idFound) {
                 return emp;
             }
         }
-
         return null;
     }
 
+    /**
+     * Retrieves a Member object from the gym system by its ID from the selected
+     * row in the membersTable.
+     *
+     * @author Hasan Khadem
+     * @return The Member object with the specified ID, or null if not found
+     */
     public Member getMemByID() {
         int row = membersTable.getSelectedRow();
         Object id = membersTable.getModel().getValueAt(row, 0);
@@ -3605,31 +3792,37 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         int idFound = Integer.parseInt(idString);
 
         for (Member mem : GymSystem.members) {
-
             if (mem.getId() == idFound) {
                 return mem;
             }
         }
-
         return null;
     }
 
+    /**
+     * Retrieves a Member object from the Personal trainer list by its ID from
+     * the selected row in the membersAssignTrainerTable.
+     *
+     * @author Hasan Khadem
+     * @return The Member object with the specified ID, or null if not found
+     */
     public Member getMemTrainerByID() {
         int row = membersAssignTrainerTable.getSelectedRow();
         Object id = membersAssignTrainerTable.getModel().getValueAt(row, 0);
         String idString = id.toString();
         int idFound = Integer.parseInt(idString);
-
         for (Member mem : GymSystem.members) {
-
             if (mem.getId() == idFound) {
                 return mem;
             }
         }
-
         return null;
     }
 
+    /**
+     * @author Ali Jasim Populates the assignedTrainerComboBox with available
+     * PersonalTrainer objects from the GymSystem.employees list.
+     */
     public void assignTrainerComboBox() {
         assignedTrainerComboBox.removeAllItems();
         DefaultTableModel model = (DefaultTableModel) membersAssignTrainerTable.getModel();
@@ -3643,13 +3836,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
         }
         assignedTrainerComboBox.addItem("(None)");
-
         for (PersonalTrainer emp : PS) {
             assignedTrainerComboBox.addItem(emp.getFullName() + " (" + emp.getId() + ")");
-
         }
     }
 
+    /**
+     * @author Hawra Fardan Displays a one-time message dialog when the
+     * application starts up and the startup file has been populated.
+     */
     public void oneTimeMsg(boolean startupLoaded) {
         if (startupLoaded) {
             Message obj = new Message();

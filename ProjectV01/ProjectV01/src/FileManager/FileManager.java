@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package FileManager;
 
 import Logic.*;
@@ -23,18 +19,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author ali
+ * @author Hawra Fardan
+ * A singleton class to manage file operations related to employees and members
+ * in the gym system. It provides methods to write and read employees and
+ * members data from files, and to load startup data.
  */
 public class FileManager {
 
     //Singleton syntax
     private static FileManager instance;
 
+    /**
+     * Private constructor to prevent instantiation from other classes.
+     */
     private FileManager() {
 
     }
 
+    /**
+     * Returns the singleton instance of the FileManager class.
+     *
+     * @return an instance of the FileManager class
+     */
     public static FileManager getInstance() {
         if (instance == null) {
             instance = new FileManager();
@@ -42,7 +48,13 @@ public class FileManager {
         return instance;
     }
 
-    public void WriteEmployee() throws IOException {
+    /**
+     * Writes employees data to a file.
+     *
+     * @throws IOException if a file I/O error occurs
+     * @throws ClassNotFoundException if a serialized class fails to load
+     */
+    public void writeEmployee() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Employees.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.employees); // serializes​
@@ -51,7 +63,13 @@ public class FileManager {
         }
     }
 
-    public void ReadEmployees() throws IOException, ClassNotFoundException {
+    /**
+     * Reads employees data from a file.
+     *
+     * @throws IOException if a file I/O error occurs
+     * @throws ClassNotFoundException if a serialized class fails to load
+     */
+    public void readEmployees() throws IOException, ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("src/FileManager/Data/Employees.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -62,7 +80,13 @@ public class FileManager {
         }
     }
 
-    public void WriteMember() throws IOException {
+    /**
+     * Writes members data to a file.
+     *
+     * @throws IOException if a file I/O error occurs
+     * @throws ClassNotFoundException if a serialized class fails to load
+     */
+    public void writeMember() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Members.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.members); // serializes​
@@ -71,7 +95,13 @@ public class FileManager {
         }
     }
 
-    public void ReadMembers() throws IOException, ClassNotFoundException {
+    /**
+     * Reads members data from a file.
+     *
+     * @throws IOException if a file I/O error occurs
+     * @throws ClassNotFoundException if a serialized class fails to load
+     */
+    public void readMembers() throws IOException, ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("src/FileManager/Data/Members.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -82,12 +112,18 @@ public class FileManager {
         }
     }
 
+    /*
+     * Loads startup data from a file and populates the system with employees and members.
+     *
+     * @throws IOException if a file I/O error occurs
+     * @throws ClassNotFoundException if a serialized class fails to load
+     */
     public boolean loadStartupFile() throws FileNotFoundException, IOException, ClassNotFoundException {
         File memberFile = new File("src/FileManager/Data/Members.dat");
         File employeeFile = new File("src/FileManager/Data/Employees.dat");
         if (employeeFile.exists() || memberFile.exists()) {
-            ReadMembers();
-            ReadEmployees();
+            readMembers();
+            readEmployees();
             return false;
         } else {
             // load the startup file and use it to populate the system
@@ -149,14 +185,21 @@ public class FileManager {
                 }
             }
         }
-        WriteMember();
-        WriteEmployee();
+        writeMember();
+        writeEmployee();
         return true;
 
     }
 
+    /**
+     * Generates a marketing report for Polytechnic staff and students. The
+     * report includes information such as full name, address, phone number,
+     * position, department, major, and sport team.
+     *
+     * @throws IOException if an input or output exception occurred
+     */
     public void generateMarketingReport() {
-        Path filePath = Paths.get("src/FileManager/Data/marketingReport.txt");
+        Path filePath = Paths.get("marketingReport.txt");
         Charset charset = StandardCharsets.UTF_8;
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath, charset)) {

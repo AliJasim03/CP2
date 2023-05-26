@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package GUI;
 
 import java.awt.Graphics;
@@ -19,16 +16,18 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author alija
+ * A utility class that provides methods for creating and manipulating BufferedImage objects.
  */
 public class GraphicsUtilities {
 
     private GraphicsUtilities() {
     }
 
-    // Returns the graphics configuration for the primary screen
-    private static GraphicsConfiguration getGraphicsConfiguration() {
+    /**
+     * Returns the graphics configuration for the primary screen.
+     *
+     * @return a GraphicsConfiguration object
+     */    private static GraphicsConfiguration getGraphicsConfiguration() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().
                 getDefaultScreenDevice().getDefaultConfiguration();
     }

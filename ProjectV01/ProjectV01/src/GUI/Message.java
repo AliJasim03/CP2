@@ -10,7 +10,7 @@ import GlassPanePopup.GlassPanePopup;
 
 /**
  *
- * @author RAVEN
+ * @author Danial Alajmi
  */
 public class Message extends javax.swing.JPanel {
 
