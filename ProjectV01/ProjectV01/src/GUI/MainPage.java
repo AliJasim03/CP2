@@ -1171,12 +1171,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchEmp.setText("Search by ID or Name");
         txtSearchEmp.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtSearchEmp.setRound(30);
+        txtSearchEmp.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSearchEmp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 placeHolderRemove(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 placeHolderCheck(evt);
+            }
+        });
+        txtSearchEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchEmpActionPerformed(evt);
             }
         });
         txtSearchEmp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1222,10 +1228,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(roundPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(lblSearchIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1238,7 +1244,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1304,6 +1310,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchMember.setText("Search by ID or Name");
         txtSearchMember.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtSearchMember.setRound(30);
+        txtSearchMember.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSearchMember.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 placeHolderRemove(evt);
@@ -1358,7 +1365,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGap(18, 18, 18)
                 .addComponent(lblSearchIcon1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1368,16 +1375,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel6Layout.setVerticalGroup(
             roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel6Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(editMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(deleteMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblSearchIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         roundPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblSearchIcon1, txtSearchMember});
@@ -1444,6 +1451,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchTrainer.setText("Search by ID or Name");
         txtSearchTrainer.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtSearchTrainer.setRound(30);
+        txtSearchTrainer.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSearchTrainer.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 placeHolderRemove(evt);
@@ -1553,6 +1561,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchTrainerMember.setText("Search by ID or Name");
         txtSearchTrainerMember.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtSearchTrainerMember.setRound(30);
+        txtSearchTrainerMember.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSearchTrainerMember.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 placeHolderRemove(evt);
@@ -1678,6 +1687,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         txtSearchMemberTrainer.setText("Search by ID or Name");
         txtSearchMemberTrainer.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtSearchMemberTrainer.setRound(30);
+        txtSearchMemberTrainer.setShadowColor(new java.awt.Color(0, 0, 0));
         txtSearchMemberTrainer.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 placeHolderRemove(evt);
@@ -2614,6 +2624,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     GlassPanePopup.closePopupLast();
                 }
             });
+            txtSearchEmp.setText("Search by ID or Name");
+            populateEmployeesTable();
             obj.jLabel1.setText("<html>Please Select an employee From the table to edit.</html>");
             GlassPanePopup.showPopup(obj);
         }
@@ -2831,6 +2843,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     GlassPanePopup.closePopupLast();
                 }
             });
+            txtSearchMember.setText("Search by ID or Name");
+            populateMembersTable();
             obj.jLabel1.setText("<html>Please Select a member From the table to edit.</html>");
             GlassPanePopup.showPopup(obj);
         }    }//GEN-LAST:event_editMemberBtnActionPerformed
@@ -3198,6 +3212,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         if (((TextField) evt.getSource()).getText().equals("")) {
             ((TextField) evt.getSource()).setText("Search by ID or Name");
         }    }//GEN-LAST:event_placeHolderCheck
+
+    private void txtSearchEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchEmpActionPerformed
 
     /**
      * @param args the command line arguments
