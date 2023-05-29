@@ -134,7 +134,7 @@ public class Member implements Serializable {
             totalMember = Integer.parseInt(br.readLine());
             br.close();
         } catch (IOException e) {
-            totalMember = 1;
+            totalMember = 20230001;
             System.out.println("Error occured: " + e.getMessage());
         }
     }
