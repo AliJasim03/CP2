@@ -762,37 +762,37 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="57" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblFirstNameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtFirstNameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          <Component id="lblSurnameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtSurnameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          <Component id="lblAddressEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtAddressEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          <Component id="addEmployeeBtn" alignment="1" min="-2" pref="68" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblEmployeeType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblSalary" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtPhoneEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          <Component id="lblPhoneEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="employeeRadioBtn" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="trainerRadioBtn" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="txtSalaryEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="clearEmployeeFormBtn" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="lblAddEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFirstNameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFirstNameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="lblSurnameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSurnameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="lblAddressEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAddressEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="addEmployeeBtn" alignment="1" min="-2" pref="68" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblEmployeeType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSalary" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPhoneEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="lblPhoneEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="employeeRadioBtn" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="trainerRadioBtn" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtSalaryEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="clearEmployeeFormBtn" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblAddEmployee" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
