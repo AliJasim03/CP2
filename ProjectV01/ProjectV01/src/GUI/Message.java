@@ -53,7 +53,7 @@ public class Message extends javax.swing.JPanel {
         button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("ok");
         button1.setFocusPainted(false);
-        button1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 16)); // NOI18N
+        button1.setFont(new java.awt.Font("Poppins ExtraBold", 1, 16)); // NOI18N
         button1.setPreferredSize(new java.awt.Dimension(71, 32));
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -114,14 +114,6 @@
                           <Component id="assignTrainerButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addEmployeeButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="manageEmployeesButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="listTrainersButton" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="dashboardBtn" max="32767" attributes="0"/>
@@ -129,14 +121,6 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="marketingReportBtn" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="memberSectionLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="emoployeeSectionLabel" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -154,6 +138,21 @@
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="listTrainersButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="manageEmployeesButton" max="32767" attributes="0"/>
+                          <Component id="addEmployeeButton" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="memberSectionLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="emoployeeSectionLabel" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -175,8 +174,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="manageEmployeesButton" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="listTrainersButton" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="listTrainersButton" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="memberSectionLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addMemberButton" min="-2" pref="36" max="-2" attributes="0"/>
@@ -323,7 +322,7 @@
                 <Property name="text" type="java.lang.String" value="Magage Employees"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="14" style="1"/>
+                  <Font name="Poppins" size="13" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="10"/>
                 <Property name="iconTextGap" type="int" value="5"/>
@@ -355,7 +354,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/more-horizontal-circle.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="List Personal Trainers"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;List Personal Trainers&lt;/html&gt;"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -732,7 +731,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="42" max="32767" attributes="0"/>
-                          <Component id="roundPanel3" pref="679" max="32767" attributes="0"/>
+                          <Component id="roundPanel3" pref="678" max="32767" attributes="0"/>
                           <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -762,37 +761,37 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblFirstNameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtFirstNameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="lblSurnameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtSurnameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="lblAddressEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtAddressEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="addEmployeeBtn" alignment="1" min="-2" pref="68" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblEmployeeType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSalary" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtPhoneEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="lblPhoneEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="employeeRadioBtn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="trainerRadioBtn" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtSalaryEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="clearEmployeeFormBtn" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lblAddEmployee" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblFirstNameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtFirstNameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                          <Component id="lblSurnameEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtSurnameEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                          <Component id="lblAddressEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtAddressEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                          <Component id="addEmployeeBtn" alignment="1" min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblEmployeeType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSalary" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtPhoneEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                          <Component id="lblPhoneEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="employeeRadioBtn" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="trainerRadioBtn" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="txtSalaryEmployee" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="clearEmployeeFormBtn" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="lblAddEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2656,7 +2655,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="42" max="32767" attributes="0"/>
-                          <Component id="roundPanel5" pref="679" max="32767" attributes="0"/>
+                          <Component id="roundPanel5" pref="678" max="32767" attributes="0"/>
                           <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -3043,18 +3042,18 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                          <EmptySpace pref="44" max="32767" attributes="0"/>
                           <Component id="roundPanel7" max="32767" attributes="0"/>
-                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="89" max="32767" attributes="0"/>
+                          <EmptySpace pref="73" max="32767" attributes="0"/>
                           <Component id="roundPanel7" max="32767" attributes="0"/>
-                          <EmptySpace pref="90" max="32767" attributes="0"/>
+                          <EmptySpace pref="72" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3121,7 +3120,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="244" max="32767" attributes="0"/>
+                              <EmptySpace pref="245" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblAddMember1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3130,7 +3129,7 @@
                                       <Component id="backMemberBtn" linkSize="10" min="-2" pref="72" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="243" max="32767" attributes="0"/>
+                              <EmptySpace pref="245" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3152,7 +3151,7 @@
                                   <Component id="maleEditBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="femaleEditBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace pref="7" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblMemberType1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblFirstName3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3166,7 +3165,7 @@
                                       <Component id="txtDobEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblAdress1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="lblMajorPositionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3176,21 +3175,21 @@
                                   <Component id="txtMajorOrPositionEdit" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtAdressMemberEdit" min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="10" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblPhone1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="lblSportDepartmentEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtSportTeamOrDepartmentEdit" max="32767" attributes="0"/>
                                   <Component id="txtPhoneMemberEdit" max="32767" attributes="0"/>
+                                  <Component id="txtSportTeamOrDepartmentEdit" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="backMemberBtn" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="saveMemberBtn" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

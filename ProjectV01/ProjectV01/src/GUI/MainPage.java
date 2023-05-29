@@ -28,10 +28,6 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         FileManager.getInstance().readEmployees();
 
         initComponents();
-        Member.loadEmpCount();
-        Employee.loadEmpCount();
-        Employee.saveEmpCount();
-        Member.saveEmpCount();
         GlassPanePopup.install(this);
 
         cardLayout = (CardLayout) (pnlCards.getLayout());
@@ -315,7 +311,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         manageEmployeesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/more-horizontal-circle.png"))); // NOI18N
         manageEmployeesButton.setText("Magage Employees");
         manageEmployeesButton.setFocusPainted(false);
-        manageEmployeesButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        manageEmployeesButton.setFont(new java.awt.Font("Poppins", 1, 13)); // NOI18N
         manageEmployeesButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         manageEmployeesButton.setIconTextGap(5);
         manageEmployeesButton.setMaximumSize(new java.awt.Dimension(145, 47));
@@ -331,7 +327,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         listTrainersButton.setBackground(new java.awt.Color(11, 158, 191));
         listTrainersButton.setForeground(new java.awt.Color(255, 255, 255));
         listTrainersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/more-horizontal-circle.png"))); // NOI18N
-        listTrainersButton.setText("List Personal Trainers");
+        listTrainersButton.setText("<html>List Personal Trainers</html>");
         listTrainersButton.setToolTipText("");
         listTrainersButton.setFocusPainted(false);
         listTrainersButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
@@ -446,24 +442,12 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(addMemberButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageMemberButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(assignTrainerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(nvigPnlLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageEmployeesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listTrainersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nvigPnlLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(dashboardBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nvigPnlLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(marketingReportBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(nvigPnlLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(memberSectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emoployeeSectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(nvigPnlLayout.createSequentialGroup()
                 .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nvigPnlLayout.createSequentialGroup()
@@ -476,6 +460,17 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                             .addComponent(bahrainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gymImage, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(nvigPnlLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(listTrainersButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageEmployeesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addEmployeeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(nvigPnlLayout.createSequentialGroup()
+                        .addGroup(nvigPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(memberSectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emoployeeSectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
 
         nvigPnlLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bahrainLabel, polyLabel});
@@ -498,8 +493,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listTrainersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(listTrainersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(memberSectionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -733,32 +728,31 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel3Layout.setHorizontalGroup(
             roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel3Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFirstNameEmployee)
-                    .addComponent(txtFirstNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSurnameEmployee)
-                    .addComponent(txtSurnameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddressEmployee)
-                    .addComponent(txtAddressEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmployeeType)
-                    .addComponent(lblSalary)
-                    .addComponent(txtPhoneEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPhoneEmployee)
-                    .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel3Layout.createSequentialGroup()
-                            .addComponent(employeeRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(trainerRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtSalaryEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(clearEmployeeFormBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(roundPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAddEmployee)
+                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel3Layout.createSequentialGroup()
+                        .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFirstNameEmployee)
+                            .addComponent(txtFirstNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSurnameEmployee)
+                            .addComponent(txtSurnameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddressEmployee)
+                            .addComponent(txtAddressEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmployeeType)
+                            .addComponent(lblSalary)
+                            .addComponent(txtPhoneEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPhoneEmployee)
+                            .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel3Layout.createSequentialGroup()
+                                    .addComponent(employeeRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(trainerRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSalaryEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(clearEmployeeFormBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblAddEmployee))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel3Layout.setVerticalGroup(
@@ -807,7 +801,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             addEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmployeePnlLayout.createSequentialGroup()
                 .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         addEmployeePnlLayout.setVerticalGroup(
@@ -1945,7 +1939,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             editEmployeePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editEmployeePnlLayout.createSequentialGroup()
                 .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addComponent(roundPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         editEmployeePnlLayout.setVerticalGroup(
@@ -2173,14 +2167,14 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(femaleEditBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(roundPanel7Layout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
+                .addContainerGap(245, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAddMember1)
                     .addGroup(roundPanel7Layout.createSequentialGroup()
                         .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         roundPanel7Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {backMemberBtn, saveMemberBtn});
@@ -2201,7 +2195,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     .addComponent(txtSurNameMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maleEditBtn)
                     .addComponent(femaleEditBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMemberType1)
                     .addComponent(lblFirstName3))
@@ -2212,7 +2206,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                         .addComponent(studentEditBtn)
                         .addComponent(staffEditBtn)
                         .addComponent(txtDobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 5, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMajorPositionEdit))
@@ -2220,18 +2214,18 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMajorOrPositionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAdressMemberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSportDepartmentEdit))
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtPhoneMemberEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSportTeamOrDepartmentEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(roundPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editMemberPnlLayout = new javax.swing.GroupLayout(editMemberPnl);
@@ -2239,16 +2233,16 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         editMemberPnlLayout.setHorizontalGroup(
             editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(roundPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         editMemberPnlLayout.setVerticalGroup(
             editMemberPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editMemberPnlLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addComponent(roundPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pnlCards.add(editMemberPnl, "editMemberPnl");
@@ -2388,9 +2382,19 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
             }
 
             if (found) {
-                membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff", name + " (" + id + ")"});
+                if (mem instanceof PolytechnicStaff) {
+                    membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff", name + " (" + id + ")"});
+                } else {
+                    membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", name + " (" + id + ")"});
+
+                }
             } else if (!found) {
-                membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", "(None)"});
+                if (mem instanceof PolytechnicStaff) {
+                    membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Staff", "(None)"});
+                } else {
+                    membersAssignTrainerTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", "(None)"});
+
+                }
             }
 
         }
@@ -2983,6 +2987,8 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                 ((PolytechnicStaff) membFound).setPosition(txtMajorOrPositionEdit.getText());
                 ((PolytechnicStaff) membFound).setDepartment(txtSportTeamOrDepartmentEdit.getText());
             }
+            String gender = maleEditBtn.isSelected() ? "Male" : "Female"; //ternary operator
+            membFound.setGender(gender);
             try {
                 FileManager.getInstance().writeMember();
             } catch (IOException ex) {
@@ -3152,6 +3158,15 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                     }
 
                 }
+                Message obj = new Message();
+                obj.eventOK(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        GlassPanePopup.closePopupLast();
+                    }
+                });
+                obj.jLabel1.setText("<html>" +selectedMember.getFullName() +" has been asigned to " + PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getFullName() + ".</html>");
+                GlassPanePopup.showPopup(obj);
                 PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getMembers().add(selectedMember);
             } else {
                 for (PersonalTrainer ps : PS) {
@@ -3195,6 +3210,10 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
+            Member.loadEmpCount();
+            Employee.loadEmpCount();
+            Employee.saveEmpCount();
+            Member.saveEmpCount();
             oneTimeMsg(FileManager.getInstance().loadStartupFile());
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);

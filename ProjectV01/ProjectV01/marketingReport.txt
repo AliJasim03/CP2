@@ -31,7 +31,8 @@ Position:Logistics Tutor
 Department:Logistics dept
 Total amount of: 6
 
-Polytechnic Students:Full Name:Zainab Mohammed
+Polytechnic Students:
+Full Name:Zainab Mohammed
 Address:Apt45, Road 1578, Riffa
 Phone:128756
 Major:Business 

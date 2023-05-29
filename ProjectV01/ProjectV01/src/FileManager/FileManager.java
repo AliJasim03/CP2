@@ -223,7 +223,7 @@ public class FileManager {
             printWriter.write("Total amount of: " + totalStaff);
             printWriter.println();
             printWriter.println();
-            printWriter.write("Polytechnic Students:");
+            printWriter.println("Polytechnic Students:");
             for (Member mem : GymSystem.members) {
                 if (mem instanceof PolytechnicStudent) {
                     printWriter.write("Full Name:" + mem.getFullName());
