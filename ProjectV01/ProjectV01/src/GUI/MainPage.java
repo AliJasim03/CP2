@@ -634,7 +634,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblPhoneEmployee.setText("Phone number");
 
         lblSurnameEmployee.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurnameEmployee.setText("Surname");
+        lblSurnameEmployee.setText("Sur name");
 
         lblSalary.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSalary.setText("Salary");
@@ -729,32 +729,31 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         roundPanel3Layout.setHorizontalGroup(
             roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel3Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFirstNameEmployee)
-                    .addComponent(txtFirstNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSurnameEmployee)
-                    .addComponent(txtSurnameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddressEmployee)
-                    .addComponent(txtAddressEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmployeeType)
-                    .addComponent(lblSalary)
-                    .addComponent(txtPhoneEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPhoneEmployee)
-                    .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel3Layout.createSequentialGroup()
-                            .addComponent(employeeRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(trainerRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtSalaryEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(clearEmployeeFormBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAddEmployee)
+                .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel3Layout.createSequentialGroup()
+                        .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFirstNameEmployee)
+                            .addComponent(txtFirstNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSurnameEmployee)
+                            .addComponent(txtSurnameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddressEmployee)
+                            .addComponent(txtAddressEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmployeeType)
+                            .addComponent(lblSalary)
+                            .addComponent(txtPhoneEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPhoneEmployee)
+                            .addGroup(roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel3Layout.createSequentialGroup()
+                                    .addComponent(employeeRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(trainerRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSalaryEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(clearEmployeeFormBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblAddEmployee))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel3Layout.setVerticalGroup(
@@ -831,7 +830,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblAddMember.setText("Add Member form");
 
         lblSurname.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurname.setText("Surname");
+        lblSurname.setText("Sur name");
 
         lblMemberType.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMemberType.setText("Member type");
@@ -1779,7 +1778,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblPhoneEmployee1.setText("Phone number");
 
         lblSurnameEmployee1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurnameEmployee1.setText("Surname");
+        lblSurnameEmployee1.setText("Sur name");
 
         lblSalary1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblSalary1.setText("Salary");
@@ -1976,7 +1975,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
         lblAddMember1.setText("Edit Member form");
 
         lblSurname1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
-        lblSurname1.setText("Surname");
+        lblSurname1.setText("Sur name");
 
         lblMemberType1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         lblMemberType1.setText("Member type");
