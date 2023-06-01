@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Calander"},{"l":"ComboBox"},{"l":"FileManager"},{"l":"GlassPanePopup"},{"l":"GUI"},{"l":"Logic"},{"l":"Scroll"},{"l":"Table"}];updateSearchResults();
