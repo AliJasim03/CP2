@@ -3138,6 +3138,7 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
     private void assignedTrainerComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedTrainerComboBoxFocusLost
         ArrayList<PersonalTrainer> PS = new ArrayList<PersonalTrainer>();
         PS.removeAll(PS);
+        boolean found = false;
         for (Employee emp : GymSystem.employees) {
             if (emp instanceof PersonalTrainer) {
                 PS.add((PersonalTrainer) emp);
@@ -3162,21 +3163,25 @@ public class MainPage extends javax.swing.JFrame implements ActionListener {
                             });
                             obj.jLabel1.setText("<html>" + empFound.getFullName() + " has been reasigned to " + PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getFullName() + ".</html>");
                             GlassPanePopup.showPopup(obj);
+                            found = true;
                             break;
                         }
                     }
 
                 }
-                Message obj = new Message();
-                obj.eventOK(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        GlassPanePopup.closePopupLast();
-                    }
-                });
-                obj.jLabel1.setText("<html>" +selectedMember.getFullName() +" has been asigned to " + PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getFullName() + ".</html>");
-                GlassPanePopup.showPopup(obj);
                 PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getMembers().add(selectedMember);
+
+                if (!found) {
+                    Message obj = new Message();
+                    obj.eventOK(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                            GlassPanePopup.closePopupLast();
+                        }
+                    });
+                    obj.jLabel1.setText("<html>" + selectedMember.getFullName() + " has been asigned to " + PS.get(assignedTrainerComboBox.getSelectedIndex() - 1).getFullName() + ".</html>");
+                    GlassPanePopup.showPopup(obj);
+                }
             } else {
                 for (PersonalTrainer ps : PS) {
                     for (Member empFound : ps.getMembers()) {
